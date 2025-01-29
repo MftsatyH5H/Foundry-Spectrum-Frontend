@@ -7,21 +7,23 @@ import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TestimonialCard from './components/testimonials/testimonialCard';
+import TestimonialsList from './components/testimonials/testimonialList';
+import StudentGallery from './components/studentsGallery/studentGallery';
+import StudentGalleryList from './components/studentsGallery/studentGalleryList';
+import RelatedCourses from './components/relatedCourses/relatedCourses';
+import RelatedCoursesList from './components/relatedCourses/relatedCoursesList';
+import CourseNavbar from './components/courseNavbar/courseNavbar';
+import CourseContainer from './components/courseNavbar/courseContainer';
 
 function App() {
-  const person = {
-    name: 'Mohamed Alaa',
-    course: '3d Art Course',
-    comment: 'Awooooooooooooooooooooooooooooga',
-    date: '17 November 2015',
-  };
   return (
-    <TestimonialCard
-      name={person.name}
-      date={person.date}
-      comment={person.comment}
-      course={person.course}
-    />
+    <>
+      <TestimonialsList />
+      <RelatedCoursesList />
+      <StudentGalleryList />
+    </>
+
+
   );
 }
 

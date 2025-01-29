@@ -1,4 +1,4 @@
-# React-Nodejs-Setup
+# Foundry Spectrum Front-end
 
 This is a Project startup that uses React as a front-end library, supports Tailwind CSS and uses Redux Toolkit for state Management
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Iprops{
+interface IProps{
   name: string,
   comment: string,
   course: string,
@@ -9,7 +9,7 @@ interface Iprops{
 }
 function TestimonialCard({
   name, comment, course, date,
-}: Iprops) {
+}: IProps) {
   return (
     <div className="bg-black w-80 text-white p-3 rounded-xl font-roboto">
       <p className="text-sm leading-normal font-extralight mb-2">
