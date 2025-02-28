@@ -14,13 +14,18 @@ import RelatedCourses from './components/relatedCourses/relatedCourses';
 import RelatedCoursesList from './components/relatedCourses/relatedCoursesList';
 import CourseNavbar from './components/courseNavbar/courseNavbar';
 import CourseContainer from './components/courseNavbar/courseContainer';
+import Coursecardbig from './components/courcecardbig/coursecardbig';
+import Coursecardbiglist from './components/courcecardbig/coursecardbiglist';
+import MainNavbar from './components/navbar/MainNavbar';
 
 function App() {
   return (
     <>
+      <MainNavbar />
       <TestimonialsList />
       <RelatedCoursesList />
       <StudentGalleryList />
+      {/* <Coursecardbig /> */}
     </>
 
 

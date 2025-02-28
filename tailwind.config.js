@@ -10,10 +10,15 @@ module.exports = {
     extend: {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif']
       },
       colors: {
         lightGrey: '#a3a3a3',
         darkGrey: '#121212',
+        foundrypurple:"#332052",
+        lightpurple:"#DDBDFF",
+        purple:"#5F358A",
+        foundryyellow:"#E1ff00",
       },
     },
   },
