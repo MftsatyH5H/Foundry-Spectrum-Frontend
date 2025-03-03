@@ -14,14 +14,14 @@ body {
 @font-face {
   font-family: "agrandir";
   src: local("agrandir"),
-    url("./fonts/Agrandir-Regular.otf") format("opentype");
+    url("../fonts/Agrandir-Regular.otf") format("opentype");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Poppins";
   src: local("Poppins"),
-    url("./fonts/Poppins-Regular.otf") format("opentype");
+    url("../fonts/Poppins-Regular.otf") format("opentype");
   font-weight: normal;
 }
 
