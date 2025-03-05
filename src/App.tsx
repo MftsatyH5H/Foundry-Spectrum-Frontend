@@ -17,6 +17,9 @@ import CourseContainer from './components/courseNavbar/courseContainer';
 import Faq from './components/faq/Faq';
 import FaqList from './components/faq/FaqList';
 import LightboxGallery from './components/lightbox/lightBox';
+import Coursecardbig from './components/courcecardbig/coursecardbig';
+import Coursecardbiglist from './components/courcecardbig/coursecardbiglist';
+import MainNavbar from './components/navbar/MainNavbar';
 
 function App() {
   return (
