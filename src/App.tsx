@@ -21,15 +21,26 @@ import Coursecardbig from './components/courcecardbig/coursecardbig';
 import Coursecardbiglist from './components/courcecardbig/coursecardbiglist';
 import MainNavbar from './components/navbar/MainNavbar';
 
+import Instructoroverview from './components/Instructoroverview/Instructoroverview';
+
 function App() {
   return (
     <>
+<<<<<<< Updated upstream
       {/* <TestimonialsList /> */}
       {/* <RelatedCoursesList /> */}
       {/* <StudentGalleryList /> */}
       {/* <Faq /> */}
       {/* <FaqList /> */}
       {/* <LightboxGallery /> */}
+=======
+      <MainNavbar />
+      {/* <TestimonialsList /> */}
+      {/* <RelatedCoursesList /> */}
+      {/* <StudentGalleryList /> */}
+      {/* <Coursecardbig /> */}
+      <Instructoroverview />
+>>>>>>> Stashed changes
     </>
 
 
