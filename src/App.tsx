@@ -20,6 +20,7 @@ import FaqList from './components/faq/FaqList';
 import LightboxGallery from './components/lightbox/lightBox';
 import Coursecardbig from './components/courcecardbig/coursecardbig';
 import Coursecardbiglist from './components/courcecardbig/coursecardbiglist';
+import MainNavbar from './components/navbar/MainNavbar';
 
 import Instructoroverview from './components/Instructoroverview/Instructoroverview';
 
