@@ -13,17 +13,17 @@ const StudentGallery: React.FC<IProps> = ({ imageSrc, name }) => {
             <div className='image-container rounded-xl'>
                 <img className='rounded-xl' src={imageSrc} alt="profile" />
             </div>
-            <div className="flex flex-col absolute top-36 mb-3 ml-3 items-center border-2 gap-4">
+            <div className="flex flex-col absolute bottom-0 mb-3 ml-3 items-center gap-4">
                 {/* Author Name */}
                 <div className="flex justify-center items-center">
                     <img className="w-6 h-auto rounded-full" src="/public/avatar.jpg" alt="profile" />
                     <span className="font-bold ml-2">{name}</span>
                 </div>
                 {/* View Larger */}
-                <div className='flex justify-center items-center view-larger-text gap-2 text-center'>
+                {/* <div className='flex justify-center items-center view-larger-text gap-2 text-center'>
                     <ZoomInOutlined />
                     <span className='font-bold'>View Larger</span>
-                </div>
+                </div> */}
             </div>
         </div>
     );
