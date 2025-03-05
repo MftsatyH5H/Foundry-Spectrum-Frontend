@@ -1,23 +1,26 @@
 /** @type {import('tailwindcss').Config} */
-const flowbite = require("flowbite-react/tailwind");
 module.exports = {
   content: [
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
-    flowbite.content(),
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'purpleGradient': 'linear-gradient(115deg, rgba(82, 53, 135, 0.12) 27.02%, rgba(20, 13, 33, 0.12) 96.63%)',
+      },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif']
       },
       colors: {
-        lightGrey: '#a3a3a3',
+        lightGrey: '#6D6D94',
         darkGrey: '#121212',
+        darkPurple: '#050517',
+        lightPurple: '#A17ACC',
+        mediumPurple: '#332052',
+        borderPurple: '#1f1f3a',
       },
     },
   },
-  plugins: [
-    flowbite.content(),
-  ],
 };

@@ -14,13 +14,19 @@ import RelatedCourses from './components/relatedCourses/relatedCourses';
 import RelatedCoursesList from './components/relatedCourses/relatedCoursesList';
 import CourseNavbar from './components/courseNavbar/courseNavbar';
 import CourseContainer from './components/courseNavbar/courseContainer';
+import Faq from './components/faq/Faq';
+import FaqList from './components/faq/FaqList';
+import LightboxGallery from './components/lightbox/lightBox';
 
 function App() {
   return (
     <>
-      <TestimonialsList />
-      <RelatedCoursesList />
-      <StudentGalleryList />
+      {/* <TestimonialsList /> */}
+      {/* <RelatedCoursesList /> */}
+      {/* <StudentGalleryList /> */}
+      {/* <Faq /> */}
+      {/* <FaqList /> */}
+      {/* <LightboxGallery /> */}
     </>
 
 

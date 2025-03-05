@@ -77,7 +77,8 @@ function TestimonialsList() {
     },
   ];  
   return (
-    <div className='flex flex-wrap justify-center items-start gap-2'>
+    <>
+    <div className='flex flex-wrap justify-center items-start gap-4'>
       {testimonials.map((testimonial) => (
         <TestimonialCard
           name={testimonial.name}
@@ -87,6 +88,10 @@ function TestimonialsList() {
         />
       ))}
     </div>
+    <div className='flex justify-center items-center mb-2'>
+      <button className='bg-[#332052] text-[#cbe30a] font-semibold px-3 py-2 rounded-md'>Load More Reviews</button>
+    </div>
+    </>
   );
 }
 
