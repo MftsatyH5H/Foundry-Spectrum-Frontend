@@ -22,6 +22,11 @@ import Coursecardbig from './components/courcecardbig/coursecardbig';
 import Coursecardbiglist from './components/courcecardbig/coursecardbiglist';
 
 import Instructoroverview from './components/Instructoroverview/Instructoroverview';
+import AboutUs from './pages/AboutUs';
+import CoursesList from './pages/CoursesList';
+import ProfileStudent from './pages/ProfileStudent';
+import EditProfile from './pages/EditProfile';
+import ProfileInstructor from './pages/ProfileInstructor';
 
 function App() {
   const user = userType.student;
@@ -30,17 +35,33 @@ function App() {
     if (user === userType.student){
       return (
         <>
-          <MainNavbar />
+          {/* <MainNavbar /> */}
           <Router>
             <Routes>
               <Route path='/' element={<Home />} />
+              <Route path='/about-us' element={<AboutUs />} />
+              <Route path='/courses' element={<CoursesList />} />
+              <Route path='/profile' element={<ProfileStudent />} />
+              <Route path='/profile-edit' element={<EditProfile />} />
             </Routes>
           </Router>
+          {/* </MainFooter> */}
         </>
       )
     } else if (user === userType.instructor){
       return(
         <>
+        {/* <MainNavbar /> */}
+          <Router>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about-us' element={<AboutUs />} />
+              <Route path='/courses' element={<CoursesList />} />
+              <Route path='/profile' element={<ProfileInstructor />} />
+              <Route path='/profile-edit' element={<EditProfile />} />
+            </Routes>
+          </Router>
+          {/* </MainFooter> */}
         </>
       )
     } else {
