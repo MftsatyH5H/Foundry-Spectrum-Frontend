@@ -4,7 +4,6 @@ import React from 'react';
 //   Routes,
 //   Route,
 // } from 'react-router-dom';
-import MainNavbar from './components/navbar/MainNavbar';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from "react-router-dom";
 import { userType } from './static/userType.enum';
 import Home from './pages/home';
@@ -20,6 +19,8 @@ import FaqList from './components/faq/FaqList';
 import LightboxGallery from './components/lightbox/lightBox';
 import Coursecardbig from './components/courcecardbig/coursecardbig';
 import Coursecardbiglist from './components/courcecardbig/coursecardbiglist';
+import MainNavbar from './components/navbar/MainNavbar';
+import Footer from './components/footer/footer';
 
 import Instructoroverview from './components/Instructoroverview/Instructoroverview';
 import AboutUs from './pages/AboutUs';
@@ -35,7 +36,8 @@ function App() {
     if (user === userType.student){
       return (
         <>
-          {/* <MainNavbar /> */}
+          <MainNavbar />
+          <Footer />
           <Router>
             <Routes>
               <Route path='/' element={<Home />} />
