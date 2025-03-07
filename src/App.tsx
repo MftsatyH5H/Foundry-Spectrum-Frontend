@@ -21,6 +21,8 @@ import Coursecardbig from './components/courcecardbig/coursecardbig';
 import Coursecardbiglist from './components/courcecardbig/coursecardbiglist';
 import MainNavbar from './components/navbar/MainNavbar';
 import Footer from './components/footer/footer';
+import Courserelatedlist from './components/courserelated/courserelatedlist';
+import Blogsliderlist from './components/blogsslider/blogsliderlist';
 
 import Instructoroverview from './components/Instructoroverview/Instructoroverview';
 
@@ -32,12 +34,14 @@ function App() {
       return (
         <>
           <MainNavbar />
-          <Footer />
+          <Courserelatedlist />
+          <Blogsliderlist />
           <Router>
             <Routes>
               <Route path='/' element={<Home />} />
             </Routes>
           </Router>
+          <Footer />
         </>
       )
     } else if (user === userType.instructor){

@@ -20,7 +20,7 @@ const MainNavbar: React.FC = () => {
     return (
         <React.Fragment>
            
-            <nav className={`flex justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out ${
+            <nav className={`flex justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out z-[1000] ${
                 isMenuOpen 
                     ? "bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px]"
                     : "bg-[#100A1A1F] px-[48px]" 
@@ -58,7 +58,7 @@ const MainNavbar: React.FC = () => {
                 </IconContext.Provider>
             </nav>
 
-            <div className={`fixed xl:hidden top-[72px] left-0 w-full backdrop-blur-sm bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px] flex flex-col items-center transition-all duration-300 ease-in-out ${
+            <div className={`fixed xl:hidden top-[72px] left-0 w-full backdrop-blur-sm bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px] flex flex-col items-center transition-all duration-300 ease-in-out z-[1000] ${
                 isMenuOpen 
                     ? "translate-y-0 opacity-100 "
                     : "-translate-y-0 opacity-0"

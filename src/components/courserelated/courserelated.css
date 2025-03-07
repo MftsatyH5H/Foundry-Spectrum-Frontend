@@ -1,0 +1,25 @@
+
+@property --gradient-color {
+    syntax: '<color>'; 
+    inherits: false;
+    initial-value:#5F358A  ; 
+  }
+
+
+.gredient-related {
+    background: linear-gradient(180deg, rgba(95, 53, 138, 0) 44.37%, var(--gradient-color) 105%);
+    transition: --gradient-color 0.5s ease; 
+    
+}
+
+
+
+.card:hover .gredient-related {
+    --gradient-color:#332052 ; 
+}
+
+
+
+.card:hover .small-card {
+    bottom: 15px;
+}

@@ -1,25 +1,43 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, CSSProperties } from 'react';
 import './button.css';
 import ButtonCtrl from './buttonCtrl';
 
-const Button = ({
-    text,                  // Button text
-    backgroundColor,       // Background color
-    width,                 // Button width
-    height,                // Button height
-    padding,               // Button padding
-    margin,                // Button margin
-    borderColor,           // Border color
-    fontSize,              // Font size
-    textColor,             // Text color
-    hoverBackgroundColor,  // Background color on hover
-    hoverTextColor,        // Text color on hover
-    onClick,               // Custom click handler
-    type,                  // Button type
-    fontFamily,            // Font family
+interface ButtonProps {
+    text?: string;                  // Button text
+    backgroundColor?: string;       // Background color
+    width?: string;                 // Button width
+    height?: string;                // Button height
+    padding?: string;               // Button padding
+    margin?: string;                // Button margin
+    borderColor?: string;           // Border color
+    fontSize?: string;              // Font size
+    textColor?: string;             // Text color
+    hoverBackgroundColor?: string;  // Background color on hover
+    hoverTextColor?: string;        // Text color on hover
+    onClick?: () => void;           // Custom click handler
+    type?: 'button' | 'submit' | 'reset'; // Button type
+    fontFamily?: string;            // Font family
+    fontWeight?: string | number;   // Font weight
+}
+
+const Button: React.FC<ButtonProps> = ({
+    text,
+    backgroundColor,
+    width,
+    height,
+    padding,
+    margin,
+    borderColor,
+    fontSize,
+    textColor,
+    hoverBackgroundColor,
+    hoverTextColor,
+    onClick,
+    type,
+    fontFamily,
     fontWeight
 }) => {
-    const buttonRef = useRef(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         if (buttonRef.current) {
@@ -28,7 +46,7 @@ const Button = ({
     }, []);
 
     // Apply dynamic styles based on props
-    const buttonStyle = {
+    const buttonStyle: CSSProperties = {
         backgroundColor: backgroundColor || 'var(--button-bg)', // Fallback to CSS variable
         width: width || '0rem', // Default width
         height: height || '0rem', // Default height
@@ -36,7 +54,7 @@ const Button = ({
         margin: margin || '0rem', // Default margin
         borderColor: borderColor || 'var(--button-stroke)', // Default border color
         fontSize: fontSize || '1.5rem', // Default font size
-        color: textColor || 'var(--button-text)',// Default text color
+        color: textColor || 'var(--button-text)', // Default text color
         fontFamily: fontFamily, // Default font family
         fontWeight: fontWeight,
     };
@@ -51,19 +69,17 @@ const Button = ({
     }, [hoverBackgroundColor, hoverTextColor]);
 
     return (
-
-            <button
-                className="button"
-                ref={buttonRef}
-                style={buttonStyle}
-                onClick={onClick} 
-                type={type || 'button'}
-            >
-                <span className="button__text">
-                    <span className="button__text-inner">{text || 'Default'}</span>
-                </span>
-            </button>
-
+        <button
+            className="button"
+            ref={buttonRef}
+            style={buttonStyle}
+            onClick={onClick}
+            type={type || 'button'}
+        >
+            <span className="button__text">
+                <span className="button__text-inner">{text || 'Default'}</span>
+            </span>
+        </button>
     );
 };
 

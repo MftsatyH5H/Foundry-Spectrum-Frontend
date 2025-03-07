@@ -55,7 +55,7 @@ class Footer extends Component {
                         <AiOutlineMail size={40} />
                         <input type="email" name="" id="" className='pt-3 pb-3 pr-4 pl-10 border border-[#505075]  bg-[#2F2F4F] w-[600px] h-[42px] rounded-[8px] text-white relative flex items-center' placeholder='Your email' />
                         </IconContext.Provider>
-                            <Button text='Subscribe' backgroundColor='#332052' textColor='#E1FF00' height={'41px'} fontSize={'14px'} width={'10px'} />
+                            <Button text='Subscribe' backgroundColor='#332052' textColor='#E1FF00' height={'41px'} fontSize={'14px'} width={'110px'} padding='20px 60px'/>
                         </form>
                             <span className='font-[Poppins] text-[14px] leading-[21px] text-[#9898B5]'>We won’t send you spam. Unsubscribe at any time.</span>
 
