@@ -23,13 +23,11 @@ import MainNavbar from './components/navbar/MainNavbar';
 import Footer from './components/footer/footer';
 import Courserelatedlist from './components/courserelated/courserelatedlist';
 import Blogsliderlist from './components/blogsslider/blogsliderlist';
-
-import Instructoroverview from './components/Instructoroverview/Instructoroverview';
 import AboutUs from './pages/AboutUs';
 import CoursesList from './pages/CoursesList';
 import ProfileStudent from './pages/ProfileStudent';
 import EditProfile from './pages/EditProfile';
-import ProfileInstructor from './pages/ProfileInstructor';
+import InstructorPreview from './components/Instructoroverview/instructorpreview';
 
 function App() {
   const user = userType.student;
@@ -39,6 +37,7 @@ function App() {
       return (
         <>
           <MainNavbar />
+          <InstructorPreview />
           <Courserelatedlist />
           <Blogsliderlist />
           <Router>
