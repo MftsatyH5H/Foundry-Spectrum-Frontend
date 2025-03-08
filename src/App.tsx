@@ -24,7 +24,6 @@ import AboutUs from './pages/AboutUs';
 import CoursesList from './pages/CoursesList';
 import ProfileStudent from './pages/ProfileStudent';
 import EditProfile from './pages/EditProfile';
-
 function App() {
   const user = userType.student;
   
@@ -54,7 +53,7 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/about-us' element={<AboutUs />} />
               <Route path='/courses' element={<CoursesList />} />
-              <Route path='/profile' element={<ProfileInstructor />} />
+              {/* <Route path='/profile' element={<ProfileInstructor />} /> */}
               <Route path='/profile-edit' element={<EditProfile />} />
             </Routes>
           </Router>
