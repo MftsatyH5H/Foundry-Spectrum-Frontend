@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { FiMenu } from "react-icons/fi";
 import { IconContext } from 'react-icons/lib';
 import { CgCloseR } from "react-icons/cg";
+import LoginFirstStep from '../Login/Loginfirststep';
 
 const MainNavbar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    const [showLogin, setShowLogin] = useState<boolean>(false); // State to control login component visibility
 
     useEffect(() => {
         const handleResize = () => {
@@ -17,9 +19,17 @@ const MainNavbar: React.FC = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const handleLoginClick = () => {
+        setShowLogin(true); // Show the login component
+    };
+
+    const handleCloseLogin = () => {
+        setShowLogin(false); // Hide the login component
+    };
+
     return (
         <React.Fragment>
-           
+            {/* Navbar */}
             <nav className={`flex justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out z-[1000] ${
                 isMenuOpen 
                     ? "bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px]"
@@ -45,7 +55,10 @@ const MainNavbar: React.FC = () => {
 
                 <div className='hidden xl:flex flex-row gap-[24px]'>
                     <button className='font-[Graphik] font-medium text-[14px] leading-[21px] text-white'>عربي</button>
-                    <button className='font-[Poppins] font-normal text-[14px] leading-[21px] px-3 py-2 bg-[#332052] text-white rounded-lg w-[96px]'>
+                    <button 
+                        className='font-[Poppins] font-normal text-[14px] leading-[21px] px-3 py-2 bg-[#332052] text-white rounded-lg w-[96px]'
+                        onClick={handleLoginClick} 
+                    >
                         Login
                     </button>
                 </div>
@@ -58,6 +71,7 @@ const MainNavbar: React.FC = () => {
                 </IconContext.Provider>
             </nav>
 
+            {/* Mobile Menu */}
             <div className={`fixed xl:hidden top-[72px] left-0 w-full backdrop-blur-sm bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px] flex flex-col items-center transition-all duration-300 ease-in-out z-[1000] ${
                 isMenuOpen 
                     ? "translate-y-0 opacity-100 "
@@ -74,11 +88,21 @@ const MainNavbar: React.FC = () => {
                     <button className='font-[Graphik] font-medium text-[14px] leading-[21px] text-[#E1FF00] rounded-lg px-5 py-2.5 bg-[rgb(95,53,138)]'>
                         عربي
                     </button>
-                    <button className='font-[Poppins] font-normal text-[14px] leading-[21px] bg-[#0A0A2B] text-white rounded-lg w-[240px] px-5 py-2.5'>
+                    <button 
+                        className='font-[Poppins] font-normal text-[14px] leading-[21px] bg-[#0A0A2B] text-white rounded-lg w-[240px] px-5 py-2.5'
+                        onClick={handleLoginClick} 
+                    >
                         Login
                     </button>
                 </div>
             </div>
+
+            {/* Login Component */}
+            {showLogin && (
+                <div className="fixed inset-0 z-[2000] flex justify-center items-center bg-[#0A031652] backdrop-blur-[12px]">
+                    <LoginFirstStep onClose={handleCloseLogin} />
+                </div>
+            )}
         </React.Fragment>
     );
 };

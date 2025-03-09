@@ -20,6 +20,7 @@ import LightboxGallery from './components/lightbox/lightBox';
 import Coursecardbig from './components/courcecardbig/coursecardbig';
 import Coursecardbiglist from './components/courcecardbig/coursecardbiglist';
 import MainNavbar from './components/navbar/MainNavbar';
+import Footer from './components/footer/footer';
 import AboutUs from './pages/AboutUs';
 import CoursesList from './pages/CoursesList';
 import ProfileStudent from './pages/ProfileStudent';
