@@ -25,6 +25,7 @@ import AboutUs from './pages/AboutUs';
 import CoursesList from './pages/CoursesList';
 import ProfileStudent from './pages/ProfileStudent';
 import EditProfile from './pages/EditProfile';
+import Artportfolio from './components/ArtPortfolio/Artportfolio';
 function App() {
   const user = userType.student;
   
@@ -33,6 +34,8 @@ function App() {
       return (
         <>
           <MainNavbar />
+          <Artportfolio />
+          
           <Router>
             <Routes>
               <Route path='/' element={<Home />} />
