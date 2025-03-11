@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <div className="h-[912pxpx] w-full relative">
+    <div className="h-[912px] w-full relative">
       <div className="w-[817px]  absolute top-[215px] left-0 bg-[rgba(20,13,33,0.48)] backdrop-blur-[12px] rounded-tr-[24px] rounded-br-[24px] shadow-[0px_1px_4px_0px_rgba(0,0,0,0.16)]  p-[32px]">
         <div className="p-[32px] flex flex-row gap-8">
           <div className="w-[24px]  flex flex-col justify-between items-center">

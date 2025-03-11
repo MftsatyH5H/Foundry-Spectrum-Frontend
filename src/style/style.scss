@@ -54,3 +54,13 @@ body {
 .description-text{
   color: linear-gradient(90deg, #FCE8F3 0%, #A17ACC 100%);
 }
+.container-navbar{
+  background-color: #100A1A80;
+  backdrop-filter: blur(32px);
+  box-shadow: 0px 0px 12px 0px #0000001F;
+  border-bottom: 1px solid;
+  border-image-source: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(153, 153, 153, 0.12) 100%);
+}
+.course-icons{
+  border: 1px solid #2c1f40;
+}

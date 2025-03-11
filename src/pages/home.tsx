@@ -2,37 +2,31 @@ import React from 'react'
 import TestimonialsList from '../components/testimonials/testimonialList'
 import StudentGalleryList from '../components/studentsGallery/studentGalleryList'
 import SectionTitle from '../components/sectionTitle/SectionTitle'
+import HeroSection from '../components/herosection/hero'
+import Coursecardbiglist from '../components/courcecardbig/coursecardbiglist'
+import Blogsliderlist from '../components/blogsslider/blogsliderlist'
+import Footer from '../components/footer/footer'
 function Home() {
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-[120px]'>
       {/* Hero Section */}
       <div>
-        
+        <HeroSection/>
       </div>
       {/* Courses Section Title */}
-      <div className='container mx-auto'>
-        <SectionTitle heading='Explore Our Top Courses' subHeading='Courses' description='Discover the best courses for 3D builders and animators.' />
-      </div>
 
       {/* Courses Section */}
       <div className='container'>
-
+      <SectionTitle heading='Explore Our Top Courses' subHeading='Courses' description='Discover the best courses for 3D builders and animators.' />
+        <Coursecardbiglist />
       </div>
       {/* Private Mentor Services */}
       <div className='container'>
-
-      </div>
-      {/* Instructor Title */}
-      <div className='container'>
-
-      </div>
-      {/* Instructors Section */}
-      <div className='container'>
-
-      </div>    
-      {/* Testimonials Title */}
-      <div className='container'>
         
+      </div>
+      {/* Instructor Section */}
+      <div className='container py-[112px]'>
+        <SectionTitle heading='Explore Our Top Courses' subHeading='Courses' description='Discover the best courses for 3D builders and animators.' />
       </div>
 
       {/* Testimonials Section */}
@@ -41,53 +35,19 @@ function Home() {
       </div>
 
       {/* Student Gallery Title */}
-      <div className='container'>
-
-      </div>
-      
-      {/* Student Gallery Section */}
-      <div className='container'>
+      <div className='container flex flex-col gap-[32px]'>
+        <SectionTitle heading='Students Gallery' subHeading='Success Stories' description='Learning the basic structure of the Blueprint visual' />
         <StudentGalleryList />
       </div>
 
-      {/* How It Works Section*/}
-      <div className='container'>
-
-      </div>
-
-      {/* RoadMap Section */}
-      <div className='container'>
-
-      </div>
-      {/* Join our Instructor Section */}
-      <div className='container'>
-
-      </div>
-
-      {/* Events Title */}
-      <div className='container'>
-
-      </div>
-
-      {/* Events Section */}
-      <div className='container'>
-
-      </div>
-
-      {/* Blogs Title */}
-      <div className='container'>
-
-      </div>
-
       {/* Blogs Section */}
-      <div className='container'>
-        
-      </div>
+        <Blogsliderlist />
 
       {/* Explore More Courses */}
       <div className='container'>
 
       </div>
+    <Footer />
     </div>
   )
 }

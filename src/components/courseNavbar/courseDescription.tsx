@@ -1,32 +1,69 @@
+import { CalendarOutlined, CheckOutlined } from '@ant-design/icons';
 import React from 'react';
+import ContentDropdown from './contentDropdown';
+import ContentDropdownList from './contentDropdownList';
 
 const CourseDescription: React.FC = () => {
     return (
-        <>
-            <div className="bg-neutral-900 shadow-md pt-0 mt-0 text-white font-roboto p-4">
-                <p className='font-bold text-xl pt-4 pl-3'>Description</p>
-                <p className='flex flex-col gap-2 pl-3'>
-                    <span>In this course, you will start with absolutely no experience in game development whatsoever.</span>
-                    <span>All of the important terms and concepts in game development will be introduced to you and explained carefully and in detail.</span>
-                    <span>By the end, you will have four small game projects of different genres, ranging from 2D to 3D, and you'll understand the underlying principles needed to make any creation you can imagine.</span>
-                    <span>The course starts you off as a complete beginner, but experienced developers will also benefit from this course, as many best practices and advanced features are covered throughout.</span>
-                    <span>The course begins at the beginning - downloading the Epic Games Launcher, where we will install Unreal Engine 5, as well as gain access to the Epic Games Marketplace where we can get tons of free, high-quality assets for our games.</span>
-                    <span>After familiarizing ourselves with the Unreal Engine editor, learning about asset types and how to import asset files, we get some practice manipulating objects in the level and building simple game environments with free asset packs.</span>
-                    <span>We then get started learning the basic structure of the Blueprint visual scripting system, as well as cover the fundamental math skills every game developer needs to understand.</span>
-                    <span>We get practice visualizing vectors in the engine with the various debug drawing Blueprint nodes.</span>
-                </p>
+        <div className="px-8 pb-0 mb-0 mt-10">
+            <p className='text-[#e3fd18] font-semibold font-poppins text-xl'>Learning Outcome</p>
+            <div className='flex flex-row gap-7 mt-4'>
+                <div className='flex content-between items-start text-white gap-3'>
+                    <CheckOutlined className='mt-1' />
+                    <p className='text-sm text-wrap'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut magnam ab laudantium.</p>
+                </div>
+                <div className='flex content-between items-start text-white gap-3'>
+                    <CheckOutlined className='mt-1' />
+                    <p className='text-sm text-wrap'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut magnam ab laudantium.</p>
+                </div>
+                <div className='flex content-between items-start text-white gap-3'>
+                    <CheckOutlined className='mt-1' />
+                    <p className='text-sm text-wrap'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut magnam ab laudantium.</p>
+                </div>
             </div>
-            <div className='bg-neutral-900 flex items-center justify-between px-16 py-2 text-white'>
-                <span className='font-semibold text-xl'>#20 Lessons</span>
-                <span className='font-semibold text-xl'>#12 Quiz</span>
-                <span className='font-semibold text-xl'>#4 Chapter</span>
-                <span className='font-semibold text-xl'>#20 Hours</span>
+            <div className='flex flex-row gap-7 mt-4'>
+                <div className='flex content-between items-start text-white gap-3'>
+                    <CheckOutlined className='mt-1' />
+                    <p className='text-sm text-wrap'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut magnam ab laudantium.</p>
+                </div>
+                <div className='flex content-between items-start text-white gap-3'>
+                    <CheckOutlined className='mt-1' />
+                    <p className='text-sm text-wrap'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut magnam ab laudantium.</p>
+                </div>
+                <div className='flex content-between items-start text-white gap-3'>
+                    <CheckOutlined className='mt-1' />
+                    <p className='text-sm text-wrap'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut magnam ab laudantium.</p>
+                </div>
             </div>
-            <div className='bg-neutral-900 shadow-md pt-0 mt-0 text-white font-roboto p-4'>
-                <p className='font-bold text-xl pt-4 pl-3'>Learning Outcome</p>
-                
+            {/* Course Icons Div */}
+            <div className='flex bg-[#291A423D] course-icons justify-evenly items-center p-4 py-5 gap-6 rounded-lg mt-14'>
+                <div className='flex flex-col text-white font-poppins gap-1'>
+                    <CalendarOutlined className='text-[#e3fd18]' />
+                    #20 Lessons
+                </div>
+                <div className='h-6 w-0 border-r border-r-[#322f4d]'></div>
+                <div className='flex flex-col text-white font-poppins gap-1'>
+                    <CalendarOutlined className='text-[#e3fd18]' />
+                    #12 Quiz
+                </div>
+                <div className='h-6 w-0 border-r border-r-[#322f4d]'></div>
+                <div className='flex flex-col text-white font-poppins gap-1'>
+                    <CalendarOutlined className='text-[#e3fd18]' />
+                    #4 Chapters
+                </div>
+                <div className='h-6 w-0 border-r border-r-[#322f4d]'></div>
+                <div className='flex flex-col text-white font-poppins gap-1'>
+                    <CalendarOutlined className='text-[#e3fd18]' />
+                    #20 Hours
+                </div>
             </div>
-        </>
+            <p className='text-[#e3fd18] font-semibold font-poppins text-xl mt-16'>Table of content</p>
+            <p className='text-lightGrey font-light font-poppins text-sm mt-2'>Learning the basic structure of the Blueprint visual scripting system, as well as cover the fundamental math skills every .</p>
+            <div className='mt-10'>
+                <ContentDropdownList />
+            </div>
+            
+        </div>
     );
 };
 

@@ -6,7 +6,7 @@ const AboutUsContent = () => {
 
   return (
         <div 
-        className="rounded-[16px] px-[64px] py-[80px]"
+        className="rounded-[16px] px-[64px] py-[80px] w-fit"
         style={{
             background: `
             linear-gradient(140.37deg, rgba(82, 53, 135, 0.12) 22.17%, rgba(20, 13, 33, 0.12) 77.35%),

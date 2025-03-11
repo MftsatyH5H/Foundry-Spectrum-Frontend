@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa6";
-import '../../cardgrediant.css'
+import '../cardgrediant.css'
 
 
 
@@ -11,7 +11,7 @@ const ExploreCoursescard = () =>  {
  
         return (
 
-            <div className='w-[1312px]  h-[128px] flex flex-row grediant items-center bg-[#322052]
+            <div className='w-full  h-[128px] flex flex-row grediant items-center bg-[#322052]
             ] rounded-2xl'>
             <div className='h-[64px] w-[65px] shadow-sm rounded-8xl ml-10  flex justify-start '>
                 <img src="/9f8c4f8d5b0151daaabd032483af1a9f.png " alt="" className=' h-full w-[64px] object-cover  hue-rotate-[-90deg]' />

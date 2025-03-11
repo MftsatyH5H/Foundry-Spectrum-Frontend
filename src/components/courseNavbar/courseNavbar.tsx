@@ -2,27 +2,18 @@ import React from 'react';
 
 const CourseNavbar: React.FC = () => {
     return (
-        <nav className="bg-neutral-900 shadow-md pb-0 mb-0">
-        <div className="container mx-auto">
-            <ul className="flex justify-start space-x-8 border-b border-gray-700 pb-0 mb-0">
-                <li>
-                    <a href="#" className="relative no-underline block py-4 text-white font-semibold after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white after:scale-x-100 transition-transform">Overview</a>
-                </li>
-                <li>
-                    <a href="#" className="relative no-underline block py-4 text-gray-400 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 transition-transform">Instructor</a>
-                </li>
-                <li>
-                    <a href="#" className="relative no-underline block py-4 text-gray-400 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 transition-transform">Downloads</a>
-                </li>
-                <li>
-                    <a href="#" className="relative no-underline block py-4 text-gray-400 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 transition-transform">Community</a>
-                </li>
-                <li>
-                    <a href="#" className="relative no-underline block py-4 text-gray-400 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 transition-transform">Mentorship</a>
-                </li>
+        <nav className="px-8 container-navbar shadow-md pb-0 mb-0">
+            <ul className='flex items-center justify-start gap-[48px] font-[Poppins] text-[16px] leading-[24px] font-light text-white w-[740px] relative'>
+                {['Overview', 'Table of content', 'Instructor', 'Testimonials', 'FAQ'].map((item) => (
+                    <li key={item} className='py-[24px] relative group cursor-pointer'>
+                        <span className='relative inline-block'>
+                            {item}
+                            <span className='absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100'></span>
+                        </span>
+                    </li>
+                ))}
             </ul>
-        </div>
-    </nav>
+        </nav>
     );
 };
 

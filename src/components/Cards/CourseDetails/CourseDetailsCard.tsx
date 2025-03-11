@@ -21,7 +21,7 @@ import { TbMessage2Question } from "react-icons/tb";
 const CourseDetailsCard = () => {
     return ( 
 
-        <div className='w-[400px] p-[24px] rounded-[12px] bg-[#140D21] shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.10)]'>
+        <div className='w-full p-[24px] rounded-[12px] bg-[#140D21] shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.10)]'>
             <div className='border-b-[1px] border-[#5F358A] flex flex-col gap-6'>
                 <h1 className='font-[agrandir] font-bold text-[20px] leading-[150%] text-white'>The Ultimate Unreal Engine 2D Game Development Course</h1>
                 <div className='flex flex-row justify-between items-center pb-4'>
