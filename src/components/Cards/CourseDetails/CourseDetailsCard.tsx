@@ -25,7 +25,7 @@ const CourseDetailsCard = () => {
             <div className='border-b-[1px] border-[#5F358A] flex flex-col gap-6'>
                 <h1 className='font-[agrandir] font-bold text-[20px] leading-[150%] text-white'>The Ultimate Unreal Engine 2D Game Development Course</h1>
                 <div className='flex flex-row justify-between items-center pb-4'>
-                    <h1 className='text-[24px] text-foundryyellow leading-[140%] font-bold'>$ 300</h1>
+                    <h1 className='text-[24px] text-foundryyellow leading-[140%] font-bold font-[Poppins]'>$ 300</h1>
                     <button className='rounded-lg border border-[#C3C3D9] bg-white py-[10px] px-[20px] font-[Poppins] font-medium text-[14px] leading-[150%] text-[#050517] '>Start Now</button>
                 </div>
             </div>

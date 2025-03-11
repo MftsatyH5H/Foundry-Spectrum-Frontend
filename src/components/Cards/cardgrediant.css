@@ -1,0 +1,23 @@
+.grediant {
+    position: relative;
+    background: transparent;
+    border: 2px solid transparent;
+}
+
+
+.grediant::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: 8px; 
+    padding: 2px; 
+    background: linear-gradient(273.17deg, rgba(225, 255, 0, 0.24) -4.61%, rgba(255, 255, 255, 0.0288) 32.19%, rgba(255, 255, 255, 0.0288) 71.23%, rgba(237, 255, 98, 0.24) 107.43%); /* Gradient */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}

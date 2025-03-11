@@ -10,7 +10,7 @@ function Home() {
         
       </div>
       {/* Courses Section Title */}
-      <div className='container'>
+      <div className='container mx-auto'>
         <SectionTitle heading='Explore Our Top Courses' subHeading='Courses' description='Discover the best courses for 3D builders and animators.' />
       </div>
 
