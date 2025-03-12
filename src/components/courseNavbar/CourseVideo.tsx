@@ -68,7 +68,7 @@ function CourseVideo() {
   }, [currentIndex]);
   return (
     <div className="flex items-center content-center course-title-div">
-      <div style={{zIndex : -200}} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg shadow-lg">
+      <div style={{zIndex : -200}} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
         {images.map((image, index) => (
           <div
             key={index}
@@ -127,7 +127,7 @@ function CourseVideo() {
         </div>
       </div>
       <div
-        className="relative w-4/5 h-[600px] flex items-center justify-center overflow-hidden"
+        className="relative w-4/5 h-[600px] flex items-center justify-center overflow-hidden cursor-none"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
