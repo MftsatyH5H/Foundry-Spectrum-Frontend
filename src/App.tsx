@@ -13,6 +13,7 @@ import PerformanceChart from './components/chart/PerformanceChart';
 import ChartOverview from './components/chart/ChartOverview';
 import CourseContainer from './components/courseNavbar/courseContainer';
 import CourseOverview from './pages/courseOverview';
+import CreateCourse from './pages/CreateCourse';
 
 function App() {
   const user = userType.student; // Replace this with dynamic user detection
@@ -30,6 +31,7 @@ function App() {
             <Route path='/profile-edit' element={<EditProfile />} />
             <Route path='/course-overview' element={<CourseOverview />} />
             <Route path='/profile-instructor' element={<ProfileInstructor />} />
+            <Route path='/create-course' element={<CreateCourse />} />
           </Routes>
           <Footer />
           {/* <ChartOverview /> */}

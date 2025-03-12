@@ -1,11 +1,12 @@
 import React from "react";
 import StudentProfile from "../components/Cards/studentprofie/StudentProfile";
 import MyCoursesCard from "../components/Cards/MyCoursesCard/MyCoursesCard";
-import InviteCard from "../components/Cards/inviteCard/invitaCard";
+import CommunityCard from "../components/Cards/inviteCard/CommunityCard";
 import Courserelatedlist from "../components/courserelated/courserelatedlist";
 import Blogsliderlist from "../components/blogsslider/blogsliderlist";
 import PerformanceChart from "../components/chart/PerformanceChart";
 import ChartOverview from "../components/chart/ChartOverview";
+import MentorshipRequests from "../components/Cards/MentorShipRequestsCard/MentorShipRequestsCard";
 
 function ProfileStudent() {
   return (
@@ -13,7 +14,7 @@ function ProfileStudent() {
       <div className="container mx-auto overflow-hidden  overflow-y-auto py-[104px] scrollbar-thin scrollbar-webkit">
         <div className="flex flex-row gap-[40px]">
           {/* Student Profile Section */}
-          <div className="flex justify-center sticky top-[104px]">
+          <div className="flex justify-center  sticky top-[0px] self-start">
             <StudentProfile />
           </div>
 
@@ -31,15 +32,14 @@ function ProfileStudent() {
               <MyCoursesCard />
             </div>
 
-            {/* Invite Card Section */}
             <div className="w-full">
-              <InviteCard />
+              <MentorshipRequests />
             </div>
 
-            {/* Second Invite Card Section */}
             <div className="w-full">
-              <InviteCard />
+              <CommunityCard heading="Invite & Win" subHeading="You can invite your friends and they wil got 20% Disounct and you will wil 20000 Point + Free Mentorhsip Sessions" button="Invite"/>
             </div>
+
           </div>
         </div>
         <div className="flex flex-row gap-[40px] mt-[84px]">
