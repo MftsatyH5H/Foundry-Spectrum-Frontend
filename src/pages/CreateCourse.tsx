@@ -4,6 +4,7 @@ import CourseCreator from '../components/Coursecreator/CoursecreateStep3';
 import Coursecreatestep2 from '../components/Coursecreator/CoursecreateStep2';
 import Footersmall from './../components/footer/footersmall';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import {Link} from 'react-router-dom';
 
 interface Step {
   name: string;
@@ -37,9 +38,9 @@ const CreateCourse: React.FC = () => {
     <div className='container mx-auto'>
       <div className="p-[32px] max-full backdrop-blur-[8px] bg-[#00000040] border border-[#2F2F4F] rounded-[16px]">
         <div className='flex flex-row gap-[24px] items-center mb-[24px]'>
-          <button>
-            <FaArrowLeft size={32} className='text-foundryyellow' />
-          </button>
+            <Link to='/'>
+              <FaArrowLeft size={32} className='text-foundryyellow' />
+            </Link>
           <div className='h-[32px] w-[125px]'>
             <img src="/Foundry-yellow.png" alt="" className='w-full h-full' />
           </div>
@@ -60,7 +61,7 @@ const CreateCourse: React.FC = () => {
             <div
               className="h-full bg-[linear-gradient(90deg,#A17ACC_0%,#6C2BD9_20.85%)] transition-all duration-300 ease-in-out rounded-[20px]"
               style={{
-                width: `${progress}%`, // Use percentage for width
+                width: `${progress}%`, 
               }}
             ></div>
           </div>
