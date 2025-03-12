@@ -1,9 +1,13 @@
 import React from 'react';
 import Button from '../../button/button';
 
+interface Props{
+    heading :string,
+    subHeading: string,
+    button: string
+}
 
-
-const InviteCard = () =>  {
+function CommunityCard({heading,subHeading,button} : Props)  {
 
         return (
             <div className='w-full h-[148px] rounded-[12px] p-[32px] bg-[#332052] gap-[24px] flex'>
@@ -11,13 +15,13 @@ const InviteCard = () =>  {
                 <img src="/9f8c4f8d5b0151daaabd032483af1a9f.png" alt="" className='object-cover w-[84px] h-[84px] hue-rotate-[-90deg]'/> 
             </div>
             <div className='w-[75%] h-full font-[Poppins] flex flex-col gap-2'>
-                <p className='font-light text-[16px] leading-[24px] text-[#FFFFFF] '>Invite & Win</p>
-                <p className='font-semibold text-[18px] leading-[27px] text-[#FFFFFF]'>You can invite your friends and they wil got 20% Disounct and you will wil 20000 Point + Free Mentorhsip Sessions</p>
+                <p className='font-light text-[16px] leading-[24px] text-[#FFFFFF] '>{heading}</p>
+                <p className='font-semibold text-[18px] leading-[27px] text-[#FFFFFF]'>{subHeading}</p>
                 
             </div>
             <div className='w-[15%] h-full flex justify-center items-center'>
                 <Button 
-                text={'Invite'}
+                text={button}
                 backgroundColor={"#FFFFFF"}
                 textColor={'#050517'}
                 borderColor={"#C3C3D9"}
@@ -31,4 +35,4 @@ const InviteCard = () =>  {
     }
 
  
-export default InviteCard;
+export default CommunityCard;

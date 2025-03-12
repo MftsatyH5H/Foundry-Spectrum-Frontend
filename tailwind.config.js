@@ -41,7 +41,7 @@ module.exports = {
         },
      
       "&::-webkit-scrollbar-track": {
-        background: "background: rgba(0, 0, 0, 0.08)" ,
+        background: "background: rgba(0, 0, 0, 0.05)" ,
       },
       "&::-webkit-scrollbar-thumb": {
         background: "linear-gradient(180deg, #6842A8 0%, #291A42 100%)" ,
