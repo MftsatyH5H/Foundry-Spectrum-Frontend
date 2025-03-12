@@ -59,7 +59,7 @@ const InstructorPreview: React.FC = () => {
         }}
       ></div>
 
-      <div className="absolute top-[72px] left-[48px] z-20 h-full flex flex-col items-center w-[384px] gap-[24px]">
+      <div className="absolute top-[72px] left-[48px] z-20 h-full flex flex-col items-center w-[384px] gap-[24px] pt-[24px]">
         <div className="rounded-full border border-foundryyellow h-[148px] w-[148px]">
           <img
             src="/profile.png"

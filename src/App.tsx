@@ -8,6 +8,11 @@ import ProfileStudent from './pages/ProfileStudent';
 import EditProfile from './pages/EditProfile';
 import MainNavbar from './components/navbar/MainNavbar';
 import Footer from './components/footer/footer';
+import ProfileInstructor from './pages/ProfileInstructor';
+import PerformanceChart from './components/chart/PerformanceChart';
+import ChartOverview from './components/chart/ChartOverview';
+import CourseContainer from './components/courseNavbar/courseContainer';
+import CourseOverview from './pages/courseOverview';
 
 function App() {
   const user = userType.student; // Replace this with dynamic user detection
@@ -23,8 +28,11 @@ function App() {
             <Route path='/courses' element={<CoursesList />} />
             <Route path='/profile' element={<ProfileStudent />} />
             <Route path='/profile-edit' element={<EditProfile />} />
+            <Route path='/course-overview' element={<CourseOverview />} />
+            <Route path='/profile-instructor' element={<ProfileInstructor />} />
           </Routes>
           <Footer />
+          {/* <ChartOverview /> */}
         </>
       );
     } else if (user === userType.instructor) {

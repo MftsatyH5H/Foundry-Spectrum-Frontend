@@ -47,7 +47,6 @@ function Home() {
       <div className='container'>
 
       </div>
-    <Footer />
     </div>
   )
 }

@@ -20,7 +20,7 @@ const Artportfolio = () => {
     ];
 
     return (
-        <div className='h-[450px] w-full  flex mt-[20px]  relative'>
+        <div className='h-[450px] w-full flex mt-[20px] relative'>
             <div className='w-[384px] h-full flex flex-col flex-shrink-0 z-10 p-[24px] gap-[8px] absolute'>
                 <h1 className='font-[agrandir] font-bold text-foundryyellow text-[72px] leading-[100%]'>
                     <span className='font-thin'>Art</span><br />Portfolio

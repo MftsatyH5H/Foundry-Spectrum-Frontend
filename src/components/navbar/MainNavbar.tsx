@@ -31,7 +31,7 @@ const MainNavbar: React.FC = () => {
     return (
         <React.Fragment>
             {/* Navbar */}
-            <nav className={`flex justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out z-[1000] top-0 ${isMenuOpen
+            <nav className={`flex course-title-div justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out z-[1000] top-0 ${isMenuOpen
                     ? "bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px]"
                     : "bg-[#100A1A1F] px-[48px]"
                 }`}

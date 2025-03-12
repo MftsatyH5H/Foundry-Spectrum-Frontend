@@ -64,3 +64,29 @@ body {
 .course-icons{
   border: 1px solid #2c1f40;
 }
+.course-title-div{
+  background: linear-gradient(to left, rgba(16, 10, 26, 0) 40%, #100A1A 90%);
+  cursor: none;
+}
+.image-course{
+  filter: grayscale(100%);
+  transition: filter 0.01s;
+}
+.course-title-div:hover .image-course {
+  filter: grayscale(0%);
+  transition: filter 0.01s;
+}
+.watch-intro-button{
+  cursor: none;
+}
+.course-title-div:hover .watch-intro-button {
+  border: 2px solid #E1ff00; /* Change the border color to yellow */
+}
+
+.course-title-div:hover .watch-now-icon {
+  color: #E1ff00; /* Change the border color to yellow */
+  transition: 0.3s ease-in-out;
+}
+.course-title-div .watch-now-icon {
+  transition: 0.3s ease-in-out;
+}
