@@ -27,4 +27,29 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.scrollbar-thin': {
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'linear-gradient(180deg, #6842A8 0%, #291A42 100%)',
+        },
+        ".scrollbar-webkit": {
+        "&::-webkit-scrollbar": {
+          width: "8px",
+          height: "200px",
+        },
+     
+      "&::-webkit-scrollbar-track": {
+        background: "background: rgba(0, 0, 0, 0.08)" ,
+      },
+      "&::-webkit-scrollbar-thumb": {
+        background: "linear-gradient(180deg, #6842A8 0%, #291A42 100%)" ,
+        BorderRadius: "9999px",
+      },
+    },
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }
+  ],
 };

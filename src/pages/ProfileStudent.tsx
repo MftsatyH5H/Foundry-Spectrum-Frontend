@@ -10,7 +10,7 @@ import ChartOverview from "../components/chart/ChartOverview";
 function ProfileStudent() {
   return (
     <>
-      <div className="container mx-auto overflow-hidden py-[104px] ">
+      <div className="container mx-auto overflow-hidden  overflow-y-auto py-[104px] scrollbar-thin scrollbar-webkit">
         <div className="flex flex-row gap-[40px]">
           {/* Student Profile Section */}
           <div className="flex justify-center sticky top-[104px]">
