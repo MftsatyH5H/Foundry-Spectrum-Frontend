@@ -43,7 +43,7 @@ class Blogslider extends Component<BlogsliderProps, BlogsliderState> {
         };
 
         return (
-            <div className='flex flex-col hover:bg-[#332052] ease-in-out duration-500 group p-[16px] w-[360px] h-[549px] ml-[10px] mr-[10px] rounded-lg'>
+            <div className='flex flex-col hover:bg-[#332052] ease-in-out duration-500 group p-[16px] w-[360px] h-[549px]  mr-[10px] rounded-lg'>
                 <div className='bg-cover bg-center h-[256px] w-[328px] rounded-[6px]' style={cardStyle}>
                 </div>
                 <div className='flex flex-row mt-[20px] gap-[24px] font-[poppins] text-[12px] leading-[18px] text-white  ml-[15px]'>

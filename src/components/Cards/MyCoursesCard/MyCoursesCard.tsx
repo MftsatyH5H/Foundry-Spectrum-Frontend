@@ -6,8 +6,7 @@ const MyCoursesCard = () => {
   const progress = 5;
 
   return (
-    <div className="grediant p-[16px] rounded-[8px] flex flex-row items-center w-fit">
-      <div className="flex flex-row gap-[24px] items-center">
+    <div className="grediant p-[16px] rounded-[8px] flex flex-row items-center justify-between w-full">
         <div className="w-[122px] h-[122px] rounded-[8px] overflow-hidden">
           <img
             src="/karim-yasser-3.jpg"
@@ -15,7 +14,8 @@ const MyCoursesCard = () => {
             className="rounded-[6px] w-full h-full object-cover"
           />
         </div>
-        <div className="flex flex-col gap-[16px] pr-[16px]">
+
+        <div className="flex flex-col gap-[16px] pr-[16px] w-[65%]">
           <h1 className="font-[Poppins] font-bold text-[14px] leading-[150%] text-white">
             The Ultimate Unreal Engine 2D Game Development Course
           </h1>
@@ -59,7 +59,6 @@ const MyCoursesCard = () => {
         <div>
             <button className="text-foundryyellow bg-[#332052] px-5 py-2.5 text-[14px] font-[Poppins] font-medium leading-[150%] rounded-lg">Start Learning Journey</button>
         </div>
-      </div>
     </div>
   );
 };

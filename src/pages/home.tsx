@@ -5,7 +5,9 @@ import SectionTitle from '../components/sectionTitle/SectionTitle'
 import HeroSection from '../components/herosection/hero'
 import Coursecardbiglist from '../components/courcecardbig/coursecardbiglist'
 import Blogsliderlist from '../components/blogsslider/blogsliderlist'
+import PrivateMentorHome from '../components/PrivateMentorHome/PrivateMentorHome'
 import Footer from '../components/footer/footer'
+import InstructorSliderHome from '../components/InstructorSliderHome/InstructorSliderHome'
 function Home() {
   return (
     <div className='flex flex-col gap-[120px]'>
@@ -21,12 +23,14 @@ function Home() {
         <Coursecardbiglist />
       </div>
       {/* Private Mentor Services */}
-      <div className='container'>
-        
+      <div className='container mx-auto'>
+        <PrivateMentorHome />
       </div>
       {/* Instructor Section */}
-      <div className='container py-[112px]'>
-        <SectionTitle heading='Explore Our Top Courses' subHeading='Courses' description='Discover the best courses for 3D builders and animators.' />
+      <div className='container py-[112px] mx-auto'>
+        <SectionTitle heading='Our Instractors' subHeading='Tagline' description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' />
+        <InstructorSliderHome />
+
       </div>
 
       {/* Testimonials Section */}

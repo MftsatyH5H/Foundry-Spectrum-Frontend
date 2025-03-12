@@ -5,10 +5,10 @@ import ExploreCoursescard from '../components/Cards/exploreCourses/explorecourse
 function AboutUs() {
   return (
     <>
-    <div className='container px-[64px] pt-[136px]'>
+    <div className='container mx-auto pt-[136px]'>
       <AboutUsContent/>
     </div>
-    <div className='my-10 flex items-center justify-center px-[64px]'>
+    <div className='my-10 container mx-auto'>
       <ExploreCoursescard />
     </div>
     

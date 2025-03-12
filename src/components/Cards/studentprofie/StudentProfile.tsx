@@ -4,7 +4,7 @@ import React from 'react';
 
 const StudentProfile = () => {
     return ( 
-        <div className='py-[32px] px-[24px] bg-[#050517] flex flex-col gap-8 justify-center items-center w-[400px] rounded-[12px] shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1)] fixed'>
+        <div className='py-[32px] px-[24px] bg-[#050517] flex flex-col gap-8 justify-center items-center w-[400px] h-fit rounded-[12px] shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1)]'>
             <div className='flex flex-col gap-[16px] items-center'>
                 <div className='w-[96px] h-[96px] rounded-full'>
                     <img src="/profile.png" alt="profile"  className='w-full h-full rounded-full'/>

@@ -6,7 +6,7 @@ import Button from '../../button/button';
 const InviteCard = () =>  {
 
         return (
-            <div className='w-[864px] h-[148px] rounded-[12px] p-[32px] bg-[#332052] gap-[24px] flex'>
+            <div className='w-full h-[148px] rounded-[12px] p-[32px] bg-[#332052] gap-[24px] flex'>
             <div className=' w-[10%] h-full'> 
                 <img src="/9f8c4f8d5b0151daaabd032483af1a9f.png" alt="" className='object-cover w-[84px] h-[84px] hue-rotate-[-90deg]'/> 
             </div>

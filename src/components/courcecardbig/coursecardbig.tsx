@@ -20,7 +20,7 @@ function Coursecardbig(props: any) {
         return (
             <div className='rounded-3xl flex flex-row h-[600px] w-[1312px] relative overflow-hidden flex-2 cards cursor-pointer group '>
                 <div 
-                    className="absolute inset-0 rounded-3xl z-0 gredient"
+                    className="absolute inset-0 rounded-3xl z-0 gredient w-full" 
                 >
                     <div 
                         className="bg-center bg-cover relative w-full h-full rounded-3xl overflow-hidden "
@@ -30,14 +30,14 @@ function Coursecardbig(props: any) {
                             <div className="flex flex-row justify-center h-full w-full">
                                 <div className='flex-auto flex flex-col max-w-[600px] max-h-[600px] ml-[64px] pt-[135px] '>
                                     <h1 className='font-[agrandir] text-[36px] leading-[54px] text-white font-bold'>{props.course.title}</h1>
-                                    <div className='flex flex-row mt-[20px] gap-[24px] font-[Poppins] text-[16px] leading-[24px] text-white text-[#AFAFC7] ml-[15px]'>
+                                    <div className='flex flex-row mt-[20px] gap-[24px] font-[Poppins] text-[16px] leading-[24px]  text-[#AFAFC7] ml-[15px]'>
                                     <span className='relative pl-[30px] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:content-[""] before:w-[24px] before:h-[1px] before:bg-[#AFAFC7] before:ml-[-15px]'>
                                     {props.course.category}
                                         </span>
                                         <span className=' '>For {props.course.level}</span>
                                         <span className=' '>English / Arabic / Spanich</span>
                                     </div>
-                                    <p className='font-[Poppins] text-[16px] leading-[24px] text-[#6D6D94] text-[#AFAFC7] mt-[20px] font-light'>
+                                    <p className='font-[Poppins] text-[16px] leading-[24px]  text-[#AFAFC7] mt-[20px] font-light'>
                                         {props.course.description}
                                     </p>
                                     <button className='text-foundryyellow font-[Poppins] font-medium text-[16px] leading-[24px] rounded-lg pt-3.5 pb-3.5 pr-8 pl-8 bg-[#291A42] w-[182px] h-[52px] mt-[40px]'>Buy Now {props.course.price}</button>

@@ -18,7 +18,7 @@ const PerformanceChart = () => {
     datasets: [
       {
         label: "Performance",
-        data: [30, 50, 60, 50, 80, 40],
+        data: [1, 1, 1, 1, 1, 1],
         borderColor: "#A17ACC",
         backgroundColor: (context: any) => {
           const chart = context.chart;

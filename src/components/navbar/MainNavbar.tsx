@@ -3,7 +3,7 @@ import { FiMenu } from "react-icons/fi";
 import { IconContext } from 'react-icons/lib';
 import { CgCloseR } from "react-icons/cg";
 import LoginFirstStep from '../Login/Loginfirststep';
-import { Link } from 'react-router-dom';
+import { Link,NavLink, useLocation } from 'react-router-dom';
 
 const MainNavbar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -28,10 +28,12 @@ const MainNavbar: React.FC = () => {
         setShowLogin(false);
     };
 
+    const location = useLocation();
+
     return (
         <React.Fragment>
             {/* Navbar */}
-            <nav className={`flex course-title-div justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out z-[1000] top-0 ${isMenuOpen
+            <nav className={`flex  justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out z-[1000] top-0 ${isMenuOpen
                     ? "bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px]"
                     : "bg-[#100A1A1F] px-[48px]"
                 }`}
@@ -44,26 +46,26 @@ const MainNavbar: React.FC = () => {
 
                 <ul className='hidden xl:flex items-center justify-center gap-[48px] font-[Poppins] text-[16px] leading-[24px] font-light text-white w-[740px] relative'>
                     <li className='py-[24px] relative group cursor-pointer'>
-                        <span className='relative inline-block'>
-                            <Link to='/'>Home</Link>
-                            <span className='absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100'></span>
+                        <span className={`relative inline-block`}>
+                            <NavLink to='/'>Home</NavLink>
+                            <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/" ? "scale-x-100" : ""}`}></span>
                         </span>
                     </li>
                     <li className='py-[24px] relative group cursor-pointer'>
                         <span className='relative inline-block'>
-                            <Link to='/courses'>Courses</Link>
-                            <span className='absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100'></span>
+                            <NavLink to='/courses'>Courses</NavLink>
+                            <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/courses" ? "scale-x-100" : ""}`}></span>
                         </span>
                     </li>
                     <li className='py-[24px] relative group cursor-pointer'>
                         <span className='relative inline-block'>
-                            <Link to='about-us'>About Us</Link>
-                            <span className='absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100'></span>
+                            <NavLink to='about-us'>About Us</NavLink>
+                            <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/about-us" ? "scale-x-100" : ""}`}></span>
                         </span>
                     </li>
                     <li className='py-[24px] relative group cursor-pointer'>
                         <span className='relative inline-block'>
-                            <Link to='/blog'>Blog</Link>
+                            <NavLink to='/blog'>Blog</NavLink>
                             <span className='absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100'></span>
                         </span>
                     </li>
@@ -88,7 +90,7 @@ const MainNavbar: React.FC = () => {
             </nav>
 
             {/* Mobile Menu */}
-            <div className={`fixed xl:hidden top-[72px] left-0 w-full backdrop-blur-sm bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px] flex flex-col items-center transition-all duration-300 ease-in-out z-[1000] ${isMenuOpen
+            <div className={`fixed xl:hidden top-[72px] left-0 w-full  bg-[rgba(95,53,138,0.84)] backdrop-blur-[32px] flex flex-col items-center transition-all duration-300 ease-in-out z-[1000] ${isMenuOpen
                     ? "translate-y-0 opacity-100 "
                     : "-translate-y-0 opacity-0"
                 }`}

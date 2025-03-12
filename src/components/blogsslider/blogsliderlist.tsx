@@ -44,6 +44,7 @@ class Blogsliderlist extends Component<{}, BlogsliderlistState> {
                 description: "This is the most comprehensive Unreal Engine course available. If you want to learn how to architect a fully-functional RPG game, this course will give you the ability to do so with an expandable code base, architected with AAA quality code.",
                 imagesrc: "/karim-yasser-3.jpg"
             },
+
         ]
     };
 
@@ -51,11 +52,14 @@ class Blogsliderlist extends Component<{}, BlogsliderlistState> {
         return (
             <div className='flex justify-center items-center flex-row'>
                 <Swiper
-                    slidesPerView="auto" // Allow Swiper to calculate the number of slides per view
-                    spaceBetween={20} // Space between slides
-                    freeMode={true} // Enable free mode
+                    slidesPerView="2" // Allow Swiper to calculate the number of slides per view
+                    spaceBetween={24} // Space between slides
+                    freeMode={{
+                        enabled: true, // Enable free mode
+                        momentum: true, // Enable momentum dragging
+                    }}
                     modules={[FreeMode]} // Add FreeMode module
-                    className='flex justify-center items-center flex-row !w-fit'
+                    className='flex  items-center flex-row !w-fit !ml-0'
                     onAfterInit={(swiper) => {
                         // Force Swiper to update after initialization
                         swiper.updateSlides();
@@ -65,7 +69,7 @@ class Blogsliderlist extends Component<{}, BlogsliderlistState> {
                     {this.state.Blogs.map((blog) => (
                         <SwiperSlide
                             key={blog.id}
-                            className="!w-[360px] ml-2" // Custom class for each slide
+                            className="!w-[360px]" 
                         >
                             <Blogslider blog={blog} />
                         </SwiperSlide>

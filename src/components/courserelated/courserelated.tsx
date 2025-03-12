@@ -47,11 +47,11 @@ class Courserelated extends Component<CourserelatedProps, CourserelatedState> {
             <div className='flex-1 w-[317px] h-[317px] card'>
                 <div style={cardStyle} className='bg-cover bg-center h-[317px] w-[317px] rounded-[6px]'>
                     <div className='relative w-full h-full gredient-related to-transparent rounded-[6px]'>
-                        <div className='text-white absolute bottom-0 small-card duration-500 ease-in-out flex flex-col w-full flex justify-center items-center p-3'>
+                        <div className='text-white absolute bottom-0 small-card duration-500 ease-in-out flex flex-col w-full justify-center items-center p-3'>
                             <h1 className='font-[Poppins] text-[14px] leading-[21px] font-bold'>
                                 {this.state.title}
                             </h1>
-                            <div className='flex flex-row mt-[5px] gap-[10px] font-[poppins] text-[12px] leading-[18px] text-white text-[#AFAFC7] ml-[-25px]'>
+                            <div className='flex flex-row mt-[5px] gap-[10px] font-[poppins] text-[12px] leading-[18px]  text-[#AFAFC7] ml-[-25px]'>
                                 <span>{this.state.category}</span>
                                 <span>For {this.state.level}</span>
                                 <span>English / Arabic</span>

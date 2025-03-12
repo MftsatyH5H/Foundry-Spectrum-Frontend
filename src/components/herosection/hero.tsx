@@ -23,7 +23,7 @@ const HeroSection = () => {
               Unlock your potential with our comprehensive courses designed for
               aspiring 3D builders and animators.
             </p>
-            <div className="flex flex-row items-center rounded-full gap-[8px] p-[12px] bg-[#2f1d4e] w-fit group transition-all duration-3000 shadow-[rgba(50,50,93,0.25)_0px_13px_27px_-5px,rgba(0,0,0,0.3)_0px_8px_16px_-8px]">
+            <div className="flex flex-row items-center rounded-full gap-[8px] p-[12px] bg-[#2f1d4e] w-fit group transition-all duration-3000 shadow-[rgba(0,0,0,0.6)_0px_13px_27px_-5px,rgba(0,0,0,0.3)_0px_8px_16px_-8px]">
               <div className="flex flex-row  ">
                 <img
                   src="/profile.png"

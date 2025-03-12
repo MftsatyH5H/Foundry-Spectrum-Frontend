@@ -58,11 +58,14 @@ class Courserelatedlist extends Component<{}, CourserelatedlistState> {
         return (
             <div className='flex justify-center items-center flex-row'>
                 <Swiper
-                    slidesPerView="auto" // Allow Swiper to calculate the number of slides per view
+                    slidesPerView="3" // Allow Swiper to calculate the number of slides per view
                     spaceBetween={20} // Space between slides
-                    freeMode={true} // Enable free mode
+                    freeMode={{
+                        enabled: true, // Enable free mode
+                        momentum: true, // Enable momentum dragging
+                    }}
                     modules={[FreeMode]} // Add FreeMode module
-                    className='!w-fit' // Custom class for Swiper container
+                    className='!w-fit !ml-0' // Custom class for Swiper container
                 >
                     {this.state.courses.map((course) => (
                         <SwiperSlide

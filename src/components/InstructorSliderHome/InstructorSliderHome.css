@@ -1,0 +1,33 @@
+@property --color-start {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgba(82, 53, 135, 0.04);
+  }
+
+  @property --color-end {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgba(20, 13, 33, 0.04);
+  }
+
+  @property --radial-color {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgba(225, 255, 0, 0);
+  }
+
+  /* Base styles */
+  .group {
+
+    background: linear-gradient(115deg, var(--color-start) 27.02%, var(--color-end) 96.63%);
+    transition: --color-start 0.5s ease-in-out, --color-end 0.5s ease-in-out, --radial-color 0.5s ease-in-out;
+  }
+
+  /* Hover effect */
+  .group:hover {
+    --color-start: rgba(82, 53, 135, 0.08);
+    --color-end: rgba(20, 13, 33, 0.08);
+    --radial-color: rgba(225, 255, 0, 0.16);
+    background: linear-gradient(115deg, var(--color-start) 27.02%, var(--color-end) 96.63%),
+                radial-gradient(54.19% 28.7% at 50.12% 102.32%, var(--radial-color) 0%, rgba(225, 255, 0, 0) 100%);
+  }

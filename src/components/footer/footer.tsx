@@ -44,7 +44,7 @@ class Footer extends Component {
                     </div>
   
                 </div>
-                <div className='w-[1312px] pt-[24px] pb-[50px] mt-[50px] border-[1px] border-t-[#471F70] border-transparent border-b-[#471F70] mb-[24px] flex flex-row justify-between items-center'>
+                <div className='w-full pt-[24px] pb-[50px] mt-[50px] border-[1px] border-t-[#471F70] border-transparent border-b-[#471F70] mb-[24px] flex flex-row justify-between items-center'>
                     <div className='flex flex-col w-[500px]'>
                         <h1 className='font-[agrandir] font-bold text-[24px] leading-[36px] text-white mb-[15px]'>Join the Newsletter</h1>
                         <p className='font-[Poppins] font-normal text-[16px] leading-[24px] text-[#9898B5]'> Join our monthly newsletter for helpful tips on how to run your business smoothly</p>
