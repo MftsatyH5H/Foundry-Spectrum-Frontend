@@ -1,6 +1,7 @@
 import React from 'react'
 import CoursesFilter from '../components/coursesFilter/CoursesFilter'
 import Coursecardbiglist from '../components/courcecardbig/coursecardbiglist'
+import ExploreCoursescard from '../components/Cards/exploreCourses/explorecourses'
 
 function CoursesList() {
   return (
@@ -10,6 +11,9 @@ function CoursesList() {
         </div>
         <div className='container mx-auto'>
           <Coursecardbiglist />
+        </div>
+        <div>
+          <ExploreCoursescard />
         </div>
     </div>
   )

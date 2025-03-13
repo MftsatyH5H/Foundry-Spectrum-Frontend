@@ -4,6 +4,7 @@ import Artportfolio from '../components/ArtPortfolio/Artportfolio'
 import StudentGalleryList from '../components/studentsGallery/studentGalleryList'
 import TestimonialsList from '../components/testimonials/testimonialList'
 import Coursecardbiglist from '../components/courcecardbig/coursecardbiglist'
+import ExploreCoursescard from '../components/Cards/exploreCourses/explorecourses'
 
 
 function ProfileInstructor() {
@@ -33,6 +34,9 @@ function ProfileInstructor() {
           <span className='text-lightGrey font-light text-sm font-[agrandir]'>Learning the basic structure of the Blueprint visual scripting system, as well as cover the fundamental math skills every .</span>
           <Coursecardbiglist />
         </div>
+      </div>
+      <div className='container mb-[120px]'>
+        <ExploreCoursescard />
       </div>
     </div>
   )
