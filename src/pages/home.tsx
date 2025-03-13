@@ -36,7 +36,7 @@ function Home() {
 
       {/* Testimonials Section */}
       <div className='container mx-auto flex flex-col gap-[120px]'>
-        <div id="impact" className='flex font-[agrandir] flex-col content-center items-center p-[24px] font-bold text-[96px] leading-[96px] gap-0 text-foundryyellow'>
+        <div className='flex font-[agrandir] sticky top-[200px] -z-10 mb-44 flex-col content-center items-center p-[24px] font-bold text-[96px] leading-[96px] gap-0 text-foundryyellow'>
           <span>Real Feedback,</span>
           <span>Real Impact...</span>
         </div>
