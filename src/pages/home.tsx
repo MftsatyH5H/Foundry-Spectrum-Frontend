@@ -18,7 +18,7 @@ function Home() {
       {/* Courses Section Title */}
 
       {/* Courses Section */}
-      <div className='container'>
+      <div className='container mx-auto'>
       <SectionTitle heading='Explore Our Top Courses' subHeading='Courses' description='Discover the best courses for 3D builders and animators.' />
         <Coursecardbiglist />
       </div>
@@ -34,18 +34,19 @@ function Home() {
       </div>
 
       {/* Testimonials Section */}
-      <div className='container'>
+      <div className='container mx-auto'>
         <TestimonialsList />
       </div>
 
       {/* Student Gallery Title */}
-      <div className='container flex flex-col gap-[32px]'>
+      <div className='container flex flex-col gap-[32px] mx-auto'>
         <SectionTitle heading='Students Gallery' subHeading='Success Stories' description='Learning the basic structure of the Blueprint visual' />
         <StudentGalleryList />
       </div>
-
-      {/* Blogs Section */}
+      <div className='container mx-auto'>
         <Blogsliderlist />
+      </div>
+      {/* Blogs Section */}
 
       {/* Explore More Courses */}
       <div className='container'>
