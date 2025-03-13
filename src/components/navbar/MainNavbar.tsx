@@ -46,25 +46,25 @@ const MainNavbar: React.FC = () => {
 
                 <ul className='hidden xl:flex items-center justify-center gap-[48px] font-[Poppins] text-[16px] leading-[24px] font-light text-white w-[740px] relative'>
                     <li className='py-[24px] relative group cursor-pointer'>
-                        <span className={`relative inline-block`}>
+                        <span className={`relative inline-block ${location.pathname === "/" ? "font-bold" : ""} `}>
                             <NavLink to='/'>Home</NavLink>
                             <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/" ? "scale-x-100" : ""}`}></span>
                         </span>
                     </li>
                     <li className='py-[24px] relative group cursor-pointer'>
-                        <span className='relative inline-block'>
+                        <span className={`relative inline-block ${location.pathname === "/courses" ? "font-bold" : ""}`}>
                             <NavLink to='/courses'>Courses</NavLink>
                             <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/courses" ? "scale-x-100" : ""}`}></span>
                         </span>
                     </li>
                     <li className='py-[24px] relative group cursor-pointer'>
-                        <span className='relative inline-block'>
+                        <span className={`relative inline-block ${location.pathname === "/about-us" ? "font-bold" : ""}`}>
                             <NavLink to='about-us'>About Us</NavLink>
                             <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/about-us" ? "scale-x-100" : ""}`}></span>
                         </span>
                     </li>
                     <li className='py-[24px] relative group cursor-pointer'>
-                        <span className='relative inline-block'>
+                        <span className={`relative inline-block ${location.pathname === "/blog" ? "font-bold" : ""}`}>
                             <NavLink to='/blog'>Blog</NavLink>
                             <span className='absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100'></span>
                         </span>
