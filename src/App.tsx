@@ -12,6 +12,7 @@ import ProfileInstructor from './pages/ProfileInstructor';
 import CourseOverview from './pages/courseOverview';
 import CreateCourse from './pages/CreateCourse';
 import { useSelector } from 'react-redux';
+import StudentNavbar from './components/navbar/StudentNavbar';
 function App() {
 
   const user = useSelector((state: any) => state.user.type);
@@ -32,7 +33,7 @@ function App() {
           <>
           {user === userType.student ? (
             <>
-            {isNavbarAllowed && (<MainNavbar />)}  
+            {isNavbarAllowed && (<StudentNavbar />)}  
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/about-us' element={<AboutUs />} />

@@ -11,7 +11,7 @@ import MentorshipRequests from '../Cards/MentorShipRequestsCard/MentorShipReques
 import PrivateClassroomcard from '../Cards/privateClassroom/privateClassroom';
 const CourseDescription: React.FC = () => {
     return (
-        <div className="px-8 pb-0 mb-0 gap-[120px] flex flex-col mt-10">
+        <div className="px-8 mb-3 gap-[120px] flex flex-col mt-10">
             <div className='flex flex-col gap-[16px]'>
                 <p className='text-[#e3fd18] font-semibold font-poppins text-[18px]'>Learning Outcome</p>
                 <div className='flex flex-row gap-[36px] mt-4'>

@@ -4,8 +4,6 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { HiOutlineMegaphone } from "react-icons/hi2";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-import "./Navbar.css";
-
 interface NotificationItem {
   key: string;
   label: React.ReactNode;
