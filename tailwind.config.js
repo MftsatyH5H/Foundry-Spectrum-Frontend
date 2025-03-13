@@ -6,9 +6,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'purpleGradient': 'linear-gradient(115deg, rgba(82, 53, 135, 0.12) 27.02%, rgba(20, 13, 33, 0.12) 96.63%)',
-      },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif']

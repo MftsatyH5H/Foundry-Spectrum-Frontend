@@ -17,7 +17,10 @@ body {
   height: 100%;
   
 }
-
+.testimonial-card{
+  box-shadow: 0px 4px 6px -2px #00000008;
+  box-shadow: 0px 12px 16px -4px #00000014;  
+}
 .image-container::after {
   content: "";
   position: absolute;
@@ -66,11 +69,11 @@ body {
 }
 .course-title-div{
   background: linear-gradient(to left, rgba(16, 10, 26, 0) 40%, #100A1A 90%);
-  cursor: none;
 }
 .image-course{
   filter: grayscale(100%);
   transition: filter 0.01s;
+  
 }
 .course-title-div:hover .image-course {
   filter: grayscale(0%);
@@ -89,4 +92,42 @@ body {
 }
 .course-title-div .watch-now-icon {
   transition: 0.3s ease-in-out;
+}
+.view-larger-box{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  overflow: hidden;
+  gap: 15px;
+}
+.view-larger-text{
+  bottom: -25px;
+  transition: 300ms ease-in-out;
+}
+.student-gallery {
+  
+  background: linear-gradient(180deg, rgba(51, 32, 82, 0) 0%, #0A0A2B 100%);
+  transition: 0.3s ease-in-out;
+}
+.student-gallery::after {
+  content: "";
+  position: absolute;
+  inset: -20px; /* Adjust thickness of border */
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(110.96% 50% at 50% 50%, rgba(51, 32, 82, 0) 0%, #291A42 100%);
+}
+.student-gallery:hover {
+  background: linear-gradient(180deg, rgba(51, 32, 82, 0) 0%, #0A0A2B 80%);
+}
+.student-gallery:hover .view-larger-text{
+  bottom: 10px;
+  transition: 300ms ease-in-out;
+}
+.student-gallery .author-name{
+  transition: 300ms ease-in-out;
+}
+.student-gallery:hover .author-name{
+  opacity: 0;
+  transition: 300ms ease-in-out;
 }

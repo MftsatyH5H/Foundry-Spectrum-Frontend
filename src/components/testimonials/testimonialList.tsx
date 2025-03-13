@@ -78,19 +78,23 @@ function TestimonialsList() {
   ];  
   return (
     <>
-    <div className='flex flex-wrap justify-center items-start gap-4'>
-      {testimonials.map((testimonial) => (
-        <TestimonialCard
-          name={testimonial.name}
-          comment={testimonial.comment}
-          course={testimonial.course}
-          date={testimonial.date}
-        />
-      ))}
-    </div>
-    <div className='flex justify-center items-center mb-2'>
-      <button className='bg-[#332052] text-[#cbe30a] font-semibold px-3 py-2 rounded-md'>Load More Reviews</button>
-    </div>
+    <div className="flex flex-wrap justify-center items-evenly w-full gap-[24px]">
+  {testimonials.map((testimonial, index) => (
+    <TestimonialCard
+      key={index}
+      name={testimonial.name}
+      comment={testimonial.comment}
+      course={testimonial.course}
+      date={testimonial.date}
+    />
+  ))}
+</div>
+<div className="flex justify-center items-center mb-2 w-full">
+  <button className="bg-[#332052] text-[#cbe30a] font-semibold px-3 py-2 rounded-md">
+    Load More Reviews
+  </button>
+</div>
+
     </>
   );
 }
