@@ -1,6 +1,7 @@
 import React from 'react';
 import RelatedCourses from './relatedCourses';
 import Courserelated from '../courserelated/courserelated';
+import Courserelatedlist from '../courserelated/courserelatedlist';
 interface IProps {
     imageSrc?: string;
     name: string;
@@ -46,9 +47,7 @@ const RelatedCoursesList: React.FC = () => {
                 </div>
             </div>
             <div className='flex flex-wrap justify-center items-start gap-14'>
-                {courses.map((course) => {
-                    <Courserelated course={course} />
-                })}
+                <Courserelatedlist />
             </div>
         </div>
 
