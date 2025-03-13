@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { userType } from './static/userType.enum';
 import Home from './pages/home';
 import AboutUs from './pages/AboutUs';
@@ -11,56 +11,73 @@ import Footer from './components/footer/footer';
 import ProfileInstructor from './pages/ProfileInstructor';
 import CourseOverview from './pages/courseOverview';
 import CreateCourse from './pages/CreateCourse';
-
+import { useSelector } from 'react-redux';
 function App() {
-  const user = userType.student; // Replace this with dynamic user detection
-  const [pathname, setPathname] = useState('/');
-  useEffect(() => {
-    setPathname(window.location.pathname)
-    console.log(pathname)
-  },[window.location.pathname])
-  function RenderUserRoutes() {
-    if (user === userType.student) {
-      return (
-        <>
-          <MainNavbar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about-us' element={<AboutUs />} />
-            <Route path='/courses' element={<CoursesList />} />
-            <Route path='/profile' element={<ProfileStudent />} />
-            <Route path='/profile-edit' element={<EditProfile />} />
-            <Route path='/course-overview' element={<CourseOverview />} />
-            <Route path='/profile-instructor' element={<ProfileInstructor />} />
-            <Route path='/create-course' element={<CreateCourse />} />
-          </Routes>
-          <Footer />
-          {/* <ChartOverview /> */}
-        </>
-      );
-    } else if (user === userType.instructor) {
-      return (
-        <>
-          {/* <MainNavbar /> */}
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about-us' element={<AboutUs />} />
-            <Route path='/courses' element={<CoursesList />} />
-            {/* <Route path='/profile' element={<ProfileInstructor />} /> */}
-            <Route path='/profile-edit' element={<EditProfile />} />
-          </Routes>
-        </>
-      );
-    } else {
-      return <></>;
-    }
-  }
 
+  const user = useSelector((state: any) => state.user.type);
+  const [isNavbarAllowed, setIsNavbarAllowed] = useState(true);
+  const location = useLocation();
+  useEffect(() => {
+    if(
+      [
+        '/create-course',
+        
+      ].includes(location.pathname)
+    ){
+      setIsNavbarAllowed(false);
+    }
+    
+  },[location])
   return (
-    <BrowserRouter>
-      {RenderUserRoutes()}
-    </BrowserRouter>
-  );
+          <>
+          {user === userType.student ? (
+            <>
+            {isNavbarAllowed && (<MainNavbar />)}  
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about-us' element={<AboutUs />} />
+                <Route path='/courses' element={<CoursesList />} />
+                <Route path='/profile' element={<ProfileStudent />} />
+                <Route path='/profile-edit' element={<EditProfile />} />
+                <Route path='/course-overview' element={<CourseOverview />} />
+                <Route path='/profile-instructor' element={<ProfileInstructor />} />
+                <Route path='/create-course' element={<CreateCourse />} />
+              </Routes>
+              
+              {isNavbarAllowed && (<Footer />)}
+              {/* <ChartOverview /> */}
+            </>
+          ) : user === userType.instructor ? (
+            <>
+              {/* <MainNavbar /> */}
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about-us' element={<AboutUs />} />
+                <Route path='/courses' element={<CoursesList />} />
+                {/* <Route path='/profile' element={<ProfileInstructor />} /> */}
+                <Route path='/profile-edit' element={<EditProfile />} />
+              </Routes>
+            </>
+          ) : user === userType.visitor ? (
+            <>
+            {isNavbarAllowed && (<MainNavbar />)}  
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about-us' element={<AboutUs />} />
+                <Route path='/courses' element={<CoursesList />} />
+                <Route path='/profile' element={<ProfileStudent />} />
+                <Route path='/profile-edit' element={<EditProfile />} />
+                <Route path='/course-overview' element={<CourseOverview />} />
+                <Route path='/profile-instructor' element={<ProfileInstructor />} />
+                <Route path='/create-course' element={<CreateCourse />} />
+              </Routes>
+              {isNavbarAllowed && (<Footer />)}
+              </>
+          ):(<>
+
+          </>)}
+          </>
+    );
 }
 
 export default App;
