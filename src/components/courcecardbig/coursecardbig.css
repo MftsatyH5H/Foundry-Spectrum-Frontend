@@ -6,7 +6,7 @@
 @property --gradient-color {
     syntax: '<color>'; /* The type of the property (angle for degrees) */
     inherits: false;
-    initial-value:rgb(5 5 23 / 0.8) ; /* Default value */
+    initial-value:rgb(5 5 23 / 0.8); /* Default value */
   }
 
 
