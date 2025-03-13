@@ -79,15 +79,15 @@ function TestimonialsList({className}: any) {
   return (
     <>
     <div className={`flex flex-wrap ${className} items-evenly w-full gap-[24px]`}>
-  {testimonials.map((testimonial, index) => (
-    <TestimonialCard
-      key={index}
-      name={testimonial.name}
-      comment={testimonial.comment}
-      course={testimonial.course}
-      date={testimonial.date}
-    />
-  ))}
+    {testimonials.map((testimonial, index) => (
+      <TestimonialCard
+        key={index}
+        name={testimonial.name}
+        comment={testimonial.comment}
+        course={testimonial.course}
+        date={testimonial.date}
+      />
+    ))}
 </div>
 <div className="flex justify-center items-center w-full">
   <button className="bg-[#332052] text-foundryyellow font-semibold px-5 py-3 rounded-md">

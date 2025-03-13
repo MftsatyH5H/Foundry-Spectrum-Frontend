@@ -14,7 +14,7 @@ function CoursesFilter() {
           <button
             key={category}
             onClick={() => setActiveButton(category)}
-            className={`rounded-full text-[14px] py-2 px-8 font-medium transition-all duration-300 
+            className={`rounded-full text-[14px] py-2 px-8 font-medium
               ${activeButton === category ? 'bg-[#471F70] text-foundryyellow' : 'bg-transparent text-[#2F2F4F] border border-[#2F2F4F]'}`}
           >
             {category}
