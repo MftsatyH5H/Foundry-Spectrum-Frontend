@@ -3,6 +3,7 @@ import { Badge, Dropdown, ConfigProvider, MenuProps } from "antd";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { HiOutlineMegaphone } from "react-icons/hi2";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import './Navbar.css'
 
 interface NotificationItem {
   key: string;
@@ -84,9 +85,8 @@ const StudentNavbar: React.FC = () => {
   };
 
   return (
-    <div className="h-2000px w-full absolute">
       <nav
-        className={`flex justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out `}
+        className={`flex justify-between fixed items-center h-[72px] w-full backdrop-blur-sm border-b border-transparent px-[48px] transition-all duration-300 ease-in-out top-0 z-[1000]`}
         style={{
           borderImage:
             "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(153, 153, 153, 0.12) 100%) 1",
@@ -196,7 +196,6 @@ const StudentNavbar: React.FC = () => {
           </ConfigProvider>
         </div>
       </nav>
-    </div>
   );
 };
 
