@@ -57,7 +57,7 @@ function ProfileStudent() {
                 Latest Article
               </h1>
               <p className="font-[Poppins] font-light text-[14px] leading-[100%] text-[#6D6D94]">Learning the basic structure of the Blueprint visual scripting system, as well as cover the fundamental math skills every .</p>
-              <Blogsliderlist />
+              <Blogsliderlist  width="!w-[360px]" margin="!ml-0"/>
             </div>
           </div>
         </div>

@@ -5,6 +5,12 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    container: {
+      center: true,
+    },
+
+
+
     extend: {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],

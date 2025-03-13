@@ -12,6 +12,8 @@ interface Blog {
     category: string;
     description: string;
     imagesrc: string;
+    width?: string;
+    margin?: string;
 }
 
 // Define the type for the component's state
@@ -19,7 +21,14 @@ interface BlogsliderlistState {
     Blogs: Blog[];
 }
 
-class Blogsliderlist extends Component<{}, BlogsliderlistState> {
+// Define the type for the component's props
+interface BlogsliderlistProps {
+    width?: string;
+    margin?: string;
+ 
+}
+
+class Blogsliderlist extends Component<BlogsliderlistProps, BlogsliderlistState> {
     // Initialize the state with type safety
     state: BlogsliderlistState = {
         Blogs: [
@@ -44,11 +53,12 @@ class Blogsliderlist extends Component<{}, BlogsliderlistState> {
                 description: "This is the most comprehensive Unreal Engine course available. If you want to learn how to architect a fully-functional RPG game, this course will give you the ability to do so with an expandable code base, architected with AAA quality code.",
                 imagesrc: "/karim-yasser-3.jpg"
             },
-
         ]
     };
 
     render() {
+        const { width = "!w-[360]", margin } = this.props; 
+
         return (
             <div className='flex justify-center items-center flex-row'>
                 <Swiper
@@ -59,7 +69,7 @@ class Blogsliderlist extends Component<{}, BlogsliderlistState> {
                         momentum: true, // Enable momentum dragging
                     }}
                     modules={[FreeMode]} // Add FreeMode module
-                    className='flex  items-center flex-row !w-fit !ml-0'
+                    className={`flex items-center flex-row !w-fit ${margin}`}
                     onAfterInit={(swiper) => {
                         // Force Swiper to update after initialization
                         swiper.updateSlides();
@@ -69,9 +79,9 @@ class Blogsliderlist extends Component<{}, BlogsliderlistState> {
                     {this.state.Blogs.map((blog) => (
                         <SwiperSlide
                             key={blog.id}
-                            className="!w-[360px]" 
+                            className={ width } 
                         >
-                            <Blogslider blog={blog} />
+                            <Blogslider blog={blog} width={width} margin={margin}/>
                         </SwiperSlide>
                     ))}
                 </Swiper>
