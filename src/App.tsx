@@ -21,7 +21,7 @@ function App() {
     if(
       [
         '/create-course',
-        
+
       ].includes(location.pathname)
     ){
       setIsNavbarAllowed(false);

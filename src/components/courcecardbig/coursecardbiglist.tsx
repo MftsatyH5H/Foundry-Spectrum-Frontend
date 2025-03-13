@@ -36,7 +36,7 @@ class Coursecardbiglist extends Component {
 
   render() {
     return (
-      <div className='flex flex-wrap  justify-center items-center flex-col gap-[70px] mt-10'>
+      <div className='flex flex-wrap justify-center items-center flex-col gap-[70px] mt-10'>
         {this.state.courses.map(course => (
           <React.Fragment key={course.id}>
             <Coursecardbig course={course} />
