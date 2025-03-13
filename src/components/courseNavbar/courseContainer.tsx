@@ -19,9 +19,6 @@ const CourseContainer: React.FC = () => {
                     <CourseDetailsCard />
                 </div>
             </div>
-            <div className='mt-5 px-3'>
-                <Courserelatedlist />
-            </div>
         </div>
     );
 };

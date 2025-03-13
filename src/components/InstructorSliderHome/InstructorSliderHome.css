@@ -17,14 +17,14 @@
   }
 
   /* Base styles */
-  .group {
+  .groupInstructor {
 
     background: linear-gradient(115deg, var(--color-start) 27.02%, var(--color-end) 96.63%);
     transition: --color-start 0.5s ease-in-out, --color-end 0.5s ease-in-out, --radial-color 0.5s ease-in-out;
   }
 
   /* Hover effect */
-  .group:hover {
+  .groupInstructor:hover {
     --color-start: rgba(82, 53, 135, 0.08);
     --color-end: rgba(20, 13, 33, 0.08);
     --radial-color: rgba(225, 255, 0, 0.16);

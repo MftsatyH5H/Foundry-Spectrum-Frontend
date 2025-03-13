@@ -34,8 +34,12 @@ function Home() {
       </div>
 
       {/* Testimonials Section */}
-      <div className='container mx-auto'>
-        <TestimonialsList />
+      <div className='container mx-auto flex flex-col gap-[120px]'>
+        <div id="impact" className='flex font-[agrandir] flex-col content-center items-center p-[24px] font-bold text-[96px] leading-[96px] gap-0 text-foundryyellow'>
+          <span>Real Feedback,</span>
+          <span>Real Impact...</span>
+        </div>
+        <TestimonialsList className="justify-center"/>
       </div>
 
       {/* Student Gallery Title */}

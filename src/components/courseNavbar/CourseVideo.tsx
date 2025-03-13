@@ -68,30 +68,12 @@ function CourseVideo() {
   }, [currentIndex]);
   return (
     <div className="flex items-center content-center course-title-div">
-      <div style={{zIndex : -200}} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute top-0 left-0 w-full image-course h-full transition-opacity ${index === currentIndex ? 'opacity-100 z-0' : 'opacity-0 z-0'
-              }`}
-            style={{
-              transitionDuration: `${fadeDuration}ms`,
-              overflow: 'hidden',
-            }}
-          >
-            <img
-              src={image}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover transition-transform"
-              style={{
-                transitionDuration: `${zoomDuration}ms`,
-                transitionTimingFunction: 'ease-out',
-                transform:
-                  isZoomed && index === currentIndex ? 'scale(1.3)' : 'scale(1.0)',
-              }}
-            />
-          </div>
-        ))}
+      <div style={{ zIndex: -200 }} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
+        <img
+          src='/karim-yasser-2.jpg'
+          alt="Course Image"
+          className="w-full h-full course-image object-cover transition-transform grayscale hover:grayscale-0 hover:scale-110"
+        />
       </div>
       <div className="w-8/12 h-[600px] p-3 flex flex-col gap-9">
         <div className='flex flex-col gap-3 mt-10 ml-6'>

@@ -10,12 +10,12 @@ interface IProps {
 
 function TestimonialCard({ name, comment, course, date }: IProps) {
   return (
-    <div className="bg-[#140D21] group testimonial-card h-fit duration-200 w-80 text-white p-4 rounded-xl font-roboto transition-colors hover:bg-[#291a42]">
+    <div className="bg-[#140D21] w-80 group testimonial-card h-fit duration-200 text-white p-4 rounded-xl font-roboto transition-colors hover:bg-[#291a42]">
       <div className="flex flex-col gap-1">
         <p className="text-sm leading-normal font-poppins font-extralight mb-2">
           &quot;{comment}&quot;
         </p>
-        <p className="font-light text-sm text-lightPurple duration-200 mb-2 hover:text-[#E1ff00]">
+        <p className="font-light text-sm text-lightPurple duration-200 mb-2 group-hover:text-[#E1ff00]">
           {course}
         </p>
       </div>
@@ -25,7 +25,7 @@ function TestimonialCard({ name, comment, course, date }: IProps) {
         </p>
         <div className="flex items-center content-between gap-[12px]">
           <img
-            className="w-[24px] h-[24px] rounded-full duration-200 border-2 border-transparent transition-all hover:border-[#E1ff00]"
+            className="w-[24px] h-[24px] rounded-full duration-200 border-2 border-transparent transition-all group-hover:border-[#E1ff00]"
             src="/public/avatar.jpg"
             alt="profile"
           />

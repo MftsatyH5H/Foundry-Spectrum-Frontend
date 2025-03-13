@@ -3,7 +3,7 @@ import Faq from './Faq'
 function FaqList() {
   return (
     <div>
-        <Faq />
+        <Faq state={true}/>
         <Faq />
         <Faq />
     </div>

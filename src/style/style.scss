@@ -73,7 +73,6 @@ body {
 .image-course{
   filter: grayscale(100%);
   transition: filter 0.01s;
-  
 }
 .course-title-div:hover .image-course {
   filter: grayscale(0%);
@@ -89,6 +88,14 @@ body {
 .course-title-div:hover .watch-now-icon {
   color: #E1ff00; /* Change the border color to yellow */
   transition: 0.3s ease-in-out;
+}
+.course-title-div:hover .course-image{
+  filter: none;
+  transform: scale(1.2);
+}
+.course-image {
+  filter: grayscale(100%);
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
 }
 .course-title-div .watch-now-icon {
   transition: 0.3s ease-in-out;
@@ -136,4 +143,7 @@ body {
   backdrop-filter: blur(12px);
   box-shadow: 0px 0px 12px 0px #0000001F;
   border-image-source: linear-gradient(273.17deg, rgba(225, 255, 0, 0.24) -4.61%, rgba(255, 255, 255, 0.0288) 32.19%, rgba(255, 255, 255, 0.0288) 71.23%, rgba(237, 255, 98, 0.24) 107.43%);
+}
+.lightbox{
+
 }

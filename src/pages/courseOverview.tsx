@@ -1,6 +1,7 @@
 import React from 'react'
 import CourseVideo from '../components/courseNavbar/CourseVideo'
 import CourseContainer from '../components/courseNavbar/courseContainer'
+import RelatedCoursesList from '../components/relatedCourses/relatedCoursesList'
 
 function CourseOverview() {
   return (
@@ -13,6 +14,7 @@ function CourseOverview() {
         <div>
             <CourseContainer />
         </div>
+        <RelatedCoursesList />
     </div>
   )
 }

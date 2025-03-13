@@ -2,8 +2,8 @@ import { LockFilled, LockOutlined, PlayCircleFilled, QuestionCircleFilled, Right
 import React, { useState } from 'react'
 import { LuClapperboard, LuFileQuestion } from 'react-icons/lu';
 
-function ContentDropdown() {
-    const [open, setOpen] = useState(false);
+function ContentDropdown({state} : any) {
+    const [open, setOpen] = useState(state || false);
     return (
         <div className="w-full mx-auto border-x border-y border-borderPurple font-poppins">
             <button

@@ -1,7 +1,7 @@
 import React from 'react';
 import TestimonialCard from './testimonialCard';
 
-function TestimonialsList() {
+function TestimonialsList({className}: any) {
   const testimonials = [
     {
       name: 'Alice Johnson',
@@ -78,7 +78,7 @@ function TestimonialsList() {
   ];  
   return (
     <>
-    <div className="flex flex-wrap justify-center items-evenly w-full gap-[24px]">
+    <div className={`flex flex-wrap ${className} items-evenly w-full gap-[24px]`}>
   {testimonials.map((testimonial, index) => (
     <TestimonialCard
       key={index}
@@ -89,9 +89,9 @@ function TestimonialsList() {
     />
   ))}
 </div>
-<div className="flex justify-center items-center mb-2 w-full">
-  <button className="bg-[#332052] text-[#cbe30a] font-semibold px-3 py-2 rounded-md">
-    Load More Reviews
+<div className="flex justify-center items-center w-full">
+  <button className="bg-[#332052] text-foundryyellow font-semibold px-5 py-3 rounded-md">
+    Load More 50+
   </button>
 </div>
 

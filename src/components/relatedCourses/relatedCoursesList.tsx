@@ -1,14 +1,44 @@
 import React from 'react';
 import RelatedCourses from './relatedCourses';
+import Courserelated from '../courserelated/courserelated';
 interface IProps {
     imageSrc?: string;
     name: string;
 }
-
+const courses = [
+    {
+        id: 1,
+        title: "The Ultimate Unreal Engine 2D Game Development Course",
+        category: "Unreal Engine",
+        level: "Beginner",
+        imagesrc: "karim-yasser-1.jpg"
+    },
+    {
+        id: 2,
+        title: "The Ultimate Unreal Engine 2D Game Development Course",
+        category: "Unreal Engine",
+        level: "Beginner",
+        imagesrc: "/karim-yasser-2.jpg"
+    },
+    {
+        id: 3,
+        title: "The Ultimate Unreal Engine 2D Game Development Course",
+        category: "Unreal Engine",
+        level: "Beginner",
+        imagesrc: "/karim-yasser-3.jpg"
+    },
+    {
+        id: 4,
+        title: "The Ultimate Unreal Engine 2D Game Development Course",
+        category: "Unreal Engine",
+        level: "Beginner",
+        imagesrc: "/karim-yasser-3.jpg"
+    }
+]
 const RelatedCoursesList: React.FC = () => {
     return (
         <div className='text-white p-4 w-full related-courses-container'>
-            <div className='flex justify-start items-center gap-4 mb-3 ml-2'>
+            <div className='flex justify-start items-center gap-4 mb-3 ml-4'>
                 <img src="new-logo.png" alt="new-logo" className='w-11 mb-2' />
                 <div className="flex flex-col justify-start items-start ">
                     <p className='font-bold text-lg mb-2'>Related Courses</p>
@@ -16,10 +46,9 @@ const RelatedCoursesList: React.FC = () => {
                 </div>
             </div>
             <div className='flex flex-wrap justify-center items-start gap-14'>
-                <RelatedCourses />
-                <RelatedCourses />
-                <RelatedCourses />
-                <RelatedCourses />
+                {courses.map((course) => {
+                    <Courserelated course={course} />
+                })}
             </div>
         </div>
 
