@@ -12,15 +12,21 @@ interface Course {
     category: string;
     level: string;
     imagesrc: string;
+    width?: string;
+    margin?: string;
 }
 
 // Define the type for the component's state
 interface CourserelatedlistState {
     courses: Course[];
 }
+interface CourserelatedlistProps {
+    width?: string;
+    margin?: string;
+}
 
-class Courserelatedlist extends Component<{}, CourserelatedlistState> {
-    // Initialize the state with type safety
+class Courserelatedlist extends Component<CourserelatedlistProps, CourserelatedlistState> {
+    
     state: CourserelatedlistState = {
         courses: [
             {
@@ -55,24 +61,25 @@ class Courserelatedlist extends Component<{}, CourserelatedlistState> {
     };
 
     render() {
+        const { width = "!w-[360]", margin } = this.props; 
         return (
             <div className='flex justify-center items-center flex-row'>
                 <Swiper
-                    slidesPerView="3" // Allow Swiper to calculate the number of slides per view
-                    spaceBetween={20} // Space between slides
+                    slidesPerView="3" 
+                    spaceBetween={20} 
                     freeMode={{
-                        enabled: true, // Enable free mode
-                        momentum: true, // Enable momentum dragging
+                        enabled: true, 
+                        momentum: true, 
                     }}
-                    modules={[FreeMode]} // Add FreeMode module
-                    className='!w-fit !ml-0' // Custom class for Swiper container
+                    modules={[FreeMode]} 
+                    className='!w-fit !ml-0' 
                 >
                     {this.state.courses.map((course) => (
                         <SwiperSlide
                             key={course.id}
-                            className="!w-[317px] ml-2" // Custom class for each slide
+                            className={`${width} ml-2`} 
                         >
-                            <Courserelated course={course} />
+                            <Courserelated course={course} width={width} margin={margin}/>
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -50,7 +50,7 @@ function ProfileStudent() {
                 Recommended Courses
               </h1>
               <p className="font-[Poppins] font-light text-[14px] leading-[100%] text-[#6D6D94]">Learning the basic structure of the Blueprint visual scripting system, as well as cover the fundamental math skills every .</p>
-              <Courserelatedlist />
+              <Courserelatedlist width="!w-[317px]"/>
             </div>
             <div className="flex flex-col gap-[16px] w-full">
               <h1 className="text-foundryyellow font-[agrandir] font-bold text-[24px] leading-[150%]">

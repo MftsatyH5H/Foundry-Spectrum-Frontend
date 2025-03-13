@@ -14,6 +14,8 @@ interface Course {
 // Define the type for the component's props
 interface CourserelatedProps {
     course: Course;
+    width?: string; 
+    margin?: string;
 }
 
 // Define the type for the component's state
@@ -23,6 +25,7 @@ interface CourserelatedState {
     level: string;
     imagesrc: string;
 }
+
 
 class Courserelated extends Component<CourserelatedProps, CourserelatedState> {
     constructor(props: CourserelatedProps) {
@@ -45,8 +48,8 @@ class Courserelated extends Component<CourserelatedProps, CourserelatedState> {
         };
 
         return (
-            <div className='flex-1 w-[317px] h-[317px] card'>
-                <div style={cardStyle} className='bg-cover bg-center h-[317px] w-[317px] rounded-[6px]'>
+            <div className={`flex-1 ${this.props.width} card`}>
+                <div style={cardStyle} className={`bg-cover bg-center h-[317px] ${this.props.width} rounded-[6px]`}>
                     <div className='relative w-full h-full gredient-related to-transparent rounded-[6px]'>
                         <div className='text-white absolute bottom-0 small-card duration-500 ease-in-out flex flex-col w-full justify-center items-center p-3'>
                             <h1 className='font-[Poppins] text-[14px] leading-[21px] font-bold'>
