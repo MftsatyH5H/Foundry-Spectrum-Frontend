@@ -9,9 +9,9 @@ import Courserelatedlist from '../courserelated/courserelatedlist';
 
 const CourseContainer: React.FC = () => {
     return (
-        <div>
+        <div className=''>
             <CourseNavbar />
-            <div className="grid grid-cols-4">
+            <div className="grid grid-cols-4 container mx-auto">
                 <div className="col-span-3">
                     <CourseDescription />
                 </div>

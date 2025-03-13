@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './courserelated.css';
 
 // Define the type for the course object
@@ -51,14 +52,16 @@ class Courserelated extends Component<CourserelatedProps, CourserelatedState> {
                             <h1 className='font-[Poppins] text-[14px] leading-[21px] font-bold'>
                                 {this.state.title}
                             </h1>
-                            <div className='flex flex-row mt-[5px] gap-[10px] font-[poppins] text-[12px] leading-[18px]  text-[#AFAFC7] ml-[-25px]'>
+                            <div className='flex flex-row mt-[5px] gap-[10px] font-[poppins] text-[12px] leading-[18px] text-[#AFAFC7] ml-[-25px]'>
                                 <span>{this.state.category}</span>
                                 <span>For {this.state.level}</span>
                                 <span>English / Arabic</span>
                             </div>
-                            <button className='pt-2 pr-3 pl-3 pb-2 bg-[#0A0A2B] rounded-lg font-medium w-full mt-[10px] font-[Poppins] text-[12px]'>
-                                Learn more
-                            </button>
+                            <Link to={`/course-overview`} className='w-full'>
+                                <button className='pt-2 pr-3 pl-3 pb-2 bg-[#0A0A2B] rounded-lg font-medium w-full mt-[10px] font-[Poppins] text-[12px]'>
+                                    Learn more
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

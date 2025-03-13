@@ -32,7 +32,7 @@ function CourseVideo() {
           className="w-full h-full course-image object-cover transition-transform grayscale hover:grayscale-0 hover:scale-110"
         />
       </div>
-      <div className="w-8/12 h-[600px] p-3 flex flex-col gap-9">
+      <div className="w-8/12 mt-[72px] h-[600px] p-3 flex flex-col gap-9">
         <div className='flex flex-col gap-3 mt-10 ml-6'>
           <span className='flex items-center justify-start text-lightGrey font-poppins gap-3 text-xs'>
             <span>Courses</span>
@@ -66,7 +66,7 @@ function CourseVideo() {
         </div>
       </div>
       <div
-        className="relative w-4/5 h-[600px] flex items-center justify-center overflow-hidden cursor-none"
+        className="relative w-4/5 h-[600px] mt-[72px] flex items-center justify-center overflow-hidden cursor-none"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
