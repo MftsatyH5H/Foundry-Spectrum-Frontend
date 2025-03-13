@@ -4,7 +4,7 @@ import Coursecardbiglist from '../components/courcecardbig/coursecardbiglist'
 
 function CoursesList() {
   return (
-    <div className='flex flex-col gap-[36px] justify-center mt-[136px]'>
+    <div className='flex flex-col gap-[24px] justify-center mt-[136px]'>
         <div className='container mx-auto'>
           <CoursesFilter />
         </div>

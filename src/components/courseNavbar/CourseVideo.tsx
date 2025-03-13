@@ -23,51 +23,8 @@ function CourseVideo() {
   const handleMouseLeave = () => {
     setPosition({ x: 0, y: 0 });
   };
-  const images: string[] = [
-    '/karim-yasser-2.jpg',
-    '/karim-yasser-3.jpg',
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [prevIndex, setPrevIndex] = useState<number | null>(null);
-  const [isZoomed, setIsZoomed] = useState<boolean>(false);
-
-  // Timing configurations
-  const fadeDuration: number = 4000; // Fade transition duration in milliseconds
-  const zoomDuration: number = 5000; // Zoom effect duration in milliseconds
-
-  // Reference to store timeout IDs for cleanup
-  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
-
-  useEffect(() => {
-    return () => {
-      timeoutsRef.current.forEach((id) => clearTimeout(id));
-    };
-  }, []);
-
-  useEffect(() => {
-    timeoutsRef.current.forEach((id) => clearTimeout(id));
-    timeoutsRef.current = [];
-
-    setIsZoomed(false);
-
-    const zoomTimeout = setTimeout(() => {
-      setIsZoomed(true);
-
-      const nextSlideTimeout = setTimeout(() => {
-        setPrevIndex(currentIndex);
-        setCurrentIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        );
-      }, zoomDuration);
-
-      timeoutsRef.current.push(nextSlideTimeout);
-    }, fadeDuration);
-
-    timeoutsRef.current.push(zoomTimeout);
-  }, [currentIndex]);
   return (
-    <div className="flex items-center content-center course-title-div">
+    <div className="flex relative items-center content-center course-title-div">
       <div style={{ zIndex: -200 }} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
         <img
           src='/karim-yasser-2.jpg'
