@@ -8,7 +8,7 @@ function CoursesList() {
         <div className='container mx-auto'>
           <CoursesFilter />
         </div>
-        <div>
+        <div className='container mx-auto'>
           <Coursecardbiglist />
         </div>
     </div>
