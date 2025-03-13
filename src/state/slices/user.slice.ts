@@ -4,14 +4,14 @@ type userStateType = {
     type: userType,
 }
 const userInitType: userStateType = {
-    type: userType.student,
+    type: userType.visitor,
 }
 const userSlice = createSlice({
   name: "user",
   initialState: userInitType,
   reducers: {
     changeType: (state, action) => {
-        state.type === action.payload
+        state.type = action.payload
     }
   }
 });
