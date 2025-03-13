@@ -131,3 +131,9 @@ body {
   opacity: 0;
   transition: 300ms ease-in-out;
 }
+.chart-container{
+  border: 1px solid;
+  backdrop-filter: blur(12px);
+  box-shadow: 0px 0px 12px 0px #0000001F;
+  border-image-source: linear-gradient(273.17deg, rgba(225, 255, 0, 0.24) -4.61%, rgba(255, 255, 255, 0.0288) 32.19%, rgba(255, 255, 255, 0.0288) 71.23%, rgba(237, 255, 98, 0.24) 107.43%);
+}
