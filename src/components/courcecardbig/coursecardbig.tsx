@@ -2,25 +2,16 @@ import React, { Component, useState } from 'react';
 import './coursecardbig.css';
 
 function Coursecardbig(props: any) {
-    // const { imagesrc } = this.state;
-    console.log('yesss: ',props.course)
     const cardStyle = {
         backgroundImage: `url(${props.course.imagesrc})`,
     };
-    // state = {
-    //     title: this.props.course.title,
-    //     category: this.props.course.category,
-    //     level: this.props.course.level,
-    //     description: this.props.course.description,
-    //     price: this.props.course.price,
-    //     imagesrc: this.props.course.imagesrc
-    // }
+
 
 
         return (
-            <div className='rounded-3xl flex flex-row h-[600px] w-[1312px] relative overflow-hidden flex-2 cards cursor-pointer group '>
+            <div className='rounded-3xl flex flex-row h-[600px] w-[1312px] relative overflow-hidden flex-2 card cursor-pointer group '>
                 <div 
-                    className="absolute inset-0 rounded-3xl z-0 gredient w-full" 
+                    className="absolute inset-0 rounded-3xl z-0 gredientlist w-full" 
                 >
                     <div 
                         className="bg-center bg-cover relative w-full h-full rounded-3xl overflow-hidden "

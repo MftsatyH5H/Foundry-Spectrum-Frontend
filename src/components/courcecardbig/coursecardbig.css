@@ -1,42 +1,42 @@
-@property --gradient-degree {
-    syntax: '<angle>'; /* The type of the property (angle for degrees) */
-    inherits: false;
-    initial-value: 293deg; /* Default value */
-  }
-@property --gradient-color {
-    syntax: '<color>'; /* The type of the property (angle for degrees) */
-    inherits: false;
-    initial-value:rgb(5 5 23 / 0.8) ; /* Default value */
-  }
-
-
-  
-  .gredient {
-    background: linear-gradient(var(--gradient-degree), #7248B8 -1.42%, #050517 32.23%, #050517 79.27%, #7248B8 100.12%);
-    padding: 2px;
-    transition: --gradient-degree 0.5s ease; /* Transition the custom property */
-  }
-  
-  .cards:hover .gredient {
-    --gradient-degree: 234deg; /* Change the degree on hover */
-  }
-
-
-
-  .cards:hover .learn {
-    opacity: 1;
-    background: rgba(51, 32, 82, 0.7);
-  }
-  .to-transparent {
-      --tw-gradient-to: transparent var(--tw-gradient-to-position);
-  }
-   .gradient-overlay {
-       --tw-gradient-stops: var(--tw-gradient-from), var(--gradient-color) var(--tw-gradient-via-position), var(--tw-gradient-to);
-       transition: --gradient-color 0.5s ease;
-  }
-
-  .cards:hover .gradient-overlay {
-    --gradient-color: rgba(5, 5, 23, 0.85);
+@property --gradient-degreelist {
+  syntax: '<angle>'; /* The type of the property (angle for degrees) */
+  inherits: false;
+  initial-value: 293deg; /* Default value */
 }
-   
+@property --gradient-colorlist {
+  syntax: '<color>'; /* The type of the property (angle for degrees) */
+  inherits: false;
+  initial-value:rgb(5 5 23 / 0.8) ; /* Default value */
+}
+
+
+
+.gredientlist {
+  background: linear-gradient(var(--gradient-degreelist), #7248B8 -1.42%, #050517 32.23%, #050517 79.27%, #7248B8 100.12%);
+  padding: 2px;
+  transition: --gradient-degreelist 0.5s ease; /* Transition the custom property */
+}
+
+.card:hover .gredientlist {
+  --gradient-degreelist: 234deg; /* Change the degree on hover */
+}
+
+
+
+.card:hover .learn {
+  opacity: 1;
+  background: rgba(51, 32, 82, 0.7);
+}
+.to-transparent {
+    --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
+ .gradient-overlay {
+     --tw-gradient-stops: var(--tw-gradient-from), var(--gradient-colorlist) var(--tw-gradient-via-position), var(--tw-gradient-to);
+     transition: --gradient-colorlist 0.5s ease;
+}
+
+.card:hover .gradient-overlay {
+  --gradient-colorlist: rgba(5, 5, 23, 0.85);
+}
+ 
 
