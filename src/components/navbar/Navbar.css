@@ -1,0 +1,13 @@
+sup {
+    box-shadow: none !important;
+}
+
+
+.ant-dropdown-menu-item {
+    padding:0 !important;
+}
+
+.ant-dropdown-menu {
+    padding:0 !important;
+    border-radius:0 !important;
+}

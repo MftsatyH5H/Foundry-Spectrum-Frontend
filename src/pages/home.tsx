@@ -8,6 +8,7 @@ import Blogsliderlist from '../components/blogsslider/blogsliderlist'
 import PrivateMentorHome from '../components/PrivateMentorHome/PrivateMentorHome'
 import Footer from '../components/footer/footer'
 import InstructorSliderHome from '../components/InstructorSliderHome/InstructorSliderHome'
+import ExploreCoursescard from '../components/Cards/exploreCourses/explorecourses'
 function Home() {
   return (
     <div className='flex flex-col gap-[120px]'>
@@ -53,8 +54,8 @@ function Home() {
       {/* Blogs Section */}
 
       {/* Explore More Courses */}
-      <div className='container'>
-
+      <div className='container mb-[120px]'>
+          <ExploreCoursescard />
       </div>
     </div>
   )
