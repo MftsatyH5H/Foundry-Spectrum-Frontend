@@ -8,7 +8,7 @@ function CoursesFilter() {
   const categories = ['All', 'Category Name 1', 'Category Name 2', 'Category Name 3'];
 
   return (
-    <div className='flex flex-row justify-between items-center font-poppins container'>
+    <div className='flex w-[1312px] mx-auto flex-row justify-between items-center font-poppins'>
       <div className='flex flex-row items-center gap-4'>
         {categories.map((category) => (
           <button

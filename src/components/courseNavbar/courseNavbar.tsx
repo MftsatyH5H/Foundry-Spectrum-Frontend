@@ -3,7 +3,7 @@ import React from 'react';
 const CourseNavbar: React.FC = () => {
     return (
         <nav className="px-8 container-navbar shadow-md pb-0 mb-0">
-            <ul className='flex items-center justify-start gap-[48px] font-[Poppins] text-[16px] leading-[24px] font-light text-white w-[740px] relative'>
+            <ul className='flex container items-center justify-start gap-[48px] font-[Poppins] text-[16px] leading-[24px] font-light text-white w-[740px] relative'>
                 {['Overview', 'Table of content', 'Instructor', 'Testimonials', 'FAQ'].map((item,index) => (
                    <>
                    {index === 0 && (<>

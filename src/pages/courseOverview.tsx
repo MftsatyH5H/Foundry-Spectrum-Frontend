@@ -5,7 +5,7 @@ import RelatedCoursesList from '../components/relatedCourses/relatedCoursesList'
 
 function CourseOverview() {
   return (
-    <div className='flex flex-col mt-[72px]'>
+    <div className='flex flex-col'>
         {/* Course Intro Video */}
         <div>
           <CourseVideo />
@@ -14,7 +14,8 @@ function CourseOverview() {
         <div>
             <CourseContainer />
         </div>
-        <RelatedCoursesList />
+          <RelatedCoursesList />
+        
     </div>
   )
 }

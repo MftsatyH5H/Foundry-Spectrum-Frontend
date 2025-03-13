@@ -39,7 +39,7 @@ const courses = [
 const RelatedCoursesList: React.FC = () => {
     return (
         <div className='text-white p-4 w-full related-courses-container'>
-            <div className='flex justify-start items-center gap-4 mb-3 ml-4'>
+            <div className='flex container mx-auto justify-start items-center gap-4 mb-3 ml-4'>
                 <img src="new-logo.png" alt="new-logo" className='w-11 mb-2' />
                 <div className="flex flex-col justify-start items-start ">
                     <p className='font-bold text-lg mb-2'>Related Courses</p>
