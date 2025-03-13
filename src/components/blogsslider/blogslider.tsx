@@ -22,6 +22,11 @@ interface BlogsliderState {
     imagesrc: string;
 }
 
+interface BlogsliderProps {
+    width?: string; 
+    margin?: string;
+}
+
 class Blogslider extends Component<BlogsliderProps, BlogsliderState> {
     constructor(props: BlogsliderProps) {
         super(props);
@@ -31,7 +36,7 @@ class Blogslider extends Component<BlogsliderProps, BlogsliderState> {
             title: props.blog.title,
             category: props.blog.category,
             description: props.blog.description,
-            imagesrc: props.blog.imagesrc
+            imagesrc: props.blog.imagesrc,
         };
     }
 
@@ -43,8 +48,8 @@ class Blogslider extends Component<BlogsliderProps, BlogsliderState> {
         };
 
         return (
-            <div className='flex flex-col hover:bg-[#332052] ease-in-out duration-500 group p-[16px] w-[360px] h-[549px]  mr-[10px] rounded-lg'>
-                <div className='bg-cover bg-center h-[256px] w-[328px] rounded-[6px]' style={cardStyle}>
+            <div className={`flex flex-col hover:bg-[#332052] ease-in-out duration-500 group p-[16px]  h-[549px]  mr-[10px] rounded-lg ${this.props.width}`}>
+                <div className='bg-cover bg-center h-[256px] w-full rounded-[6px]' style={cardStyle}>
                 </div>
                 <div className='flex flex-row mt-[20px] gap-[24px] font-[poppins] text-[12px] leading-[18px] text-white  ml-[15px]'>
                     <span className='relative ml-[7px] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:content-[""] before:w-[12px] before:h-[1px] before:bg-white before:ml-[-20px] before:group-hover:text-white group-hover:text-foundryyellow duration-500 ease-in'>

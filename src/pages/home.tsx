@@ -48,7 +48,7 @@ function Home() {
         <StudentGalleryList />
       </div>
       <div className='container mx-auto'>
-        <Blogsliderlist />
+        <Blogsliderlist width='!w-[420px]'/>
       </div>
       {/* Blogs Section */}
 

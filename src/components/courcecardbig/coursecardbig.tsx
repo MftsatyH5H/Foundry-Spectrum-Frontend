@@ -9,7 +9,7 @@ function Coursecardbig(props: any) {
 
 
         return (
-            <div className='rounded-3xl flex flex-row h-[600px] w-[1312px] relative overflow-hidden flex-2 card cursor-pointer group '>
+            <div className='rounded-3xl flex flex-row h-[600px] w-full relative overflow-hidden flex-2 card cursor-pointer group '>
                 <div 
                     className="absolute inset-0 rounded-3xl z-0 gredientlist w-full" 
                 >
@@ -19,7 +19,7 @@ function Coursecardbig(props: any) {
                     >
                         <div className='w-full h-full absolute bg-gradient-to-r from-[#050517]  to-transparent z-10 gradient-overlay  duration-900 ease-out '>
                             <div className="flex flex-row justify-center h-full w-full">
-                                <div className='flex-auto flex flex-col max-w-[600px] max-h-[600px] ml-[64px] pt-[135px] '>
+                                <div className='flex-auto flex flex-col max-w-[50%] max-h-[600px] ml-[64px] pt-[135px] '>
                                     <h1 className='font-[agrandir] text-[36px] leading-[54px] text-white font-bold'>{props.course.title}</h1>
                                     <div className='flex flex-row mt-[20px] gap-[24px] font-[Poppins] text-[16px] leading-[24px]  text-[#AFAFC7] ml-[15px]'>
                                     <span className='relative pl-[30px] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:content-[""] before:w-[24px] before:h-[1px] before:bg-[#AFAFC7] before:ml-[-15px]'>

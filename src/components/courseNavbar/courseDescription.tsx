@@ -7,6 +7,8 @@ import StudentGalleryList from '../studentsGallery/studentGalleryList';
 import FaqList from '../faq/FaqList';
 import { LuClock, LuShieldQuestion, LuClipboard, LuCalendar, LuMoveRight } from "react-icons/lu";
 import StudentGalleryListSmall from '../studentsGallery/StudentGalleryListSmall';
+import MentorshipRequests from '../Cards/MentorShipRequestsCard/MentorShipRequestsCard';
+import PrivateClassroomcard from '../Cards/privateClassroom/privateClassroom';
 const CourseDescription: React.FC = () => {
     return (
         <div className="px-8 pb-0 mb-0 gap-[120px] flex flex-col mt-10">
@@ -75,6 +77,10 @@ const CourseDescription: React.FC = () => {
                     <ContentDropdownList />
                 </div>
             </div>
+
+            <div>
+                <MentorshipRequests />
+            </div>
             <div className='flex flex-col items-start gap-[24px]'>
                 <div className='flex flex-col items-start justify-center gap-2'>
                     <p className='text-[#e3fd18] font-bold font-poppins text-2xl '>32+ Testimonials</p>
@@ -89,6 +95,11 @@ const CourseDescription: React.FC = () => {
                 </div>
                 <StudentGalleryListSmall />
             </div>
+
+            <div>
+                <PrivateClassroomcard />
+            </div>
+
             <div className='flex flex-col gap-16'>
                 <div className='flex flex-col gap-4'>
                     <span className='text-[agrandir] text-foundryyellow font-bold text-2xl'>Course Description</span>
