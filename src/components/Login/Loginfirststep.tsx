@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { IoIosClose } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa";
-
+import { changeType } from '../../state/slices/user.slice';
+import { useDispatch } from 'react-redux';
+import { userType } from '../../static/userType.enum';
 // Define types for props
 interface Step1Props {
   onNext: () => void;
@@ -89,6 +91,7 @@ const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setEmail }) => {
 // Step 2 Component
 const Step2: React.FC<Step2Props> = ({ onCancel, email }) => {
   const [timeLeft, setTimeLeft] = useState<number>(59); 
+  const dispatch = useDispatch();
 
   // Mask the email (e.g., "mo***@gmail.com")
   const maskedEmail = email ? `${email.split('@')[0].substring(0, 2)}***@${email.split('@')[1]}` : '';
@@ -132,7 +135,7 @@ const Step2: React.FC<Step2Props> = ({ onCancel, email }) => {
           <p className='font-[Poppins] text-[14px] leading-[125%] align-middle text-[#9898B5]'>You can resend the code after <span className='text-white'>{formattedTime}</span></p>
           <div className='flex justify-end gap-[12px] mt-[32px]'>
             <button type="button" className='py-[10px] text-white border border-[#505075] w-[106px] rounded-lg bg-[#2F2F4F]' onClick={onCancel}>Cancel</button>
-            <button type="button" className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]'>
+            <button type="button" onClick={() => {dispatch(changeType(userType.student))}} className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]'>
               Confirm <FaArrowRight size={12} className='align-middle' />
             </button>
           </div>
