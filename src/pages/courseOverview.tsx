@@ -11,7 +11,7 @@ function CourseOverview() {
           <CourseVideo />
         </div>
         {/* Course Overview */}
-        <div>
+        <div className='mb-10'>
             <CourseContainer />
         </div>
           <RelatedCoursesList />
