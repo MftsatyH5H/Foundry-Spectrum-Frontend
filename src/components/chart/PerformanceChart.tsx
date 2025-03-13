@@ -18,7 +18,7 @@ const PerformanceChart = () => {
     datasets: [
       {
         label: "Performance",
-        data: [1, 1, 1, 1, 1, 1],
+        data: [0.25, 0.25, 0.25, 0.25, 0.25, 0.25],
         borderColor: "#A17ACC",
         backgroundColor: (context: any) => {
           const chart = context.chart;
@@ -42,17 +42,20 @@ const PerformanceChart = () => {
     maintainAspectRatio: false,
     scales: {
       x: {
-        ticks: { color: "#CCCCCC",
-            font: {
-                family: "Poppins",
-                weight: '200'
-            }
-
-         },
+        ticks: { 
+          color: "#CCCCCC",
+          font: {
+            family: "Poppins",
+            weight: '200'
+          }
+        },
         grid: { display: false }
       },
       y: {
-        display: false
+        min: 0,
+        max: 1,
+        ticks: { display: false },
+        grid: { display: false }
       }
     },
     plugins: {
@@ -62,8 +65,11 @@ const PerformanceChart = () => {
   };
 
   return (
-    <div className="w-1/2 h-full" style={{ background: "#291A42", padding: "10px" }}>
-      <Line data={data} options={options} />
+    <div className="w-1/2 h-[220px] py-4 px-6 flex flex-col gap-[24px]" style={{ background: "#291A42" }}>
+      <p className="text-white font-poppins mb-0">Your Performance last 6 Months</p>
+      <div style={{ height: "147px" }}>
+        <Line data={data} options={options} />
+      </div>
     </div>
   );
 };
