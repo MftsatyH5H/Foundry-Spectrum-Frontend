@@ -18,6 +18,7 @@ const PerformanceChart = () => {
     datasets: [
       {
         label: "Performance",
+
         data: [1, 1, 1, 1, 1, 1],
         borderColor: "#A17ACC",
         backgroundColor: (context: any) => {
@@ -63,6 +64,7 @@ const PerformanceChart = () => {
 
   return (
     <div className="w-1/2 h-full" style={{ background: "#291A42", padding: "10px" }}>
+      
       <Line data={data} options={options} />
     </div>
   );

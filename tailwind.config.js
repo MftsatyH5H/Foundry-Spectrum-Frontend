@@ -37,7 +37,6 @@ module.exports = {
         ".scrollbar-webkit": {
         "&::-webkit-scrollbar": {
           width: "8px",
-          height: "200px",
         },
      
       "&::-webkit-scrollbar-track": {
