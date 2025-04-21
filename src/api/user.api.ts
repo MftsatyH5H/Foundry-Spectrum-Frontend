@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 // import {
 //   IUserCreate,
 //   IUserSignIn,
@@ -26,7 +26,9 @@ class UserAPIs {
 
   // loginUserApi = (user: IUserSignIn) => axios.post(`${this.baseUrl}/users/login`, user);
 
-  // getUserByIdApi = (id: string) => axios.get(`${this.baseUrl}/users/${id}`);
+  getUserByIdApi = (id: string): Promise<AxiosResponse<any>> => {
+    return axios.get<any>(`${this.baseUrl}/users/${id}`);
+  };
 }
 
 export default UserAPIs;
