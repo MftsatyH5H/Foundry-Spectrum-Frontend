@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { IoIosClose } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa";
 import { changeType } from '../../state/slices/user.slice';
@@ -76,6 +77,7 @@ const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setEmail }) => {
           {!isValidEmail && (
             <p className='text-red-500 text-sm mt-1'>Invalid email format. Please enter a valid email address.</p>
           )}
+          <p className='font-[Poppins] text-[14px] leading-[125%] align-middle text-[#9898B5]'>New on our platform? <span className='text-foundryyellow'><NavLink to='/'>Create an account</NavLink></span></p>
           <div className='flex justify-end gap-[12px] mt-[32px]'>
             <button type="button" className='py-[10px] text-white border border-[#505075] w-[106px] rounded-lg bg-[#2F2F4F]' onClick={onCancel}>Cancel</button>
             <button type="button" className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]' onClick={handleNext}>

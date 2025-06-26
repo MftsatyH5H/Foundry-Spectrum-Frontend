@@ -29,6 +29,30 @@ class UserAPIs {
   getUserByIdApi = (id: string): Promise<AxiosResponse<any>> => {
     return axios.get<any>(`${this.baseUrl}/users/${id}`);
   };
+  registerUserApi = (user: any): Promise<AxiosResponse<any>> => {
+    return axios.post<any>(`${this.baseUrl}/auth/register`, user, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+    });
+
+  }
+  loginUserApi = (user: any): Promise<AxiosResponse<any>> => {
+    return axios.post<any>(`${this.baseUrl}/auth/login`, user, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
+  verfiyotpApi = (otp: any): Promise<AxiosResponse<any>> => {
+    return axios.post<any>(`${this.baseUrl}/auth/otp/verify`, otp, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
+
 
 export default UserAPIs;
