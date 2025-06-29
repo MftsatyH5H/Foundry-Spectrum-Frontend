@@ -5,7 +5,7 @@ import { UserAPIs } from "../../api";
 
 type userStateType = {
   id: string;
-  role?: string;
+  type?: string;
   email?: string;
   firstName?: string;
   lastName?: string;
@@ -23,7 +23,7 @@ type userStateType = {
 }
 const userInitType: userStateType = {
   id: "",
-  role: userType.visitor, // Default role
+  type: userType.visitor, // Default role
   email: "",
   firstName: "",
   lastName: "",
@@ -83,11 +83,8 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
 
     builder
-      .addCase(fetchUserData.fulfilled, (state, action) => {
-        return { ...state, ...action.payload };
-      })
       .addCase(registerUser.fulfilled, (state, action) => {
-        return { ...state, ...action.payload };
+        console.log(action.payload);
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         return { ...state, ...action.payload };
@@ -97,6 +94,4 @@ const userSlice = createSlice({
       });
   }
 });
-
-export const { changeType } = userSlice.actions;
 export default userSlice.reducer;

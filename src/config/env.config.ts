@@ -5,7 +5,7 @@ if (process.env.VITE_BACKEND_BASE_URL) {
 } else if (import.meta.env.VITE_BACKEND_BASE_URL) {
   vars.set('backendBaseUrl', import.meta.env.VITE_BACKEND_BASE_URL);
 } else {
-  vars.set('backendBaseUrl', 'http://0.0.0.0:5000/api/v1');
+  vars.set('backendBaseUrl', '/api');
 }
 
 if (process.env.PUBLIC_URL) {

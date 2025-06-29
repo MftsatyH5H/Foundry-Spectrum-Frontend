@@ -15,6 +15,31 @@ Copy [example.dev.env](example.dev.env) to dev.env and adapt you variables if ne
 
 Copy [client - example.env](client/example.env) to .env and adapt you variables if needed
 
+### Proxy Configuration (CORS Solution)
+
+This project includes a proxy configuration to avoid CORS issues when making API calls to the backend. The proxy is configured in `vite.config.ts` and works as follows:
+
+- **Frontend API calls**: All API calls from the frontend use `/api` as the base URL
+- **Proxy target**: The proxy forwards requests to your backend server (default: `http://0.0.0.0:5000`)
+- **URL rewriting**: `/api` requests are rewritten to `/api/v1` when forwarded to the backend
+
+#### Environment Variables for Proxy:
+
+- `VITE_BACKEND_BASE_URL`: The URL used by frontend API calls (default: `/api`)
+- `VITE_BACKEND_TARGET_URL`: The actual backend server URL (default: `http://0.0.0.0:5000`)
+
+#### Example Configuration:
+
+```env
+# Frontend will make API calls to /api
+VITE_BACKEND_BASE_URL=/api
+
+# Proxy will forward these calls to your backend
+VITE_BACKEND_TARGET_URL=http://localhost:5000
+```
+
+This setup eliminates CORS issues during development while maintaining clean API URLs.
+
 ### Run instructions
 
 - Install dependencies

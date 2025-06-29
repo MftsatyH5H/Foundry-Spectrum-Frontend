@@ -10,6 +10,14 @@ export default ({ mode }) => {
     define: {
       'process.env': { ...process.env, ...loadEnv(mode, process.cwd()) },
     },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8080', // Replace with your backend port
+          changeOrigin: true,
+        },
+      },
+    },
     build: {
       chunkSizeWarningLimit: 1500,
     },

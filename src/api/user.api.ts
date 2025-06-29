@@ -27,7 +27,7 @@ class UserAPIs {
   // loginUserApi = (user: IUserSignIn) => axios.post(`${this.baseUrl}/users/login`, user);
 
   getUserByIdApi = (id: string): Promise<AxiosResponse<any>> => {
-    return axios.get<any>(`${this.baseUrl}/users/${id}`);
+    return axios.get<any>(`/api/users/${id}`);
   };
   registerUserApi = (user: any): Promise<AxiosResponse<any>> => {
     return axios.post<any>(`${this.baseUrl}/auth/register`, user, {
@@ -39,7 +39,7 @@ class UserAPIs {
 
   }
   loginUserApi = (user: any): Promise<AxiosResponse<any>> => {
-    return axios.post<any>(`${this.baseUrl}/auth/login`, user, {
+    return axios.post<any>(`/api/auth/login`, user, {
       headers: {
         'Content-Type': 'application/json',
       },

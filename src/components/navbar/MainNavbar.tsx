@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FiMenu } from "react-icons/fi";
 import { IconContext } from 'react-icons/lib';
 import { CgCloseR } from "react-icons/cg";
-import LoginFirstStep from '../auth/Loginfirststep';
+import LoginFirstStep from '../auth/Loginfirststep'
 import { Link,NavLink, useLocation } from 'react-router-dom';
 
 const MainNavbar: React.FC = () => {
