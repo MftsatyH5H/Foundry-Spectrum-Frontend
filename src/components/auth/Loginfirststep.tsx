@@ -6,8 +6,9 @@ import { useDispatch } from 'react-redux';
 import { AnyAction } from '@reduxjs/toolkit';
 import { loginUser, verifyOtp } from '../../state/slices/user.slice';
 import { toast } from 'react-toastify';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-// Define types for props
+
 interface Step1Props {
   onNext: () => void;
   onCancel: () => void;
@@ -133,7 +134,7 @@ const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setCredentials }) => {
               className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]' 
               disabled={isLoading}
             >
-              {isLoading ? 'Logging in...' : 'Login'} <FaArrowRight size={12} className='align-middle' />
+              {isLoading ? <AiOutlineLoading3Quarters className="animate-spin" /> : <>Login <FaArrowRight size={12} className='align-middle' /></> }
             </button>
           </div>
         </form>
@@ -286,7 +287,7 @@ const Step2: React.FC<Step2Props> = ({ onCancel, email, onResend }) => {
               className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]'
               disabled={isLoading || otp.length !== 6}
             >
-              {isLoading ? 'Verifying...' : 'Verify OTP'} <FaArrowRight size={12} className='align-middle' />
+              {isLoading ? <AiOutlineLoading3Quarters className="animate-spin" /> :<>Verify <FaArrowRight size={12} className='align-middle' /> </> }
             </button>
           </div>
         </form>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { FaArrowLeft, FaArrowRight, FaSpinner } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../state/slices/user.slice';
 import { toast } from 'react-toastify';
+import Footersmall from '../components/footer/footersmall';
+import Globalloading from '../components/Loading/Globalloading';
 
 interface FormData {
   firstName: string;
@@ -273,9 +275,37 @@ const Step2: React.FC<StepProps> = ({ formData, setFormData, errors }) => {
   )
 }
 
+const Redirecting: React.FC = () => {
+
+  return (
+      <div className='flex flex-col items-center '>
+          <div className='h-[32px] w-[125px]'>
+            <img src="/Foundry-yellow.png" alt="Foundry Logo" className='w-full h-full' />
+          </div>
+          <div className='flex flex-col items-center mt-[16px] py-[16px] gap-[24px]'>
+            <div className='flex flex-col items-center gap-[8px]'>
+                <h1 className='text-[72px]'>
+                  🥳
+                </h1>
+                <h1 className='font-[agrandir] font-bold text-[24px] text-white leading-[150%]'>
+                  Whooa! You're All Set!
+                </h1>
+                <p className='font-[Poppins] font-normal text-[16px] leading-[150%] text-[#9898B5] text-center '>
+                  Everything's perfectly in place! We're sending you to your dashboard where all the awesome benefits await. Time to dive in and have some fun! 🎉
+                </p>
+            </div>
+            <h3 className='font-[Poppins] font-normal text-[14px] text-white leading-[150%]'>Redirecting ...</h3>
+            <p className='font-[Poppins] font-normal text-[12px] text-white leading-[150%]'>If you're not redirected automatically, please click here.</p>
+          </div>
+      </div>
+    
+  );
+}
+
 function Register() {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isRegistered, setIsRegistered] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -293,6 +323,8 @@ function Register() {
   
   const [errors, setErrors] = useState<Record<string, string>>({});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   
   const steps = [
     { name: 'Step 1', component: <Step1 formData={formData} setFormData={setFormData} errors={errors} /> },
@@ -394,9 +426,14 @@ function Register() {
       // Dispatch registration action
       await dispatch(registerUser(registrationData) as any);
       
-      // Show success message
-      toast.success('Registration successful! Please check your email to verify your account.');
+      setIsRegistered(true);
+
+      // Redirect to profile after 3 seconds
+      setTimeout(() => {
+        navigate('/profile');
+      }, 3000);
       
+
       // Reset form after successful registration
       setFormData({
         firstName: '',
@@ -430,7 +467,7 @@ function Register() {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Submit form
+
       handleRegister();
     }
   };
@@ -445,87 +482,111 @@ function Register() {
   const progress = ((currentStep + 1) / steps.length) * 100;
 
   return (
-    <div className='container mx-auto'>
-      <div className="p-[32px] max-full backdrop-blur-[8px] bg-[#00000040] border border-[#2F2F4F] rounded-[16px] relative top-[64px]">
-        <div className='flex flex-row gap-[24px] items-center mb-[24px]'>
-          <Link to='/' className='hover:opacity-75 transition-opacity'>
-            <FaArrowLeft size={32} className='text-foundryyellow' />
-          </Link>
-          <div className='h-[32px] w-[125px]'>
-            <img src="/Foundry-yellow.png" alt="Foundry Logo" className='w-full h-full' />
-          </div>
-        </div>
+    <>
 
-        <div className='mb-[24px] gap-[8px] flex flex-col'>
-          <h1 className='font-[agrandir] font-medium text-[24px] leading-[36px] text-white'>
-            Welcome to your Foundry
-          </h1>
-          <p className='font-[agrandir] font-normal leading-[30px] text-[18px] text-[#9898B5]'>
-            So excited to have you on board
-          </p>
-        </div>
+      <div className='min-h-screen flex flex-col'>
+        <div className='flex-grow relative'>
+          {isRegistered ? (   
+            <div className='flex items-center justify-center h-screen'>
+                <div className=' max-w-[500px] '>
+                <div className="p-[32px] backdrop-blur-[8px] bg-[#00000040] border border-[#2F2F4F] rounded-[16px]">
+                  <Redirecting />
+                </div>
+              </div>
+            </div>
+          ) : (
+        <div className='container mx-auto pt-[64px]'>
+          <div className="p-[32px] max-full backdrop-blur-[8px] bg-[#00000040] border border-[#2F2F4F] rounded-[16px] mb-[100px]">
+            {isSubmitting && <Globalloading />}
+            <div className='flex flex-row gap-[24px] items-center mb-[24px]'>
+              <Link to='/' className='hover:opacity-75 transition-opacity'>
+                <FaArrowLeft size={32} className='text-foundryyellow' />
+              </Link>
+              <div className='h-[32px] w-[125px]'>
+                <img src="/Foundry-yellow.png" alt="Foundry Logo" className='w-full h-full' />
+              </div>
+            </div>
 
-        {/* Progress bar */}
-        <div className="mb-[80px] flex flex-col gap-[8px]">
-          <div className="w-full h-[12px] bg-[#332052] rounded-[20px]">
-            <div
-              className="h-full bg-[linear-gradient(90deg,#A17ACC_0%,#6C2BD9_20.85%)] transition-all duration-300 ease-in-out rounded-[20px]"
-              style={{
-                width: `${progress}%`, 
-              }}
-            ></div>
-          </div>
-          <p className="font-[Poppins] font-extralight text-[16px] leading-[18px] text-[#E4CCFF]">
-            We just need some information to help you get the most of your learning time
-          </p>
-        </div>
-        
-        {/* Current step component */}
-        <div className="rounded-lg mb-6 min-h-64 w-full">
-          {steps[currentStep].component}
-        </div>
-        
-        {/* Navigation buttons */}
-        <div className="flex justify-between">
-          <button
-            onClick={prevStep}
-            disabled={currentStep === 0 || isSubmitting}
-            className={`px-5 py-3 flex flex-row items-center justify-center gap-[8px] rounded-lg border border-[#505075] font-[Poppins] text-[16px] font-medium w-[175px] ${
-              currentStep === 0
-                ? 'bg-[#2F2F4F] text-white opacity-[20%] cursor-not-allowed'
-                : 'bg-[#0A0A2B] text-[#9898B5] hover:bg-[#1a1a3a] transition-colors'
-            }`}
-          >
-            <FaArrowLeft size={16} className='text-foundryyellow' />
-            Previous
-          </button>
+            <div className='mb-[24px] gap-[8px] flex flex-col'>
+              <h1 className='font-[agrandir] font-medium text-[24px] leading-[36px] text-white'>
+                Welcome to your Foundry
+              </h1>
+              <p className='font-[agrandir] font-normal leading-[30px] text-[18px] text-[#9898B5]'>
+                So excited to have you on board
+              </p>
+            </div>
+
+            {/* Progress bar */}
+            <div className="mb-[80px] flex flex-col gap-[8px]">
+              <div className="w-full h-[12px] bg-[#332052] rounded-[20px]">
+                <div
+                  className="h-full bg-[linear-gradient(90deg,#A17ACC_0%,#6C2BD9_20.85%)] transition-all duration-300 ease-in-out rounded-[20px]"
+                  style={{
+                    width: `${progress}%`, 
+                  }}
+                ></div>
+              </div>
+              <p className="font-[Poppins] font-extralight text-[16px] leading-[18px] text-[#E4CCFF]">
+                We just need some information to help you get the most of your learning time
+              </p>
+            </div>
+            
+              {/* Current step component */}
+              <div className="rounded-lg mb-6 min-h-64 w-full">
+                {isRegistered ? (
+                  <Redirecting />
+                ) : (
+                  steps[currentStep].component
+                )}
+              </div>
+
+
+              {/* Navigation buttons - hide when registration is complete */}
           
-          <div className='flex flex-row gap-[24px]'>
-            <button
-              onClick={nextStep}
-              disabled={isSubmitting}
-              className={`px-5 py-3 rounded-lg flex flex-row items-center justify-center gap-[8px] font-[Poppins] text-[16px] font-medium w-[175px] bg-[#291A42] text-foundryyellow hover:bg-[#3a2465] transition-colors ${
-                isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-              }`}
-            >
-              {isSubmitting ? (
-                <>
-                  <FaSpinner className="animate-spin" />
-                  Processing...
-                </>
-              ) : currentStep === steps.length - 1 ? (
-                'Register'
-              ) : (
-                <>
-                  Next
-                  <FaArrowRight size={16} className={`text-foundryyellow`} />
-                </>
-              )}
-            </button>
+                <div className="flex justify-between">
+                  <button
+                    onClick={prevStep}
+                    disabled={currentStep === 0 || isSubmitting}
+                    className={`px-5 py-3 flex flex-row items-center justify-center gap-[8px] rounded-lg border border-[#505075] font-[Poppins] text-[16px] font-medium w-[175px] ${
+                      currentStep === 0
+                        ? 'bg-[#2F2F4F] text-white opacity-[20%] cursor-not-allowed'
+                        : 'bg-[#0A0A2B] text-[#9898B5] hover:bg-[#1a1a3a] transition-colors'
+                    }`}
+                  >
+                    <FaArrowLeft size={16} className='text-foundryyellow' />
+                    Previous
+                  </button>
+                  
+                  <div className='flex flex-row gap-[24px]'>
+                    <button
+                      onClick={nextStep}
+                      disabled={isSubmitting}
+                      className={`px-5 py-3 rounded-lg flex flex-row items-center justify-center gap-[8px] font-[Poppins] text-[16px] font-medium w-[175px] bg-[#291A42] text-foundryyellow hover:bg-[#3a2465] transition-colors ${
+                        isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
+                      }`}
+                    >
+                      {currentStep === steps.length - 1 ? (
+                        'Register'
+                      ) : (
+                        <>
+                          Next
+                          <FaArrowRight size={16} className={`text-foundryyellow`} />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+      
           </div>
+        </div>
+              )}
+        <div className='absolute bottom-0 w-full'>
+
+          <Footersmall />
+        </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
