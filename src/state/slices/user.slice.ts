@@ -65,11 +65,16 @@ export const loginUser = createAsyncThunk(
 
 export const verifyOtp = createAsyncThunk(
   "user/verifyOtp",
-  async (otpData: any) => {
-    const response = await userAPIs.verfiyotpApi(otpData);
-    return response.data;
+  async (otpData: any, { rejectWithValue }) => {
+    try {
+      const response = await userAPIs.verfiyotpApi(otpData);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data || { message: 'OTP verification failed' });
+    }
   }
 );
+
 
 
 

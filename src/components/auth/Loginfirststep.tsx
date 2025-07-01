@@ -1,45 +1,71 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { IoIosClose } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa";
-import { userType } from '../../static/userType.enum';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../state/slices/user.slice';
+import { AnyAction } from '@reduxjs/toolkit';
+import { loginUser, verifyOtp } from '../../state/slices/user.slice';
+import { toast } from 'react-toastify';
+
 // Define types for props
 interface Step1Props {
   onNext: () => void;
   onCancel: () => void;
-  setEmail: (email: string) => void;
+  setCredentials: (email: string, password: string) => void;
 }
 
 interface Step2Props {
   onCancel: () => void;
   email: string;
+  onResend: () => Promise<void>;
 }
 
 interface LoginFirstStepProps {
   onClose: () => void;
 }
 
-// Step 1 Component
-const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setEmail }) => {
-  const [inputEmail, setInputEmail] = useState<string>('');
-  const [isValidEmail, setIsValidEmail] = useState<boolean>(true); 
+// Step 1 Component - Email and Password
+const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setCredentials }) => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const dispatch = useDispatch();
 
-  const handleNext = () => {
-
-    if (validateEmail(inputEmail)) {
-      setEmail(inputEmail); 
-      onNext(); 
-    } else {
-      setIsValidEmail(false); 
+  const handleNext = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate email format
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setIsValidEmail(emailValid);
+    
+    if (!emailValid || !password) {
+      setError(!emailValid ? 'Invalid email format' : 'Password is required');
+      return;
     }
-  };
 
-  // Email validation function
-  const validateEmail = (email: string): boolean => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-    return regex.test(email);
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const resultAction = await dispatch(loginUser({ email, password }) as unknown as AnyAction);
+      
+      if (loginUser.fulfilled.match(resultAction)) {
+        setCredentials(email, password);
+        toast.success('OTP sent to your email');
+        onNext();
+      } else {
+        const errorMsg = resultAction.payload?.detail || 'Login failed';
+        setError(errorMsg);
+        toast.error(errorMsg);
+      }
+    } catch (err: any) {
+      setError(err.message || 'Login failed. Please try again.');
+      toast.error('Login failed. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -56,32 +82,58 @@ const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setEmail }) => {
         </button>
       </div>
       <div className='flex flex-col mt-[32px]'>
-        <h2 className='font-[agrandir] font-bold text-white leading-[150%] text-[24px]'>Hello Creative !</h2>
+        <h2 className='font-[agrandir] font-bold text-white leading-[150%] text-[24px]'>Hello Creative!</h2>
         <p className='font-[Poppins] font-light text-[16px] leading-[150%] text-[#E4CCFF]'>Let's Start new Journey</p>
         <h1 className='font-[agrandir] font-bold text-white leading-[150%] text-[30px] my-[32px]'>Login to your account</h1>
-        <form action="" className='flex flex-col gap-2'>
-          <label htmlFor="" className='font-[Poppins] font-medium text-[14px] leading-[150%] text-white'>Email</label>
-          <input
-            type="email"
-            className={`bg-[#2F2F4F] px-3 py-3 border ${
-              isValidEmail ? 'border-[#505075]' : 'border-red-500 text-red-500'
-            } rounded-[8px] font-[Poppins] font-normal text-[14px] leading-[125%] align-middle text-[rgb(140,146,161)]`}
-            placeholder='Your Registered Email'
-            value={inputEmail}
-            onChange={(e) => {
-              setInputEmail(e.target.value);
-              setIsValidEmail(true); 
-            }}
-            required
-          />
-          {!isValidEmail && (
-            <p className='text-red-500 text-sm mt-1'>Invalid email format. Please enter a valid email address.</p>
-          )}
-          <p className='font-[Poppins] text-[14px] leading-[125%] align-middle text-[#9898B5]'>New on our platform? <span className='text-foundryyellow'><NavLink to='/'>Create an account</NavLink></span></p>
-          <div className='flex justify-end gap-[12px] mt-[32px]'>
-            <button type="button" className='py-[10px] text-white border border-[#505075] w-[106px] rounded-lg bg-[#2F2F4F]' onClick={onCancel}>Cancel</button>
-            <button type="button" className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]' onClick={handleNext}>
-              Login <FaArrowRight size={12} className='align-middle' />
+        
+        <form onSubmit={handleNext} className='flex flex-col gap-4'>
+          <div>
+            <label htmlFor="email" className='font-[Poppins] font-medium text-[14px] leading-[150%] text-white'>Email</label>
+            <input
+              id="email"
+              type="email"
+              className={`w-full bg-[#2F2F4F] px-3 py-3 mt-1 border ${
+                isValidEmail ? 'border-[#505075]' : 'border-red-500'
+              } rounded-[8px] font-[Poppins] font-normal text-[14px] leading-[125%] text-[rgb(140,146,161)]`}
+              placeholder='Your Registered Email'
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setIsValidEmail(true);
+              }}
+              required
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="password" className='font-[Poppins] font-medium text-[14px] leading-[150%] text-white'>Password</label>
+            <input
+              id="password"
+              type="password"
+              className='w-full bg-[#2F2F4F] px-3 py-3 mt-1 border border-[#505075] rounded-[8px] font-[Poppins] font-normal text-[14px] leading-[125%] text-[rgb(140,146,161)]'
+              placeholder='Your Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          
+          {error && <p className='text-red-500 text-sm'>{error}</p>}
+          
+          <p className='font-[Poppins] text-[14px] leading-[125%] text-[#9898B5] mt-2'>
+            New on our platform? <span className='text-foundryyellow'><NavLink to='/register'>Create an account</NavLink></span>
+          </p>
+          
+          <div className='flex justify-end gap-[12px] mt-[24px]'>
+            <button type="button" className='py-[10px] text-white border border-[#505075] w-[106px] rounded-lg bg-[#2F2F4F]' onClick={onCancel}>
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]' 
+              disabled={isLoading}
+            >
+              {isLoading ? 'Logging in...' : 'Login'} <FaArrowRight size={12} className='align-middle' />
             </button>
           </div>
         </form>
@@ -90,26 +142,84 @@ const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setEmail }) => {
   );
 };
 
-// Step 2 Component
-const Step2: React.FC<Step2Props> = ({ onCancel, email }) => {
-  const [timeLeft, setTimeLeft] = useState<number>(59); 
-
-  // Mask the email (e.g., "mo***@gmail.com")
-  const maskedEmail = email ? `${email.split('@')[0].substring(0, 2)}***@${email.split('@')[1]}` : '';
+// Step 2 Component - OTP Verification
+const Step2: React.FC<Step2Props> = ({ onCancel, email, onResend }) => {
+  const [otp, setOtp] = useState<string>('');
+  const [timeLeft, setTimeLeft] = useState<number>(59);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [canResend, setCanResend] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (timeLeft === 0) return; 
+    if (timeLeft === 0) {
+      setCanResend(true);
+      return;
+    }
 
-    // Set up the timer interval
     const timer = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
+      setTimeLeft(prev => prev - 1);
     }, 1000);
 
-    
     return () => clearInterval(timer);
   }, [timeLeft]);
 
-  const formattedTime = `00:${timeLeft < 10 ? `0${timeLeft}` : timeLeft}`;
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (otp.length !== 6) {
+      setError('OTP must be 6 digits');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const resultAction = await dispatch(verifyOtp({ email, otp }) as unknown as AnyAction);
+      
+      if (verifyOtp.fulfilled.match(resultAction)) {
+        const token = resultAction.payload.token;
+        localStorage.setItem('jwtToken', token);
+        toast.success('Login successful!');
+        onCancel();
+        navigate('/profile');
+      } else {
+        const errorMsg = resultAction.payload?.detail || 'Invalid OTP';
+        setError(errorMsg);
+        toast.error(errorMsg);
+      }
+    } catch (err: any) {
+      setError(err.message || 'Invalid OTP. Please try again.');
+      toast.error('Invalid OTP. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleResendOtp = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      await onResend();
+      setTimeLeft(59);
+      setCanResend(false);
+      toast.success('New OTP sent to your email');
+    } catch (err: any) {
+      setError(err.message || 'Failed to resend OTP');
+      toast.error('Failed to resend OTP');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const maskEmail = (email: string): string => {
+    if (!email) return '';
+    const [name, domain] = email.split('@');
+    return `${name.substring(0, 2)}***@${domain}`;
+  };
 
   return (
     <div className='w-[640px] bg-[#0A0316F5] border border-[#0A0A2B] shadow-[0px_1px_12px_0px_rgba(0,0,0,0.25)] rounded-[16px] p-[32px] flex flex-col'>
@@ -125,19 +235,58 @@ const Step2: React.FC<Step2Props> = ({ onCancel, email }) => {
         </button>
       </div>
       <div className='flex flex-col mt-[32px]'>
-        <h2 className='font-[agrandir] font-bold text-white leading-[150%] text-[24px]'>Hello Creative !</h2>
-        <p className='font-[Poppins] font-light text-[16px] leading-[150%] text-[#E4CCFF]'>Let's Start new Journey</p>
+        <h2 className='font-[agrandir] font-bold text-white leading-[150%] text-[24px]'>Secure Verification</h2>
+        <p className='font-[Poppins] font-light text-[16px] leading-[150%] text-[#E4CCFF]'>Verify your identity</p>
         <p className='font-[agrandir] font-normal text-white leading-[150%] text-[20px] my-[32px]'>
-          We send you an One Time Password "OTP" to your email address "{maskedEmail}", please add this 6 digits code to allow access to your profile
+          We've sent a One Time Password (OTP) to your email at {maskEmail(email)}. Please enter the 6-digit code to complete your login.
         </p>
-        <form action="" className='flex flex-col gap-2'>
-          <label htmlFor="" className='font-[Poppins] font-medium text-[14px] leading-[150%] text-white'>OTP</label>
-          <input type="text" className='bg-[#2F2F4F] px-3 py-2 border border-[#505075] rounded-[8px] font-[Poppins] font-normal text-[14px] leading-[125%] align-middle text-[rgb(140,146,161)]' placeholder='Input text' />
-          <p className='font-[Poppins] text-[14px] leading-[125%] align-middle text-[#9898B5]'>You can resend the code after <span className='text-white'>{formattedTime}</span></p>
-          <div className='flex justify-end gap-[12px] mt-[32px]'>
-            <button type="button" className='py-[10px] text-white border border-[#505075] w-[106px] rounded-lg bg-[#2F2F4F]' onClick={onCancel}>Cancel</button>
-            <button type="button" className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]'>
-              Confirm <FaArrowRight size={12} className='align-middle' />
+        
+        <form onSubmit={handleVerifyOtp} className='flex flex-col gap-4'>
+          <div>
+            <label htmlFor="otp" className='font-[Poppins] font-medium text-[14px] leading-[150%] text-white'>OTP Code</label>
+            <input
+              id="otp"
+              type="text"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value.slice(0, 6))}
+              className='w-full bg-[#2F2F4F] px-3 py-3 border border-[#505075] rounded-[8px] font-[Poppins] font-normal text-[14px] leading-[125%] text-[rgb(140,146,161)]'
+              placeholder='Enter 6-digit code'
+              maxLength={6}
+              inputMode='numeric'
+            />
+            {error && <p className='text-red-500 text-sm mt-1'>{error}</p>}
+          </div>
+          
+          <div className='mt-2'>
+            <p className='font-[Poppins] text-[14px] leading-[125%] text-[#9898B5]'>
+              {canResend ? (
+                <span>
+                  Didn't receive the code?{' '}
+                  <button
+                    type="button"
+                    onClick={handleResendOtp}
+                    disabled={isLoading}
+                    className="text-foundryyellow hover:underline focus:outline-none"
+                  >
+                    Resend OTP
+                  </button>
+                </span>
+              ) : (
+                `You can request a new code in 00:${timeLeft < 10 ? `0${timeLeft}` : timeLeft}`
+              )}
+            </p>
+          </div>
+          
+          <div className='flex justify-end gap-[12px] mt-[24px]'>
+            <button type="button" className='py-[10px] text-white border border-[#505075] w-[106px] rounded-lg bg-[#2F2F4F]' onClick={onCancel}>
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className='py-[10px] rounded-lg text-foundryyellow bg-[#291A42] w-[195px] flex justify-center items-center gap-[5px]'
+              disabled={isLoading || otp.length !== 6}
+            >
+              {isLoading ? 'Verifying...' : 'Verify OTP'} <FaArrowRight size={12} className='align-middle' />
             </button>
           </div>
         </form>
@@ -150,30 +299,37 @@ const Step2: React.FC<Step2Props> = ({ onCancel, email }) => {
 const LoginFirstStep: React.FC<LoginFirstStepProps> = ({ onClose }) => {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const dispatch = useDispatch();
 
-  const nextStep = () => {
-    if (currentStep < 1) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
-
+  const nextStep = () => setCurrentStep(1);
   const handleCancel = () => {
-    if (onClose && typeof onClose === 'function') {
-      onClose(); 
-    } else {
-      console.error('onClose is not a function');
-    }
+    setCurrentStep(0);
+    setEmail('');
+    setPassword('');
+    onClose();
   };
 
-  const steps = [
-    { name: 'Step 1', component: <Step1 onNext={nextStep} onCancel={handleCancel} setEmail={setEmail} /> },
-    { name: 'Step 2', component: <Step2 onCancel={handleCancel} email={email} /> },
-  ];
+  const setCredentials = (email: string, password: string) => {
+    setEmail(email);
+    setPassword(password);
+  };
+
+  const handleResendOtp = async () => {
+    try {
+      await dispatch(loginUser({ email, password }) as unknown as AnyAction);
+    } catch (err: any) {
+      throw new Error('Failed to resend OTP');
+    }
+  };
 
   return (
-    <div className="w-[100vw] h-[100vh] flex justify-center items-center bg-[#0a031600] backdrop-blur-[12px]">
-      {steps[currentStep].component}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm">
+      {currentStep === 0 ? (
+        <Step1 onNext={nextStep} onCancel={handleCancel} setCredentials={setCredentials} />
+      ) : (
+        <Step2 onCancel={handleCancel} email={email} onResend={handleResendOtp} />
+      )}
     </div>
   );
 };

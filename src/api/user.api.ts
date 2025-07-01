@@ -52,7 +52,25 @@ class UserAPIs {
       },
     });
   }
+
+  
+
+  
 }
+// ask mo2tamen !!!!!
+// // In your API setup (e.g., api.ts)
+// axios.interceptors.response.use(
+//   response => response,
+//   error => {
+//     if (error.response) {
+//       // Extract error message from API response
+//       return Promise.reject({
+//         message: error.response.data.detail || 'Request failed'
+//       });
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 
 export default UserAPIs;

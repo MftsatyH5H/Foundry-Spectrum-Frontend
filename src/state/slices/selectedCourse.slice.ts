@@ -7,7 +7,6 @@ import { studentGalleryList, TestimonialList } from "../../types";
 type selectedCourseType = {
   id: string,
   name: string,
-  //ask khalid
   category: string[],
   tags: string[],
   description: string,

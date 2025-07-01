@@ -13,6 +13,8 @@ import CourseOverview from './pages/courseOverview';
 import CreateCourse from './pages/CreateCourse';
 import { useSelector } from 'react-redux';
 import StudentNavbar from './components/navbar/StudentNavbar';
+import Register from './pages/register';
+
 function App() {
 
   const user = useSelector((state: any) => state.user.type);
@@ -22,6 +24,7 @@ function App() {
     if(
       [
         '/create-course',
+        '/register',
 
       ].includes(location.pathname)
     ){
@@ -43,6 +46,7 @@ function App() {
                 <Route path='/course-overview' element={<CourseOverview />} />
                 <Route path='/profile-instructor' element={<ProfileInstructor />} />
                 <Route path='/create-course' element={<CreateCourse />} />
+                <Route path='/register' element={<Register />} />
               </Routes>
               
               {isNavbarAllowed && (<Footer />)}
@@ -71,6 +75,9 @@ function App() {
                 <Route path='/course-overview' element={<CourseOverview />} />
                 <Route path='/profile-instructor' element={<ProfileInstructor />} />
                 <Route path='/create-course' element={<CreateCourse />} />
+                <Route path='/register' element={<Register />} />
+
+
               </Routes>
               {isNavbarAllowed && (<Footer />)}
               </>

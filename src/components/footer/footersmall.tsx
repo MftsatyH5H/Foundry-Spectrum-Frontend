@@ -5,7 +5,7 @@ class Footersmall extends Component {
 
         return (
             <div
-                className='flex justify-between items-center  p-4 text-[14px] leading-[21px] font-[Poppins] font-normal text-[#9898B5] w-full bg-transparent'
+                className='flex justify-between items-center  px-[64px] py-[24px] text-[14px] leading-[21px] font-[Poppins] font-normal text-[#9898B5] w-full bg-transparent'
 
             >
                 <p>© 2024 Foundry Spectrum. All rights reserved.</p>
