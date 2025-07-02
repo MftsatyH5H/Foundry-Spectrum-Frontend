@@ -30,7 +30,7 @@ class UserAPIs {
     return axios.get<any>(`/api/users/${id}`);
   };
   registerUserApi = (user: any): Promise<AxiosResponse<any>> => {
-    return axios.post<any>(`${this.baseUrl}/auth/register`, user, {
+    return axios.post<any>(`/api/auth/register`, user, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -46,7 +46,7 @@ class UserAPIs {
     });
   };
   verfiyotpApi = (otp: any): Promise<AxiosResponse<any>> => {
-    return axios.post<any>(`${this.baseUrl}/auth/otp/verify`, otp, {
+    return axios.post<any>(`/api/auth/otp/verify`, otp, {
       headers: {
         'Content-Type': 'application/json',
       },
