@@ -4,7 +4,7 @@ import MyCoursesCard from "../components/Cards/MyCoursesCard/MyCoursesCard";
 import CommunityCard from "../components/Cards/inviteCard/CommunityCard";
 import Courserelatedlist from "../components/courserelated/courserelatedlist";
 import Blogsliderlist from "../components/blogsslider/blogsliderlist";
-import PerformanceChart from "../components/chart/PerformanceChart";
+// import PerformanceChart from "../components/chart/PerformanceChart";
 import ChartOverview from "../components/chart/ChartOverview";
 import MentorshipRequests from "../components/Cards/MentorShipRequestsCard/MentorShipRequestsCard";
 import { fetchUserData } from './../state/slices/user.slice';
@@ -31,7 +31,8 @@ function ProfileStudent() {
       try {
         // If we have a token but no user data
         if (token && (!user.id || user.id === "")) {
-          await dispatch(fetchUserData());
+          await dispatch(fetchUserData(user));
+          console.log("User data fetched successfully:", user);
         }
       } catch (error) {
         console.error("Failed to fetch user data:", error);

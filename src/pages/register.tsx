@@ -497,7 +497,6 @@ function Register() {
           ) : (
         <div className='container mx-auto pt-[64px]'>
           <div className="p-[32px] max-full backdrop-blur-[8px] bg-[#00000040] border border-[#2F2F4F] rounded-[16px] mb-[100px]">
-            {isSubmitting && <Globalloading />}
             <div className='flex flex-row gap-[24px] items-center mb-[24px]'>
               <Link to='/' className='hover:opacity-75 transition-opacity'>
                 <FaArrowLeft size={32} className='text-foundryyellow' />
