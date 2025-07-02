@@ -187,6 +187,7 @@ const Step2: React.FC<Step2Props> = ({ onCancel, email, onResend }) => {
         setAuthHeader(token);
 
         // Fetch user data after successful verification
+        //@ts-ignore
         await dispatch(fetchUserData());
         onCancel();
         navigate('/profile');

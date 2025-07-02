@@ -1,8 +1,14 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { RootState } from '../../../state/store/store';
 
 
 const StudentProfile = () => {
+    const user = useSelector((state: RootState) => state.user);
+    useEffect(() => {
+        console.log(user);
+    })
     return ( 
         <div className='py-[32px] px-[24px] bg-[#050517] flex flex-col gap-8 justify-center items-center w-[400px] h-fit rounded-[12px] shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1)]'>
             <div className='flex flex-col gap-[16px] items-center'>
@@ -10,7 +16,7 @@ const StudentProfile = () => {
                     <img src="/profile.png" alt="profile"  className='w-full h-full rounded-full'/>
                 </div>
                 <h3 className='font-[Poppins] font-light text-[16px] text-white'>Hello 👋 </h3>
-                <h1 className='font-[agrandir] font-bold text-[24px] leading-[150%] tracking-[-1%] text-white'>Karim Yasser</h1>
+                <h1 className='font-[agrandir] font-bold text-[24px] leading-[150%] tracking-[-1%] text-white'>{user.firstName} {user.lastName}</h1>
                 <p className='font-[Poppins] font-light text-[12px] leading-[150%] text-[#9898B5]'>A good day to achieve more</p>
             </div>
             <div className='flex flex-row gap-[12px]'>

@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Badge, Dropdown, ConfigProvider, MenuProps } from "antd";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { HiOutlineMegaphone } from "react-icons/hi2";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import './Navbar.css'
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../state/store/store";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "../../state/slices/user.slice";
 
 interface NotificationItem {
   key: string;
@@ -79,10 +83,17 @@ const StudentNavbar: React.FC = () => {
   const handleProfileDropdownOpenChange = (open: boolean) => {
     setProfileDropdownOpen(open);
   };
-
+  const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const notificationMenuProps: MenuProps = {
     items: notifications,
   };
+  const handleSignOut = () => {
+    dispatch(signOut());
+    navigate('/');
+  }
+
 
   return (
       <nav
@@ -171,7 +182,7 @@ const StudentNavbar: React.FC = () => {
                       Change My Email
                     </button>
                   </div>
-                  <button className="px-4 py-2 text-[#F05252] font-[Poppins] font-normal text-[14px] leading-[150%] text-left border border-t-[#505075] border-transparent">
+                  <button onClick={handleSignOut} className="px-4 py-2 text-[#F05252] font-[Poppins] font-normal text-[14px] leading-[150%] text-left border border-t-[#505075] border-transparent">
                     Sign Out
                   </button>
                 </div>
@@ -184,7 +195,7 @@ const StudentNavbar: React.FC = () => {
                   className="border border-[#291A42] rounded-full w-[40px]"
                 />
                 <h1 className="font-[Poppins] font-medium text-[14px] leading-[150%] text-white">
-                  Karim0@gmail.com
+                  {user.email}
                 </h1>
                 {profileDropdownOpen ? (
                   <IoIosArrowUp size={14} className="text-white" />

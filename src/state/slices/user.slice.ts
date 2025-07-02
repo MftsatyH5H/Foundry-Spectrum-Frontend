@@ -43,6 +43,11 @@ const userInitType: userStateType = {
   active: true,
   verified: false,
 }
+if(localStorage.getItem('jwtToken')){
+  userInitType.token = localStorage.getItem('jwtToken') || "";
+  setAuthHeader(userInitType.token);
+  console.log("token"	,userInitType.token);
+}
 const userAPIs = new UserAPIs();
 export const fetchUserData = createAsyncThunk(
   "user/fetchUserData",
@@ -93,6 +98,25 @@ const userSlice = createSlice({
 
       setUserData: (state, action) => {
       return { ...state, ...action.payload };
+    },
+    signOut: (state) => {
+      localStorage.removeItem('jwtToken');
+      state.token = "";
+      state.type = userType.visitor;
+      state.email = "";
+      state.firstName = "";
+      state.lastName = "";
+      state.phoneNumber = "";
+      state.country = "";
+      state.createdAt = "";
+      state.updatedAt = "";
+      state.age = undefined;
+      state.profession = "";
+      state.education = "";
+      state.interests = "";
+      state.objective = "";
+      state.active = true;
+      state.verified = false;
     }
 
   },
@@ -108,15 +132,21 @@ const userSlice = createSlice({
       .addCase(verifyOtp.fulfilled, (state, action) => {
         console.log("OTP verified successfully:", action.payload);
         const token = action.payload.token;
-        // Store token in state and localStorage
         localStorage.setItem('jwtToken', token);
+        state.token = token;
         setAuthHeader(token);
-        return { ...state, ...action.payload.user, verified: true };
       })
 
       // Add case for fetchUserData
       .addCase(fetchUserData.fulfilled, (state, action) => {
-        return { ...state, ...action.payload };
+        state.id = action.payload.id;
+        state.email = action.payload.email;
+        state.firstName = action.payload.firstName;
+        state.lastName = action.payload.lastName;
+        state.phoneNumber = action.payload.phoneNumber;
+        state.country = action.payload.country;
+        state.createdAt = action.payload.createdAt;
+        state.type = 'STUDENT';
       });
 
       ;
@@ -126,5 +156,5 @@ const userSlice = createSlice({
   
 });
 
-export const { setToken, setUserData } = userSlice.actions;
+export const { setToken, setUserData, signOut } = userSlice.actions;
 export default userSlice.reducer;
