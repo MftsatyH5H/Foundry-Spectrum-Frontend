@@ -26,9 +26,10 @@ class UserAPIs {
 
   // loginUserApi = (user: IUserSignIn) => axios.post(`${this.baseUrl}/users/login`, user);
 
-  getUserByIdApi = (id: string): Promise<AxiosResponse<any>> => {
-    return axios.get<any>(`/api/users/${id}`);
+  getMyUser = (): Promise<AxiosResponse<any>> => {
+    return axios.get<any>(`/api/user/student/me`);
   };
+
   registerUserApi = (user: any): Promise<AxiosResponse<any>> => {
     return axios.post<any>(`/api/auth/register`, user, {
       headers: {
@@ -45,6 +46,7 @@ class UserAPIs {
       },
     });
   };
+
   verfiyotpApi = (otp: any): Promise<AxiosResponse<any>> => {
     return axios.post<any>(`/api/auth/otp/verify`, otp, {
       headers: {

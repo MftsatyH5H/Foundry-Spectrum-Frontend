@@ -7,6 +7,8 @@ import { AnyAction } from '@reduxjs/toolkit';
 import { loginUser, verifyOtp } from '../../state/slices/user.slice';
 import { toast } from 'react-toastify';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { setAuthHeader } from '../../api';
+import { fetchUserData } from '../../state/slices/user.slice';
 
 
 interface Step1Props {
@@ -54,7 +56,6 @@ const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setCredentials }) => {
       
       if (loginUser.fulfilled.match(resultAction)) {
         setCredentials(email, password);
-        toast.success('OTP sent to your email');
         onNext();
       } else {
         const errorMsg = resultAction.payload?.detail || 'Login failed';
@@ -63,7 +64,6 @@ const Step1: React.FC<Step1Props> = ({ onNext, onCancel, setCredentials }) => {
       }
     } catch (err: any) {
       setError(err.message || 'Login failed. Please try again.');
-      toast.error('Login failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -182,8 +182,12 @@ const Step2: React.FC<Step2Props> = ({ onCancel, email, onResend }) => {
       
       if (verifyOtp.fulfilled.match(resultAction)) {
         const token = resultAction.payload.token;
+        // Store token and set header
         localStorage.setItem('jwtToken', token);
-        toast.success('Login successful!');
+        setAuthHeader(token);
+
+        // Fetch user data after successful verification
+        await dispatch(fetchUserData());
         onCancel();
         navigate('/profile');
       } else {

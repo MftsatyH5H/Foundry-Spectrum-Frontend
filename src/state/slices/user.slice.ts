@@ -2,9 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { userType } from "../../static/userType.enum";
 import axios from "axios";
 import { UserAPIs } from "../../api";
+import { setAuthHeader } from "../../api";
+import getMyUser from "../../api/user.api";
 
 type userStateType = {
   id: string;
+  token?: string;
   type?: string;
   email?: string;
   firstName?: string;
@@ -23,6 +26,7 @@ type userStateType = {
 }
 const userInitType: userStateType = {
   id: "",
+  token: "",
   type: userType.visitor, // Default role
   email: "",
   firstName: "",
@@ -42,8 +46,8 @@ const userInitType: userStateType = {
 const userAPIs = new UserAPIs();
 export const fetchUserData = createAsyncThunk(
   "user/fetchUserData",
-  async (userId: string) => {
-    const response = await userAPIs.getUserByIdApi(userId);
+  async () => {
+    const response = await userAPIs.getMyUser();
     return response.data;
   }
 );
@@ -83,6 +87,13 @@ const userSlice = createSlice({
   name: "user",
   initialState: userInitType,
   reducers: {
+      setToken: (state, action) => {
+      state.token = action.payload;
+    },
+
+      setUserData: (state, action) => {
+      return { ...state, ...action.payload };
+    }
 
   },
   extraReducers: (builder) => {
@@ -95,8 +106,25 @@ const userSlice = createSlice({
         return { ...state, ...action.payload };
       })
       .addCase(verifyOtp.fulfilled, (state, action) => {
+        console.log("OTP verified successfully:", action.payload);
+        const token = action.payload.token;
+        // Store token in state and localStorage
+        localStorage.setItem('jwtToken', token);
+        setAuthHeader(token);
+        return { ...state, ...action.payload.user, verified: true };
+      })
+
+      // Add case for fetchUserData
+      .addCase(fetchUserData.fulfilled, (state, action) => {
         return { ...state, ...action.payload };
       });
+
+      ;
+
+      
   }
+  
 });
+
+export const { setToken, setUserData } = userSlice.actions;
 export default userSlice.reducer;
