@@ -24,15 +24,13 @@ function ProfileStudent() {
   const token = useSelector((state: any) => state.user.token);
   const [loading, setLoading] = useState(true);
 
-
-
  useEffect(() => {
     const fetchData = async () => {
       try {
         // If we have a token but no user data
-        if (token && (!user.id || user.id === "")) {
+          //@ts-ignore
           await dispatch(fetchUserData());
-        }
+        
       } catch (error) {
         console.error("Failed to fetch user data:", error);
       } finally {
@@ -41,7 +39,7 @@ function ProfileStudent() {
     };
 
     fetchData();
-  }, [dispatch, token, user]);
+  }, []);
 
   if (loading) {
     return <div>Loading profile...</div>;

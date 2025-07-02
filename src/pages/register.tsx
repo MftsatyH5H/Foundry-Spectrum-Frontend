@@ -430,7 +430,7 @@ function Register() {
 
       // Redirect to profile after 3 seconds
       setTimeout(() => {
-        navigate('/profile');
+        navigate('/profile', { replace: true });
       }, 3000);
       
 

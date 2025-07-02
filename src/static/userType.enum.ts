@@ -1,7 +1,7 @@
 enum userType {
-    student = 'Student',
-    instructor = 'Instructor',
-    visitor = 'Visitor',
-    superAdmin = 'SuperAdmin'
+    student = 'STUDENT',
+    instructor = 'INSTRUCTOR',
+    visitor = 'VISITOR',
+    superAdmin = 'SUPERADMIN'
 }
 export {userType}
