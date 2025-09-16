@@ -15,7 +15,7 @@ function CourseOverview() {
             <CourseContainer />
         </div>
           <RelatedCoursesList />
-        
+          
     </div>
   )
 }

@@ -11,7 +11,7 @@ import { IconContext } from 'react-icons/lib';
 
 
 class Footer extends Component {
-    state = {  } 
+    
     render() { 
         return (
             <div className='pt-[80px] pb-[80px] pr-[64px] pl-[64px] bg-[#140D21] w-full h-[685px] '>
