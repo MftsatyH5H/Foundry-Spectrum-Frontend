@@ -9,7 +9,7 @@ interface CoursecardbiglistProps {
 const Coursecardbiglist: React.FC<CoursecardbiglistProps> = ({ courses }) => {
   return (
     <div className='flex flex-wrap justify-center items-center flex-col gap-[70px] mt-10'>
-      {courses.map(course => (
+      {courses && courses.length > 0 && courses.map(course => (
         <React.Fragment key={course.id}>
           <Coursecardbig course={course} />
         </React.Fragment>
