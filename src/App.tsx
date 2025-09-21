@@ -57,7 +57,7 @@ function App() {
                 <Route path='/courses' element={<CoursesList />} />
                 <Route path='/profile' element={<ProfileStudent />} />
                 <Route path='/profile-edit' element={<EditProfile />} />
-                <Route path='/course-overview' element={<CourseOverview />} />
+                <Route path='/course-overview/:id' element={<CourseOverview />} />
                 <Route path='/profile-instructor' element={<ProfileInstructor />} />
                 <Route path='/create-course' element={<CreateCourse />} />
                 <Route path='/register' element={<Navigate to="/profile" replace />} />
@@ -87,10 +87,10 @@ function App() {
                 <Route path='/courses' element={<CoursesList />} />
                 <Route path='/profile' element={<ProfileStudent />} />
                 <Route path='/profile-edit' element={<EditProfile />} />
-                <Route path='/course-overview' element={<CourseOverview />} />
+                <Route path='/course-overview/:id' element={<CourseOverview />} />
                 <Route path='/profile-instructor' element={<ProfileInstructor />} />
                 <Route path='/create-course' element={<CreateCourse />} />
-
+                <Route path='/register' element={<Register />} />
 
               </Routes>
               {isNavbarAllowed && (<Footer />)}

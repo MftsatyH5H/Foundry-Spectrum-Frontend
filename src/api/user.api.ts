@@ -27,7 +27,7 @@ class UserAPIs {
   // loginUserApi = (user: IUserSignIn) => axios.post(`${this.baseUrl}/users/login`, user);
 
   getMyUser = (): Promise<AxiosResponse<any>> => {
-    return axios.get<any>(`/api/user/student/me`);
+    return axios.get<any>(`/api/user/student/profile`);
   };
 
   registerUserApi = (user: any): Promise<AxiosResponse<any>> => {
@@ -48,6 +48,13 @@ class UserAPIs {
   };
 
   verfiyotpApi = (otp: any): Promise<AxiosResponse<any>> => {
+    return axios.post<any>(`/api/auth/register/verify`, otp, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+  verifyEmail = (otp: any): Promise<AxiosResponse<any>> => {
     return axios.post<any>(`/api/auth/otp/verify`, otp, {
       headers: {
         'Content-Type': 'application/json',
@@ -55,6 +62,13 @@ class UserAPIs {
     });
   }
 
+  sendOtp = (email: any): Promise<AxiosResponse<any>> => {
+    return axios.post<any>(`/api/auth/otp/send`, email, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
   
 
   

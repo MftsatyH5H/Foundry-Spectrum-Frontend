@@ -27,7 +27,7 @@ class selectedCourseAPIs {
   // loginUserApi = (user: IUserSignIn) => axios.post(`${this.baseUrl}/users/login`, user);
 
   getCourseByIdApi = (id: string): Promise<AxiosResponse<any>> => {
-    return axios.get<any>(`${this.baseUrl}/courses/${id}`);
+    return axios.get<any>(`/api/course/${id}`);
   };
 }
 

@@ -18,14 +18,22 @@ import { TbMessage2Question } from "react-icons/tb";
 
 
 
-const CourseDetailsCard = () => {
+import { Course } from '../../../types/course.type';
+
+interface CourseDetailsCardProps {
+    course: Course;
+}
+
+const CourseDetailsCard: React.FC<CourseDetailsCardProps> = ({ course }) => {
     return ( 
 
         <div className='w-full p-[24px] rounded-[12px] bg-[#140D21] shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.10)]'>
             <div className='border-b-[1px] border-[#5F358A] flex flex-col gap-6'>
-                <h1 className='font-[agrandir] font-bold text-[20px] leading-[150%] text-white'>The Ultimate Unreal Engine 2D Game Development Course</h1>
+                <h1 className='font-[agrandir] font-bold text-[20px] leading-[150%] text-white'>{course.title}</h1>
                 <div className='flex flex-row justify-between items-center pb-4'>
-                    <h1 className='text-[24px] text-foundryyellow leading-[140%] font-bold font-[Poppins]'>$ 300</h1>
+                    <h1 className='text-[24px] text-foundryyellow leading-[140%] font-bold font-[Poppins]'>
+                        {course.is_free ? 'Free' : `$${course.price.toFixed(2)}`}
+                    </h1>
                     <button className='rounded-lg border border-[#C3C3D9] bg-white py-[10px] px-[20px] font-[Poppins] font-medium text-[14px] leading-[150%] text-[#050517] '>Start Now</button>
                 </div>
             </div>
@@ -38,27 +46,27 @@ const CourseDetailsCard = () => {
                     <div className='flex flex-row gap-[8px]'>
                         <LuCalendarFold size={16} className='text-[#9898B5]'/>
                         <p className='font-[Poppins] font-semibold text-[14px] leading-[150%] text-white'>Lessons:</p>
-                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>72+</p>
+                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>{course.chapters.reduce((total, chapter) => total + chapter.lessons.length, 0)}+</p>
                     </div>
                     <div className='flex flex-row gap-[8px]'>
                         <RiReceiptLine  size={16} className='text-[#9898B5]'/>
                         <p className='font-[Poppins] font-semibold text-[14px] leading-[150%] text-white'>Category:</p>
-                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>Name Title EXYZ</p>
+                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>{course.categories.length > 0 ? course.categories[0].name : 'General'}</p>
                     </div>
                     <div className='flex flex-row gap-[8px]'>
                         <LuClock4  size={16} className='text-[#9898B5]'/>
                         <p className='font-[Poppins] font-semibold text-[14px] leading-[150%] text-white'>Duration:</p>
-                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>2+ Hours</p>
+                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>{Math.round(course.duration_mins / 60)}+ Hours</p>
                     </div>
                     <div className='flex flex-row gap-[8px]'>
                         <TbChartCandle  size={16} className='text-[#9898B5]'/>
                         <p className='font-[Poppins] font-semibold text-[14px] leading-[150%] text-white'>Level:</p>
-                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>Intermediate</p>
+                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>{course.difficulty}</p>
                     </div>
                     <div className='flex flex-row gap-[8px]'>
                         <IoLanguage  size={16} className='text-[#9898B5]'/>
                         <p className='font-[Poppins] font-semibold text-[14px] leading-[150%] text-white'>Languages:</p>
-                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>English, Arabic, Frensh, Spanish</p>
+                        <p className='font-[Poppins] font-light text-[14px] leading-[150%] text-white'>{course.languages.map(lang => lang.content).join(', ')}</p>
                     </div>
                     <div className='flex flex-row gap-[8px]'>
                         <TiStarOutline  size={16} className='text-[#9898B5]'/>
@@ -82,8 +90,10 @@ const CourseDetailsCard = () => {
                     </div>
                 </div>
                 <div className='flex flex-col gap-[24px] pt-[16px] items-center mt-6'>
-                    <h1 className='font-[Poppins] text-[16px] leading-[150%] text-[#6D6D94]'>Let’s Start your Journey Now</h1>
-                    <button className='bg-[#332052] rounded-lg text-foundryyellow font-[Poppins] font-bold text-[16px] leading-[150%] w-full py-3.5'>$ 300 Enroll Now</button>
+                    <h1 className='font-[Poppins] text-[16px] leading-[150%] text-[#6D6D94]'>Let's Start your Journey Now</h1>
+                    <button className='bg-[#332052] rounded-lg text-foundryyellow font-[Poppins] font-bold text-[16px] leading-[150%] w-full py-3.5'>
+                        {course.is_free ? 'Free Enroll Now' : `$${course.price.toFixed(2)} Enroll Now`}
+                    </button>
                 </div>
         </div>
      );

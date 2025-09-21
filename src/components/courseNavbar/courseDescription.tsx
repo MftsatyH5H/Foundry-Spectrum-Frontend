@@ -1,4 +1,4 @@
-import { CalendarOutlined, CheckOutlined } from '@ant-design/icons';
+import { CalendarOutlined, CheckOutlined, QuestionCircleFilled } from '@ant-design/icons';
 import React from 'react';
 import ContentDropdown from './contentDropdown';
 import ContentDropdownList from './contentDropdownList';
@@ -9,7 +9,13 @@ import { LuClock, LuShieldQuestion, LuClipboard, LuCalendar, LuMoveRight } from 
 import StudentGalleryListSmall from '../studentsGallery/StudentGalleryListSmall';
 import MentorshipRequests from '../Cards/MentorShipRequestsCard/MentorShipRequestsCard';
 import PrivateClassroomcard from '../Cards/privateClassroom/privateClassroom';
-const CourseDescription: React.FC = () => {
+import { Course } from '../../types/course.type';
+
+interface CourseDescriptionProps {
+    course: Course;
+}
+
+const CourseDescription: React.FC<CourseDescriptionProps> = ({ course }) => {
     return (
         <div className="px-8 mb-3 gap-[120px] flex flex-col mt-10">
             <div className='flex flex-col gap-[16px]'>
@@ -46,23 +52,23 @@ const CourseDescription: React.FC = () => {
                     {/* Course Icons Div */}
                     <div className='flex bg-[#291A423D] course-icons justify-evenly items-center py-[24px] px-[48] gap-6 rounded-lg mt-14'>
                         <div className='flex flex-col text-white font-poppins items-center gap-2'>
-                            <LuCalendar className='w-[24px] h-[24px] text-center text-[#e3fd18]' />
-                            #20 Lessons
+                            <CalendarOutlined className='w-[24px] h-[24px] text-center text-[#e3fd18]' />
+                            #{course.chapters.reduce((total, chapter) => total + chapter.lessons.length, 0)} Lessons
                         </div>
                         <div className='h-[36px] w-0 border-r border-r-[#322f4d]'></div>
                         <div className='flex flex-col text-white font-poppins items-center gap-2'>
-                            <LuShieldQuestion className='w-[24px] h-[24px] text-center text-[#e3fd18]' />
-                            #12 Quiz
+                            <QuestionCircleFilled className='w-[24px] h-[24px] text-center text-[#e3fd18]' />
+                            #{course.chapters.reduce((total, chapter) => total + chapter.lessons.filter(lesson => lesson.type === 'QUIZ').length, 0)} Quiz
                         </div>
                         <div className='h-[36px] w-0 border-r border-r-[#322f4d]'></div>
                         <div className='flex flex-col text-white font-poppins items-center gap-2'>
-                            <LuClipboard className='w-[24px] h-[24px] text-center text-[#e3fd18]' />
-                            #4 Chapters
+                            <CheckOutlined className='w-[24px] h-[24px] text-center text-[#e3fd18]' />
+                            #{course.chapters.length} Chapters
                         </div>
                         <div className='h-[36px] w-0 border-r border-r-[#322f4d]'></div>
                         <div className='flex flex-col text-white font-poppins items-center gap-2'>
-                            <LuClock className='w-[24px] h-[24px] text-center text-[#e3fd18]' />
-                            #20 Hours
+                            <CalendarOutlined className='w-[24px] h-[24px] text-center text-[#e3fd18]' />
+                            #{Math.round(course.duration_mins / 60)} Hours
                         </div>
                     </div>
                 </div>
@@ -74,7 +80,7 @@ const CourseDescription: React.FC = () => {
                 </div>
 
                 <div>
-                    <ContentDropdownList />
+                    <ContentDropdownList course={course} />
                 </div>
             </div>
 
@@ -113,7 +119,7 @@ const CourseDescription: React.FC = () => {
                     <div className="flex flex-wrap gap-[36px]">
                         {Array(6).fill("").map((_, index) => (
                             <span key={index} className="flex gap-3 w-[calc(33.33%-24px)] min-w-[150px]">
-                                <LuMoveRight className="text-white w-[20px] h-[20px]" />
+                                <CheckOutlined className="text-white w-[20px] h-[20px]" />
                                 <span className="font-poppins text-[14px] text-white font-light">Who want to make XYZ</span>
                             </span>
                         ))}

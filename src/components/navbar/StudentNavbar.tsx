@@ -6,7 +6,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import './Navbar.css'
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../state/store/store";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import { signOut } from "../../state/slices/user.slice";
 
 interface NotificationItem {
@@ -86,6 +86,7 @@ const StudentNavbar: React.FC = () => {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const notificationMenuProps: MenuProps = {
     items: notifications,
   };
@@ -103,27 +104,27 @@ const StudentNavbar: React.FC = () => {
             "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(153, 153, 153, 0.12) 100%) 1",
         }}
       >
-        <a href="">
+        <div onClick={() => navigate('/')} className="cursor-pointer">
           <img src="/03-white.png" alt="" className="w-[95px]" />
-        </a>
+        </div>
         <div className="flex flex-row items-center gap-[32px]">
           <ul className="hidden xl:flex items-center justify-center gap-[48px] font-[Poppins] text-[16px] leading-[24px] font-light text-white  relative">
             <li className="py-[24px] relative group cursor-pointer">
-              <span className="relative inline-block">
-                Home
-                <span className="absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100"></span>
+              <span className={`relative inline-block ${location.pathname === "/" ? "font-bold" : ""}`}>
+                <NavLink to='/'>Home</NavLink>
+                <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/" ? "scale-x-100" : ""}`}></span>
               </span>
             </li>
             <li className="py-[24px] relative group cursor-pointer">
-              <span className="relative inline-block">
-                My Courses
-                <span className="absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100"></span>
+              <span className={`relative inline-block ${location.pathname === "/courses" ? "font-bold" : ""}`}>
+                <NavLink to='/courses'>My Courses</NavLink>
+                <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/courses" ? "scale-x-100" : ""}`}></span>
               </span>
             </li>
             <li className="py-[24px] relative group cursor-pointer">
-              <span className="relative inline-block">
-                I Need A Help
-                <span className="absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100"></span>
+              <span className={`relative inline-block ${location.pathname === "/help" ? "font-bold" : ""}`}>
+                <NavLink to='/help'>I Need A Help</NavLink>
+                <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/help" ? "scale-x-100" : ""}`}></span>
               </span>
             </li>
           </ul>
@@ -175,14 +176,20 @@ const StudentNavbar: React.FC = () => {
               dropdownRender={(menu) => (
                 <div className="bg-[#2F2F4F] mt-3 rounded-lg flex flex-col">
                   <div className="flex flex-col py-1">
-                    <button className="px-4 py-2 text-[#AFAFC7] font-[Poppins] font-normal text-[14px] leading-[150%] text-left">
+                    <button 
+                      onClick={() => navigate('/profile')} 
+                      className="px-4 py-2 text-[#AFAFC7] font-[Poppins] font-normal text-[14px] leading-[150%] text-left hover:bg-[#3A3A5F] transition-colors"
+                    >
                       My profile Info
                     </button>
-                    <button className="px-4 py-2 text-[#AFAFC7] font-[Poppins] font-normal text-[14px] leading-[150%] text-left">
+                    <button 
+                      onClick={() => navigate('/profile-edit')} 
+                      className="px-4 py-2 text-[#AFAFC7] font-[Poppins] font-normal text-[14px] leading-[150%] text-left hover:bg-[#3A3A5F] transition-colors"
+                    >
                       Change My Email
                     </button>
                   </div>
-                  <button onClick={handleSignOut} className="px-4 py-2 text-[#F05252] font-[Poppins] font-normal text-[14px] leading-[150%] text-left border border-t-[#505075] border-transparent">
+                  <button onClick={handleSignOut} className="px-4 py-2 text-[#F05252] font-[Poppins] font-normal text-[14px] leading-[150%] text-left border border-t-[#505075] border-transparent hover:bg-[#3A3A5F] transition-colors">
                     Sign Out
                   </button>
                 </div>

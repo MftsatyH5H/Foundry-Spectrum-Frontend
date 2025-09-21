@@ -11,13 +11,13 @@ interface FormData {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: string;
+  phone_number: string;
   password: string;
   repeatPassword: string;
   country: string;
   profession: string;
   objective: string;
-  age: number;
+  age: string;
   interests: string;
   education: string;
 }
@@ -96,13 +96,13 @@ const Step1: React.FC<StepProps> = ({ formData, setFormData, errors }) => {
             type="tel"
             placeholder='Your phone number'
             className={`w-full rounded-[8px] border ${
-              errors.phoneNumber ? 'border-red-500' : 'border-[#505075]'
+              errors.phone_number ? 'border-red-500' : 'border-[#505075]'
             } py-3 px-4 bg-[#2F2F4F] text-white focus:outline-none focus:border-[#A17ACC]`}
-            value={formData.phoneNumber}
-            onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
+            value={formData.phone_number}
+            onChange={(e) => setFormData({...formData, phone_number: e.target.value})}
           />
-          {errors.phoneNumber && (
-            <p className='text-red-500 text-xs mt-1'>{errors.phoneNumber}</p>
+          {errors.phone_number && (
+            <p className='text-red-500 text-xs mt-1'>{errors.phone_number}</p>
           )}
         </div>
 
@@ -310,7 +310,7 @@ function Register() {
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: '',
+    phone_number: '',
     password: '',
     repeatPassword: '',
     country: '',
@@ -348,8 +348,8 @@ function Register() {
       newErrors.email = 'Invalid email format';
     }
     
-    if (!formData.phoneNumber.trim()) {
-      newErrors.phoneNumber = 'Phone number is required';
+    if (!formData.phone_number.trim()) {
+      newErrors.phone_number = 'Phone number is required';
     }
     
     if (!formData.password) {
@@ -415,7 +415,7 @@ function Register() {
         email: formData.email,
         password: formData.password,
         country: formData.country,
-        phoneNumber: formData.phoneNumber,
+        phone_number: formData.phone_number,
         age: parseInt(formData.age, 10),
         profession: formData.profession,
         education: formData.education,
@@ -428,9 +428,16 @@ function Register() {
       
       setIsRegistered(true);
 
-      // Redirect to profile after 3 seconds
+      // Redirect to home page after 3 seconds with email for OTP verification
       setTimeout(() => {
-        navigate('/profile', { replace: true });
+        navigate('/', { 
+          replace: true,
+          state: { 
+            showOtpPopup: true, 
+            email: formData.email,
+            password: formData.password
+          }
+        });
       }, 3000);
       
 
@@ -439,7 +446,7 @@ function Register() {
         firstName: '',
         lastName: '',
         email: '',
-        phoneNumber: '',
+        phone_number: '',
         password: '',
         repeatPassword: '',
         country: '',

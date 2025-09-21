@@ -6,17 +6,22 @@ import CourseVideo from './CourseVideo';
 import CourseDetailsCard from '../Cards/CourseDetails/CourseDetailsCard';
 import RelatedCoursesList from '../relatedCourses/relatedCoursesList';
 import Courserelatedlist from '../courserelated/courserelatedlist';
+import { Course } from '../../types/course.type';
 
-const CourseContainer: React.FC = () => {
+interface CourseContainerProps {
+    course: Course;
+}
+
+const CourseContainer: React.FC<CourseContainerProps> = ({ course }) => {
     return (
         <div className=''>
-            <CourseNavbar />
+            <CourseNavbar course={course} />
             <div className="grid grid-cols-4 container mx-auto">
                 <div className="col-span-3">
-                    <CourseDescription />
+                    <CourseDescription course={course} />
                 </div>
                 <div className="col-span-1 mt-[10px]">
-                    <CourseDetailsCard />
+                    <CourseDetailsCard course={course} />
                 </div>
             </div>
         </div>
