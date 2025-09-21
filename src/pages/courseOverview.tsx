@@ -72,7 +72,7 @@ function CourseOverview() {
             <CourseContainer course={course} />
         </div>
           <RelatedCoursesList />
-        
+          
     </div>
   )
 }
