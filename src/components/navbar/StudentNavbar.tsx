@@ -127,6 +127,12 @@ const StudentNavbar: React.FC = () => {
                 <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/help" ? "scale-x-100" : ""}`}></span>
               </span>
             </li>
+            <li className="py-[24px] relative group cursor-pointer">
+              <span className={`relative inline-block ${location.pathname === "/Courses" ? "font-bold" : ""}`}>
+                <NavLink to='/Courses'>Courses</NavLink>
+                <span className={`absolute bottom-[-24px] left-0 w-full h-[3px] bg-[#E1FF00] scale-x-0 origin-bottom transition-transform duration-300 group-hover:scale-x-100 ${location.pathname === "/help" ? "scale-x-100" : ""}`}></span>
+              </span>
+            </li>
           </ul>
           <ConfigProvider
             theme={{
