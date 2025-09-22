@@ -94,17 +94,17 @@ const CourseDescription: React.FC<CourseDescriptionProps> = ({ course }) => {
                 </div>
                 <TestimonialsList className="justify-start" />
             </div>
-            <div className='flex flex-col items-start gap-[24px]'>
+            {/* <div className='flex flex-col items-start gap-[24px]'>
                 <div className='flex flex-col items-start justify-center gap-2'>
                     <p className='text-[#e3fd18] font-bold font-poppins text-2xl '>Students Gallery (Success Stories)</p>
                     <p className='text-lightGrey font-light font-poppins text-sm '>Learning the basic structure of the Blueprint visual scripting system, as well as cover the fundamental math skills every .</p>
                 </div>
                 <StudentGalleryListSmall />
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
                 <PrivateClassroomcard />
-            </div>
+            </div> */}
 
             <div className='flex flex-col gap-16'>
                 <div className='flex flex-col gap-4'>

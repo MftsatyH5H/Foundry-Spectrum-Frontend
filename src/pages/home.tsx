@@ -74,13 +74,13 @@ function Home() {
       </div>
 
       {/* Student Gallery Title */}
-      <div className='container flex flex-col gap-[32px] mx-auto'>
+      {/* <div className='container flex flex-col gap-[32px] mx-auto'>
         <SectionTitle heading='Students Gallery' subHeading='Success Stories' description='Learning the basic structure of the Blueprint visual' />
         <StudentGalleryList />
-      </div>
-      <div className='container mx-auto'>
+      </div> */}
+      {/* <div className='container mx-auto'>
         <Blogsliderlist width='!w-[420px]'/>
-      </div>
+      </div> */}
       {/* Blogs Section */}
 
       {/* Explore More Courses */}

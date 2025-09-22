@@ -71,7 +71,7 @@ function CourseOverview() {
         <div className='mb-10'>
             <CourseContainer course={course} />
         </div>
-          <RelatedCoursesList />
+          {/* <RelatedCoursesList /> */}
           
     </div>
   )
