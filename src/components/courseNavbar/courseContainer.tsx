@@ -21,7 +21,9 @@ const CourseContainer: React.FC<CourseContainerProps> = ({ course }) => {
                     <CourseDescription course={course} />
                 </div>
                 <div className="col-span-1 mt-[10px]">
-                    <CourseDetailsCard course={course} />
+                    <div className="sticky top-20">
+                        <CourseDetailsCard course={course} />
+                    </div>
                 </div>
             </div>
         </div>
