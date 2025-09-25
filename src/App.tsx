@@ -16,6 +16,7 @@ import StudentNavbar from './components/navbar/StudentNavbar';
 import Register from './pages/register';
 import { fetchUserData } from './state/slices/user.slice';
 import { useAppDispatch } from './state/store/hooks';
+import CourseNavigation from './pages/courseNavigation';
 
 function App() {
 
@@ -65,6 +66,7 @@ function App() {
                 <Route path='/profile-instructor' element={<ProfileInstructor />} />
                 <Route path='/create-course' element={<CreateCourse />} />
                 <Route path='/register' element={<Navigate to="/profile" replace />} />
+                <Route path='/course-navigation' element={<CourseNavigation />} />
                 <Route path='*' element={<Navigate to="/profile" replace />} />
               </Routes>
               

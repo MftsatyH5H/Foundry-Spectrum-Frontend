@@ -56,7 +56,7 @@ function Coursecardbig({ course }: CoursecardbigProps) {
                                         {course.description}
                                     </p>
                                     <Link to={`/course-overview/${course.id}`}>
-                                        <button className='text-foundryyellow font-[Poppins] font-medium text-[16px] leading-[24px] rounded-lg pt-3.5 pb-3.5 pr-8 pl-8 bg-[#291A42] w-[182px] h-[52px] mt-[40px]'>Buy Now {formatPrice()}</button>
+                                        <button className='text-foundryyellow font-[Poppins] font-medium text-[16px] leading-[24px] rounded-lg pt-3.5 pb-3.5 pr-8 pl-8 bg-[#291A42] min-w-[182px] h-[52px] mt-[40px] whitespace-nowrap'>Buy Now {formatPrice()}</button>
                                     </Link>
                                 </div>
                                 <div className='flex-auto flex justify-center items-center'>
