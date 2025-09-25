@@ -48,7 +48,7 @@ function CourseVideo({ course }: CourseVideoProps) {
     <div className="flex relative items-center content-center course-title-div">
       <div style={{ zIndex: -200 }} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
         <img
-          src={course.thumbnail_url}
+          src={course.thumbnail_url.replace('localstack-dev', 'localhost')}
           alt="Course Image"
           className="w-full h-full course-image object-cover transition-transform grayscale hover:grayscale-0 hover:scale-110"
         />

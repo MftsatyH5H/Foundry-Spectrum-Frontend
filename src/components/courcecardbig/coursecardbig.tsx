@@ -9,7 +9,7 @@ interface CoursecardbigProps {
 
 function Coursecardbig({ course }: CoursecardbigProps) {
     const cardStyle = {
-        backgroundImage: `url(${course.thumbnail_url})`,
+        backgroundImage: `url(${course.thumbnail_url.replace('localstack-dev', 'localhost')})`,
     };
 
     // Helper function to get primary category name
