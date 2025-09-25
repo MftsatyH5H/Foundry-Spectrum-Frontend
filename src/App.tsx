@@ -46,6 +46,10 @@ function App() {
     }
     
   },[location])
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   return (
           <>
           {user === userType.student ? (
