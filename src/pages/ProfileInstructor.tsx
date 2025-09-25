@@ -14,20 +14,20 @@ function ProfileInstructor() {
       <div className='px-[24px]'>
         <Artportfolio />
       </div>
-      <div className='container flex flex-col px-[24px] gap-[24px]'>
+      {/* <div className='container flex flex-col px-[24px] gap-[24px]'>
         <div className='flex flex-col'>
           <span className='text-foundryyellow font-bold text-2xl font-[agrandir]'>32+ Testimonials </span>
           <span className='text-lightGrey font-light text-sm font-[agrandir]'>Learning the basic structure of the Blueprint visual scripting system, as well as cover the fundamental math skills every .</span>
         </div>
         <TestimonialsList className="justify-center"/>
-      </div>
-      <div className='container flex flex-col px-[24px] gap-[24px]'>
+      </div> */}
+      {/* <div className='container flex flex-col px-[24px] gap-[24px]'>
         <div className='flex flex-col'>
           <span className='text-foundryyellow font-bold text-2xl font-[agrandir]'>Students Gallery (Success Stories)</span>
           <span className='text-lightGrey font-light text-sm font-[agrandir]'>Learning the basic structure of the Blueprint visual scripting system, as well as cover the fundamental math skills every .</span>
         </div>
         <StudentGalleryList />
-      </div>
+      </div> */}
       <div className='container flex flex-col px-[24px] gap-[24px]'>
         <div className='flex flex-col'>
           <span className='text-foundryyellow font-bold text-2xl font-[agrandir]'>Courses</span>

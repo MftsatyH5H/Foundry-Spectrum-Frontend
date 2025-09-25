@@ -63,7 +63,7 @@ function CoursesList() {
         <div className='container mx-auto'>
           <Coursecardbiglist courses={courses} />
         </div>
-        <div>
+        <div className='container mx-auto my-20'>
           <ExploreCoursescard />
         </div>
     </div>
