@@ -34,6 +34,15 @@ class CoursesAPIs {
 
     return axios.get<any>(`/api/course?${params.toString()}`);
   };
+
+  /**
+   * Get course playback intro video
+   * @param courseId - The course ID
+   * @returns Promise<AxiosResponse<any>>
+   */
+  getCourseIntroVideo = (courseId: string): Promise<AxiosResponse<any>> => {
+    return axios.get<any>(`/api/course/${courseId}/intro`);
+  };
 }
 
 export default CoursesAPIs;

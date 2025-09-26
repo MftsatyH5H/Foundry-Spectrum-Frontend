@@ -1,13 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { PlayCircleFilled } from '@ant-design/icons';
+import { PlayCircleFilled, ArrowLeftOutlined } from '@ant-design/icons';
 import { Course } from '../../types/course.type';
+import CoursesAPIs from '../../api/courses.api';
 
 interface CourseVideoProps {
   course: Course;
 }
 
+interface VideoData {
+  otp: string;
+  playbackInfo: string;
+}
+
 function CourseVideo({ course }: CourseVideoProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [videoData, setVideoData] = useState<VideoData | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const coursesAPI = new CoursesAPIs();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -27,6 +37,26 @@ function CourseVideo({ course }: CourseVideoProps) {
 
   const handleMouseLeave = () => {
     setPosition({ x: 0, y: 0 });
+  };
+
+  const handleWatchIntro = async () => {
+    if (isLoading) return;
+    
+    setIsLoading(true);
+    try {
+      const response = await coursesAPI.getCourseIntroVideo(course.id);
+      setVideoData(response.data);
+      setShowVideo(true);
+    } catch (error) {
+      console.error('Error fetching intro video:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleBackToPreview = () => {
+    setShowVideo(false);
+    setVideoData(null);
   };
   // Helper functions
   const getPrimaryCategory = () => {
@@ -96,15 +126,39 @@ function CourseVideo({ course }: CourseVideoProps) {
 
   return (
     <div className="flex relative items-center content-center course-title-div">
-      <div style={{ zIndex: -200 }} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
-        <img
-          src={course.thumbnail_url.replace('localstack-dev', 'localhost')}
-          alt="Course Image"
-          className="w-full h-full course-image object-cover transition-transform grayscale hover:grayscale-0 hover:scale-110"
-        />
-      </div>
+      {!showVideo ? (
+        <div style={{ zIndex: -200 }} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
+          <img
+            src={course.thumbnail_url.replace('localstack-dev', 'localhost')}
+            alt="Course Image"
+            className="w-full h-full course-image object-cover transition-transform grayscale hover:grayscale-0 hover:scale-110"
+          />
+        </div>
+      ) : (
+        <div style={{ zIndex: 200 }} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
+          {videoData && (
+            <iframe 
+              className="w-full h-full"
+              src={`https://player.vdocipher.com/v2/?otp=${videoData.otp}&playbackInfo=${videoData.playbackInfo}`}
+              allowFullScreen={true} 
+              allow="encrypted-media"
+              style={{ aspectRatio: '16/9' }}
+            />
+          )}
+          {/* Back button */}
+          <button
+            onClick={handleBackToPreview}
+            className="absolute top-20 left-4 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200 hover:scale-110"
+            title="Back to preview"
+          >
+            <ArrowLeftOutlined className="text-lg" />
+          </button>
+        </div>
+      )}
       <div className="w-8/12 mt-[72px] h-[600px] p-3 flex flex-col gap-9">
-        <div className='flex flex-col gap-3 mt-10 ml-6'>
+        {!showVideo &&(
+          <>
+          <div className='flex flex-col gap-3 mt-10 ml-6'>
           <span className='flex items-center justify-start text-lightGrey font-poppins gap-3 text-xs'>
             <span>Courses</span>
             <span>{'>'}</span>
@@ -146,20 +200,26 @@ function CourseVideo({ course }: CourseVideoProps) {
             </span>
           </div>
         </div>
+          </>
+        )}
       </div>
-      <div
-        className="relative w-4/5 h-[600px] mt-[72px] flex items-center justify-center overflow-hidden cursor-none"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        <button
-          className="absolute py-4 px-6 font-semibold flex items-center content-center hover:border-foundryyellow bg-[#471F707A] border text-white shadow-lg transition-all duration-300 ease-out font-poppins gap-3 rounded-full watch-intro-button"
-          style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+      {!showVideo && (
+        <div
+          className="relative w-4/5 h-[600px] mt-[72px] flex items-center justify-center overflow-hidden cursor-none"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
         >
-          <PlayCircleFilled className='watch-now-icon' />
-          Watch Intro
-        </button>
-      </div>
+          <button
+            onClick={handleWatchIntro}
+            disabled={isLoading}
+            className="absolute py-4 px-6 font-semibold flex items-center content-center hover:border-foundryyellow bg-[#471F707A] border text-white shadow-lg transition-all duration-300 ease-out font-poppins gap-3 rounded-full watch-intro-button disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+          >
+            <PlayCircleFilled className='watch-now-icon' />
+            {isLoading ? 'Loading...' : 'Watch Intro'}
+          </button>
+        </div>
+      )}
 
     </div>
   );
