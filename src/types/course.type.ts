@@ -35,17 +35,29 @@ interface Chapter {
     order_index: number;
 }
 
+interface Instructor {
+    id: string;
+    firstName: string;
+    lastName: string;
+    profession: string;
+}
+
 interface Course {
     id: string;
     title: string;
     description: string;
+    overview: string;
+    outcome: string;
+    requirements: string;
     price: number;
     languages: Language[];
     categories: Category[];
     chapters: Chapter[];
     tools: Tool[];
+    instructors: Instructor[];
     difficulty: string;
     status: string;
+    accessLevel: string;
     vdo_folder_id: string;
     tax_percentage: number;
     discount_percentage: number;
@@ -69,4 +81,4 @@ interface CoursesResponse {
     sortDirection: string;
 }
 
-export type { Course, CoursesResponse, Language, Category, Tool, Lesson, Chapter };
+export type { Course, CoursesResponse, Language, Category, Tool, Lesson, Chapter, Instructor };

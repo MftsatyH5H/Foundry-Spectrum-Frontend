@@ -14,15 +14,17 @@ interface CourseContainerProps {
 
 const CourseContainer: React.FC<CourseContainerProps> = ({ course }) => {
     return (
-        <div className=''>
+        <div className='mb-20'>
             <CourseNavbar course={course} />
-            <div className="grid grid-cols-4 container mx-auto">
-                <div className="col-span-3">
-                    <CourseDescription course={course} />
-                </div>
-                <div className="col-span-1 mt-[10px]">
-                    <div className="sticky top-20">
-                        <CourseDetailsCard course={course} />
+            <div className="container mx-auto">
+                <div className="grid grid-cols-4">
+                    <div className="col-span-3">
+                        <CourseDescription course={course} />
+                    </div>
+                    <div className="col-span-1 mt-[10px] ml-6">
+                        <div className="sticky top-20">
+                            <CourseDetailsCard course={course} />
+                        </div>
                     </div>
                 </div>
             </div>

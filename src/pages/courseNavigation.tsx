@@ -12,14 +12,11 @@ function courseNavigation() {
 
   return (
     <div className='flex md:flex-row flex-col items-center justify-between mt-[72px] relative'>
-        {/* Video Player - Takes full width when sidebar is closed */}
         <div className={`transition-all duration-300 relative ${sidebarOpen ? 'md:w-[calc(100%-24rem)]' : 'w-full'}`}>
             <CourseVideoPlayer />
-            {/* Toggle Button - Positioned relative to video container */}
             <SidebarToggleButton isOpen={sidebarOpen} onToggle={toggleSidebar} />
         </div>
         
-        {/* Sidebar - Hidden when closed */}
         {sidebarOpen && (
             <div className="transition-all duration-300">
                 <CourseSidebar />

@@ -44,6 +44,56 @@ function CourseVideo({ course }: CourseVideoProps) {
     return `$${course.price.toFixed(2)}`;
   };
 
+  const getInstructorName = () => {
+    if (course.instructors && course.instructors.length > 0) {
+      const instructor = course.instructors[0];
+      return `${instructor.firstName} ${instructor.lastName}`;
+    }
+    return 'Instructor';
+  };
+
+  const getInstructorProfession = () => {
+    if (course.instructors && course.instructors.length > 0) {
+      return course.instructors[0].profession || 'Instructor';
+    }
+    return 'Instructor';
+  };
+
+  const getInstructorStats = () => {
+    return {
+      courses: 10,
+      hours: 200
+    };
+  };
+
+  const getInstructorImage = () => {
+    // For now using a placeholder, you can add instructor image URL to the instructor object
+    return 'profile.png';
+  };
+
+  const getInstructorDisplayText = () => {
+    if (course.instructors && course.instructors.length > 1) {
+      return `${getInstructorName()} +${course.instructors.length - 1} more`;
+    }
+    return getInstructorName();
+  };
+
+  const getCourseDuration = () => {
+    if (course.duration_mins) {
+      const hours = Math.floor(course.duration_mins / 60);
+      const minutes = course.duration_mins % 60;
+      return `${hours}h ${minutes}m`;
+    }
+    return 'N/A';
+  };
+
+  const getCourseTools = () => {
+    if (course.tools && course.tools.length > 0) {
+      return course.tools.map(tool => tool.name).join(', ');
+    }
+    return 'Various tools';
+  };
+
   return (
     <div className="flex relative items-center content-center course-title-div">
       <div style={{ zIndex: -200 }} className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg course-title-div shadow-lg">
@@ -68,20 +118,31 @@ function CourseVideo({ course }: CourseVideoProps) {
             <span>{getPrimaryCategory()}</span>
             <span>For {course.difficulty}</span>
             <span>{getLanguages()}</span>
+            <span>{getCourseDuration()}</span>
           </div>
           <p className='text-lightGrey mt-6'>{course.description}</p>
+          {course.tools && course.tools.length > 0 && (
+            <div className='mt-4'>
+              <span className='text-lightGrey text-sm'>Tools: </span>
+              <span className='text-[#afafc7] text-sm'>{getCourseTools()}</span>
+            </div>
+          )}
         </div>
 
         <div className='flex justify-start items-center mb-2 ml-6'>
           <button className='bg-[#332052] text-[#cbe30a] font-semibold px-24 py-4 rounded-md'>Buy Now {formatPrice()}</button>
         </div>
         <div className='flex items-center gap-[16px] ml-6'>
-          <img src='profile.png' className='w-9 rounded-full border-2 border-foundryyellow' />
+          <img 
+            src={'/public/profile.png'} 
+            alt={`${getInstructorName()} profile`}
+            className='w-9 rounded-full border-2 border-foundryyellow' 
+          />
           <div className='flex flex-col items-start justify-center'>
-            <span className='font-poppins text-white font-semibold'>Karim Yasser</span>
+            <span className='font-poppins text-white font-semibold'>{getInstructorDisplayText()}</span>
             <span className='font-roboto text-lightGrey flex justify-center items-center gap-4'>
-              <span>8 Courses</span>
-              <span>200+ Hours of teaching</span>
+              <span>{getInstructorStats().courses} Courses</span>
+              <span>{getInstructorStats().hours}+ Hours of teaching</span>
             </span>
           </div>
         </div>
