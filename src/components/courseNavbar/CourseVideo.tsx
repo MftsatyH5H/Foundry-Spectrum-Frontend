@@ -2,9 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { PlayCircleFilled, ArrowLeftOutlined } from '@ant-design/icons';
 import { Course } from '../../types/course.type';
 import CoursesAPIs from '../../api/courses.api';
+import { useAuth } from '../../hooks/useAuth';
+import LoginFirstStep from '../auth/Loginfirststep';
 
 interface CourseVideoProps {
   course: Course;
+  onStartLearning?: () => void;
 }
 
 interface VideoData {
@@ -12,12 +15,13 @@ interface VideoData {
   playbackInfo: string;
 }
 
-function CourseVideo({ course }: CourseVideoProps) {
+function CourseVideo({ course, onStartLearning }: CourseVideoProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const coursesAPI = new CoursesAPIs();
+  const { handleBuyNow, showLoginPopup, closeLoginPopup } = useAuth();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -184,7 +188,21 @@ function CourseVideo({ course }: CourseVideoProps) {
         </div>
 
         <div className='flex justify-start items-center mb-2 ml-6'>
-          <button className='bg-[#332052] text-[#cbe30a] font-semibold px-24 py-4 rounded-md'>Buy Now {formatPrice()}</button>
+          {course.accessLevel === 'ENROLLED' ? (
+            <button 
+              onClick={onStartLearning}
+              className='bg-[#332052] text-[#cbe30a] font-semibold px-24 py-4 rounded-md hover:bg-[#3d2560] transition-colors'
+            >
+              Start Learning Journey
+            </button>
+          ) : (
+            <button 
+              onClick={() => handleBuyNow(course.id)}
+              className='bg-[#332052] text-[#cbe30a] font-semibold px-24 py-4 rounded-md hover:bg-[#3d2560] transition-colors'
+            >
+              Buy Now {formatPrice()}
+            </button>
+          )}
         </div>
         <div className='flex items-center gap-[16px] ml-6'>
           <img 
@@ -218,6 +236,15 @@ function CourseVideo({ course }: CourseVideoProps) {
             <PlayCircleFilled className='watch-now-icon' />
             {isLoading ? 'Loading...' : 'Watch Intro'}
           </button>
+        </div>
+      )}
+
+      {/* Login Popup */}
+      {showLoginPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="relative">
+            <LoginFirstStep onClose={closeLoginPopup} />
+          </div>
         </div>
       )}
 

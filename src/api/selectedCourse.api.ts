@@ -29,6 +29,16 @@ class selectedCourseAPIs {
   getCourseByIdApi = (id: string): Promise<AxiosResponse<any>> => {
     return axios.get<any>(`/api/course/${id}`);
   };
+
+  /**
+   * Process course payment
+   * @param courseId - The course ID
+   * @param paymentData - Payment information
+   * @returns Promise<AxiosResponse<any>>
+   */
+  processPayment = (courseId: string, paymentData: any): Promise<AxiosResponse<any>> => {
+    return axios.post<any>(`/api/course/${courseId}/enroll`, paymentData);
+  };
 }
 
 export default selectedCourseAPIs;

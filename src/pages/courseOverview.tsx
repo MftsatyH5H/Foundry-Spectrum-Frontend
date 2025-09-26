@@ -5,12 +5,19 @@ import CourseContainer from '../components/courseNavbar/courseContainer'
 import RelatedCoursesList from '../components/relatedCourses/relatedCoursesList'
 import { selectedCourseAPIs } from '../api'
 import { Course } from '../types/course.type'
+import CourseNavigation from './courseNavigation'
 
 function CourseOverview() {
   const { id } = useParams<{ id: string }>();
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [startedLearning, setStartedLearning] = useState(false);
+
+  const handleStartLearning = () => {
+    setStartedLearning(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -63,13 +70,17 @@ function CourseOverview() {
 
   return (
     <div className='flex flex-col'>
-        {/* Course Intro Video */}
+        {/* Course Intro Video or Course Navigation */}
         <div>
-          <CourseVideo course={course} />
+          {startedLearning ? (
+            <CourseNavigation course={course} />
+          ) : (
+            <CourseVideo course={course} onStartLearning={handleStartLearning} />
+          )}
         </div>
         {/* Course Overview */}
         <div className='mb-10'>
-            <CourseContainer course={course} />
+            <CourseContainer course={course} onStartLearning={handleStartLearning} />
         </div>
           {/* <RelatedCoursesList /> */}
           

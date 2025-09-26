@@ -51,7 +51,7 @@ function ProfileStudent() {
       <div className="container mx-auto overflow-hidden  overflow-y-auto py-[104px] scrollbar-thin scrollbar-webkit">
         <div className="flex flex-row gap-[40px]">
           {/* Student Profile Section */}
-          <div className="  sticky top-0 self-start">
+          <div className="sticky top-0 self-start">
             <StudentProfile />
           </div>
 

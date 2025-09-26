@@ -17,6 +17,7 @@ import Register from './pages/register';
 import { fetchUserData } from './state/slices/user.slice';
 import { useAppDispatch } from './state/store/hooks';
 import CourseNavigation from './pages/courseNavigation';
+import CoursePayment from './pages/CoursePayment';
 
 function App() {
 
@@ -63,6 +64,7 @@ function App() {
                 <Route path='/profile' element={<ProfileStudent />} />
                 <Route path='/profile-edit' element={<EditProfile />} />
                 <Route path='/course-overview/:id' element={<CourseOverview />} />
+                <Route path='/course-payment/:id' element={<CoursePayment />} />
                 <Route path='/profile-instructor' element={<ProfileInstructor />} />
                 <Route path='/create-course' element={<CreateCourse />} />
                 <Route path='/register' element={<Navigate to="/profile" replace />} />
@@ -94,6 +96,7 @@ function App() {
                 <Route path='/profile' element={<ProfileStudent />} />
                 <Route path='/profile-edit' element={<EditProfile />} />
                 <Route path='/course-overview/:id' element={<CourseOverview />} />
+                <Route path='/course-payment/:id' element={<CoursePayment />} />
                 <Route path='/profile-instructor' element={<ProfileInstructor />} />
                 <Route path='/create-course' element={<CreateCourse />} />
                 <Route path='/register' element={<Register />} />

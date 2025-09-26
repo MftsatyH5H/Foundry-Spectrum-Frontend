@@ -4,9 +4,11 @@ import { Chapter } from '../../../types/course.type'
 interface SidebarContentDropdownProps {
     chapter: Chapter;
     isOpen?: boolean;
+    onLessonSelect?: (lessonId: string) => void;
+    currentLessonId?: string;
 }
 
-function SidebarContentDropdown({ chapter, isOpen = false }: SidebarContentDropdownProps) {
+function SidebarContentDropdown({ chapter, isOpen = false, onLessonSelect, currentLessonId }: SidebarContentDropdownProps) {
     const [open, setOpen] = useState(isOpen);
 
     const getLessonIcon = (lessonType: string) => {
@@ -95,9 +97,11 @@ function SidebarContentDropdown({ chapter, isOpen = false }: SidebarContentDropd
                     {chapter.lessons.map((lesson, index) => (
                         <div 
                             key={lesson.id} 
-                            className={`px-4 py-3 border-b border-borderPurple last:border-b-0 ${
-                                index === 1 ? 'bg-mediumPurple' : 'hover:bg-mediumPurple'
+                            className={`px-4 py-3 border-b border-borderPurple last:border-b-0 cursor-pointer ${
+                                currentLessonId === lesson.id.toString() ? 'bg-foundryyellow bg-opacity-20' : 
+                                'hover:bg-mediumPurple'
                             } transition-colors duration-200`}
+                            onClick={() => onLessonSelect?.(lesson.id.toString())}
                         >
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center space-x-3 flex-1">

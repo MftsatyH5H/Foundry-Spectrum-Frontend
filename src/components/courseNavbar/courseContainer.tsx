@@ -10,9 +10,10 @@ import { Course } from '../../types/course.type';
 
 interface CourseContainerProps {
     course: Course;
+    onStartLearning?: () => void;
 }
 
-const CourseContainer: React.FC<CourseContainerProps> = ({ course }) => {
+const CourseContainer: React.FC<CourseContainerProps> = ({ course, onStartLearning }) => {
     return (
         <div className='mb-20'>
             <CourseNavbar course={course} />
@@ -23,7 +24,7 @@ const CourseContainer: React.FC<CourseContainerProps> = ({ course }) => {
                     </div>
                     <div className="col-span-1 mt-[10px] ml-6">
                         <div className="sticky top-20">
-                            <CourseDetailsCard course={course} />
+                            <CourseDetailsCard course={course} onStartLearning={onStartLearning} />
                         </div>
                     </div>
                 </div>

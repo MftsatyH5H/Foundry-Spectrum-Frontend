@@ -12,7 +12,7 @@ function SidebarToggleButton({ isOpen, onToggle }: SidebarToggleButtonProps) {
             className={`absolute top-1/2 right-4 z-50 w-12 h-12 rounded-full shadow-lg transition-all duration-300 transform -translate-y-1/2 ${
                 isOpen 
                     ? 'bg-mediumPurple hover:bg-purple opacity-70 hover:opacity-100' 
-                    : 'bg-foundryyellow hover:bg-yellow-400 opacity-70 hover:opacity-100'
+                    : 'bg-mediumPurple hover:bg-purple opacity-70 hover:opacity-100'
             } flex items-center justify-center group`}
             style={{ 
                 backdropFilter: 'blur(10px)',

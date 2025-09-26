@@ -2,6 +2,8 @@ import React, { Component, useState } from 'react';
 import './coursecardbig.css';
 import { Link } from 'react-router-dom';
 import { Course } from '../../types/course.type';
+import { useAuth } from '../../hooks/useAuth';
+import LoginFirstStep from '../auth/Loginfirststep';
 
 interface CoursecardbigProps {
     course: Course;
@@ -11,6 +13,7 @@ function Coursecardbig({ course }: CoursecardbigProps) {
     const cardStyle = {
         backgroundImage: `url(${course.thumbnail_url.replace('localstack-dev', 'localhost')})`,
     };
+    const { handleBuyNow, showLoginPopup, closeLoginPopup } = useAuth();
 
     // Helper function to get primary category name
     const getPrimaryCategory = () => {
@@ -33,6 +36,7 @@ function Coursecardbig({ course }: CoursecardbigProps) {
 
 
         return (
+            <>
             <div className='rounded-3xl flex flex-row h-[600px] w-full relative overflow-hidden flex-2 card cursor-pointer group '>
                 <div 
                     className="absolute inset-0 rounded-3xl z-0 gredientlist w-full" 
@@ -69,8 +73,18 @@ function Coursecardbig({ course }: CoursecardbigProps) {
                     </div>
                 </div>
             </div>
-        );
-    }
+
+            {/* Login Popup */}
+            {showLoginPopup && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="relative">
+                        <LoginFirstStep onClose={closeLoginPopup} />
+                    </div>
+                </div>
+            )}
+        </>
+    );
+}
 
 
 export default Coursecardbig;
